@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUNKELGANG MC — Archives</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0C0A08;--surface:#131110;--surface2:#1A1714;--accent:#8B1A1A;--cream:#D8CEBC;--cream2:#A89E8E;--cream3:#70665A;--border:#26201A;--border2:#342C24;--color-background-primary:#1A1714;--color-background-secondary:#221E1A;--color-text-primary:#D8CEBC;--color-text-secondary:#A89E8E;--color-text-tertiary:#70665A;--color-border-tertiary:#26201A;--color-border-secondary:#342C24;--border-radius-lg:6px;--border-radius-md:4px;--font-sans:"Barlow Condensed",sans-serif;--sidebar-w:210px;--banner-h:58px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--cream);font-family:"Barlow Condensed",sans-serif;display:flex;flex-direction:column;height:100vh;overflow:hidden}
+.banner{background:var(--surface);border-bottom:2px solid var(--accent);padding:0 1.25rem;display:flex;align-items:center;gap:1rem;height:var(--banner-h);flex-shrink:0;z-index:200}
+.banner-logo{display:flex;align-items:center;gap:.9rem}
+.club-title{font-family:"Bebas Neue",sans-serif;font-size:24px;letter-spacing:.15em;color:var(--cream);line-height:1}
+.club-tagline{font-size:10px;color:var(--cream3);letter-spacing:.18em;text-transform:uppercase;margin-top:2px}
+.banner-right{margin-left:auto;display:flex;align-items:center;gap:.75rem}
+.outlaw-tag{font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--accent);border:1px solid var(--accent);padding:3px 10px;border-radius:2px;text-transform:uppercase}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;padding:4px;border:1px solid var(--border2);border-radius:3px;background:none;flex-shrink:0}
+.hamburger span{display:block;height:1.5px;background:var(--cream2);border-radius:1px;transition:all .2s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.layout{display:flex;flex:1;overflow:hidden;position:relative}
+.overlay{display:none;position:fixed;top:var(--banner-h);left:0;right:0;bottom:0;background:rgba(0,0,0,.75);z-index:90}
+.overlay.show{display:block}
+.sidebar{width:var(--sidebar-w);flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;padding:.75rem 0 2rem;z-index:100}
+.sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-thumb{background:var(--border2)}
+.nav-section{margin-bottom:.4rem}
+.nav-label{font-family:"Bebas Neue",sans-serif;font-size:11px;letter-spacing:.28em;color:var(--accent);padding:.6rem 1rem .2rem;display:flex;align-items:center;gap:8px}
+.nav-label::after{content:"";flex:1;height:1px;background:var(--border2)}
+.nav-item{display:flex;align-items:center;gap:8px;padding:.4rem 1rem;font-size:12px;font-weight:500;letter-spacing:.07em;color:var(--cream2);cursor:pointer;transition:all .1s;border-left:2px solid transparent;text-transform:uppercase;user-select:none;-webkit-tap-highlight-color:transparent}
+.nav-item:hover{color:var(--cream);background:var(--surface2)}
+.nav-item.active{color:var(--cream);border-left-color:var(--accent);background:var(--surface2)}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:background .1s}
+.nav-item:hover .dot,.nav-item.active .dot{background:var(--accent)}
+.content{flex:1;overflow-y:auto;padding:1.5rem;background:var(--bg)}
+.content::-webkit-scrollbar{width:4px}.content::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.content-inner{max-width:680px;margin:0 auto}
+.loading{display:flex;align-items:center;justify-content:center;height:200px;color:var(--cream3);font-size:11px;letter-spacing:.2em;text-transform:uppercase;gap:10px}
+.spinner{width:14px;height:14px;border:1px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.err{color:var(--accent);font-size:12px;padding:1rem;border:1px solid var(--accent);border-radius:4px}
+.fade{animation:fadein .18s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:400px;text-align:center;gap:1.2rem;padding:2rem 1rem}
+.welcome-title{font-family:"Bebas Neue",sans-serif;font-size:38px;letter-spacing:.2em;color:var(--cream);line-height:1}
+.rule{width:44px;height:2px;background:var(--accent)}
+.welcome-text{font-size:11px;color:var(--cream3);letter-spacing:.15em;text-transform:uppercase;line-height:1.9;max-width:300px}
+.pills{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin-top:.25rem}
+.pill{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;border:1px solid var(--border2);color:var(--cream3)}
+.pill.red{border-color:var(--accent);color:var(--accent)}
+.content-inner .back-bar{display:none}
+@media(max-width:768px){
+  .hamburger{display:flex}.outlaw-tag{display:none}
+  .sidebar{position:fixed;top:var(--banner-h);left:calc(-1 * var(--sidebar-w));bottom:0;transition:left .22s ease}
+  .sidebar.open{left:0}.content{padding:1rem}
+}
+@media(max-width:420px){.club-tagline{display:none}.club-title{font-size:20px}}
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="banner-logo">
+    <img src="logo.png" style="width:46px;height:46px;object-fit:contain;flex-shrink:0" alt="Dunkelgang MC">
+    <div>
+      <div class="club-title">DUNKELGANG MC</div>
+      <div class="club-tagline">Rhin Supérieur — Fondé 1971</div>
+    </div>
+  </div>
+  <div class="banner-right">
+    <span class="outlaw-tag">Outlaw — Archives</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleSidebar()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <div class="nav-label">Club</div>
+      <div class="nav-item" data-page="synthese" onclick="load(this)"><span class="dot"></span>Synthèse</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Membres</div>
+      <div class="nav-item" data-page="kaspar" onclick="load(this)"><span class="dot"></span>Kaiser — Kaspar</div>
+      <div class="nav-item" data-page="morel" onclick="load(this)"><span class="dot"></span>Pater — Morel</div>
+      <div class="nav-item" data-page="wolff" onclick="load(this)"><span class="dot"></span>Klingen — Wolff</div>
+      <div class="nav-item" data-page="perrin" onclick="load(this)"><span class="dot"></span>Grillon — Perrin</div>
+      <div class="nav-item" data-page="stein" onclick="load(this)"><span class="dot"></span>Brume — Stein</div>
+      <div class="nav-item" data-page="aubry" onclick="load(this)"><span class="dot"></span>Chacal — Aubry</div>
+      <div class="nav-item" data-page="keller" onclick="load(this)"><span class="dot"></span>Rabe — Keller</div>
+      <div class="nav-item" data-page="brandt" onclick="load(this)"><span class="dot"></span>Maulwurf — Brandt</div>
+      <div class="nav-item" data-page="voss" onclick="load(this)"><span class="dot"></span>Nichts — Voss</div>
+      <div class="nav-item" data-page="volkov" onclick="load(this)"><span class="dot"></span>Volk — Volkov</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Territoire</div>
+      <div class="nav-item" data-page="territoire" onclick="load(this)"><span class="dot"></span>Chapters & axes</div>
+      <div class="nav-item" data-page="carte" onclick="load(this)"><span class="dot"></span>Carte interactive</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Activités</div>
+      <div class="nav-item" data-page="activites" onclick="load(this)"><span class="dot"></span>Activités du club</div>
+      <div class="nav-item" data-page="sentinel" onclick="load(this)"><span class="dot"></span>Sentinel GmbH</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Histoire</div>
+      <div class="nav-item" data-page="historique" onclick="load(this)"><span class="dot"></span>Fil historique</div>
+      <div class="nav-item" data-page="crises" onclick="load(this)"><span class="dot"></span>Grandes crises</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Relations</div>
+      <div class="nav-item" data-page="relations" onclick="load(this)"><span class="dot"></span>Alliances & ennemis</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Code</div>
+      <div class="nav-item" data-page="grades" onclick="load(this)"><span class="dot"></span>Grades & fonctions</div>
+      <div class="nav-item" data-page="ecussons" onclick="load(this)"><span class="dot"></span>Écussons spéciaux</div>
+      <div class="nav-item" data-page="regles" onclick="load(this)"><span class="dot"></span>Règles internes</div>
+    </div>
+  </nav>
+
+  <main class="content" id="content">
+    <div class="content-inner" id="inner">
+      <div class="welcome">
+        <img src="logo.png" style="width:160px;height:160px;object-fit:contain" alt="Dunkelgang MC">
+        <div class="rule"></div>
+        <div class="welcome-title">DUNKELGANG MC</div>
+        <div class="welcome-text">Archives internes du club<br>Sélectionnez une section dans le menu</div>
+        <div class="pills">
+          <span class="pill red">1 % Outlaw</span>
+          <span class="pill">Fondé 1971</span>
+          <span class="pill">Rhin Supérieur</span>
+          <span class="pill">10 fondateurs</span>
+          <span class="pill">9 chapters — 1989</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+let active = null;
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+const hamburger = document.getElementById('hamburger');
+
+function toggleSidebar() {
+  const open = sidebar.classList.toggle('open');
+  overlay.classList.toggle('show', open);
+  hamburger.classList.toggle('open', open);
+}
+
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('show');
+  hamburger.classList.remove('open');
+}
+
+async function load(el) {
+  if (active) active.classList.remove('active');
+  el.classList.add('active');
+  active = el;
+  if (window.innerWidth <= 768) closeSidebar();
+
+  const page = el.dataset.page;
+  const inner = document.getElementById('inner');
+  const content = document.getElementById('content');
+
+  inner.innerHTML = '<div class="loading"><div class="spinner"></div>Chargement</div>';
+
+  try {
+    const res = await fetch(page + '.html');
+    if (!res.ok) throw new Error(res.status);
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const styles = [...doc.querySelectorAll('style')].map(s => s.outerHTML).join('');
+    inner.innerHTML = styles + doc.body.innerHTML;
+    inner.classList.remove('fade');
+    void inner.offsetWidth;
+    inner.classList.add('fade');
+    content.scrollTop = 0;
+
+    // Init map if needed
+    if (page === 'carte' && window.dmcInitMap) {
+      setTimeout(window.dmcInitMap, 100);
+    }
+  } catch(e) {
+    inner.innerHTML = '<div class="err">Impossible de charger la page.</div>';
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunkelgang MC — Activités</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;font-family:var(--font-sans,sans-serif);padding:1rem 0}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg,12px);overflow:hidden}
+.card-header{background:var(--color-background-secondary);padding:1.5rem 1.25rem;border-bottom:0.5px solid var(--color-border-tertiary);text-align:center}
+.club-name{font-size:18px;font-weight:500;color:var(--color-text-primary);letter-spacing:0.06em}
+.club-sub{font-size:11px;color:var(--color-text-tertiary);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+.card-body{padding:1.25rem;display:flex;flex-direction:column;gap:1rem}
+.section-label{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:8px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md,8px);padding:0.75rem 1rem}
+.stat-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px}
+.stat-val{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.activity-row{background:var(--color-background-secondary);border-radius:var(--border-radius-md,8px);padding:0.85rem 1rem;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+.activity-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.activity-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.6}
+.activity-link{font-size:11px;color:var(--color-text-tertiary);margin-top:5px;font-style:italic}
+.activity-badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;white-space:nowrap;align-self:start}
+.badge-teal{background:#E1F5EE;color:#0F6E56}
+.badge-red{background:#FCEBEB;color:#A32D2D}
+.badge-amber{background:#FAEEDA;color:#854F0B}
+.badge-gray{background:#F1EFE8;color:#5F5E5A}
+.badge-dark{background:#2C2C2A;color:#B4B2A9}
+.divider{height:0.5px;background:var(--color-border-tertiary)}
+.note{font-size:13px;color:var(--color-text-secondary);line-height:1.6;padding-left:12px;margin-top:2px}
+.note-red{border-left:2px solid #A32D2D}
+.note-gray{border-left:2px solid #5F5E5A}
+.note-teal{border-left:2px solid #1D9E75}
+.flux-row{display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.flux-row:last-child{border-bottom:none}
+.flux-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.dot-teal{background:#1D9E75}
+.dot-red{background:#A32D2D}
+.dot-amber{background:#854F0B}
+.flux-text{font-size:12px;color:var(--color-text-secondary);line-height:1.5}</style>
+</head>
+<body>
+<div class="back-bar"><a href="index.html" class="back-btn">← Dunkelgang MC</a></div>
+<div class="card">
+  <div class="card-header">
+    <div class="club-name">DUNKELGANG MC</div>
+    <div class="club-sub">Activités — Légales & Illégales</div>
+  </div>
+
+  <div class="card-body">
+
+    <div>
+      <div class="section-label">Vue d'ensemble</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-label">Façade principale</div><div class="stat-val">Sentinel GmbH</div></div>
+        <div class="stat"><div class="stat-label">Activité principale</div><div class="stat-val">Trafic d'armes</div></div>
+        <div class="stat"><div class="stat-label">Ligne rouge</div><div class="stat-val">Aucune drogue</div></div>
+        <div class="stat"><div class="stat-label">Blanchiment via</div><div class="stat-val">Sentinel + Jeu</div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+      <div class="section-label">Activité légale</div>
+
+      <div class="activity-row">
+        <div>
+          <div class="activity-title">Sentinel GmbH</div>
+          <div class="activity-desc">Sécurité des personnes, investigation privée, gardiennage industriel, formation au combat, sécurité portuaire. La façade légale principale du club — crédible, rentable, et utile à chaque niveau des opérations illégales.</div>
+          <div class="activity-link">→ Couvre les caches, justifie les flux d'argent, recrute pour le club</div>
+        </div>
+        <span class="activity-badge badge-teal">Légal</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+      <div class="section-label">Activités illégales — Cœur de métier</div>
+
+      <div class="activity-row">
+        <div>
+          <div class="activity-title">Trafic d'armes</div>
+          <div class="activity-desc">Armes légères et lourdes, matériel militaire interdit au civil. Clients principaux : gangs locaux alsaciens et badois. Les filières viennent des réseaux militaires construits pendant DACHS — les fondateurs connaissent les fournisseurs, les caches, les routes. C'est l'activité qui a lancé le club et qui finance son expansion.</div>
+          <div class="activity-link">→ Génère les revenus qui permettent tout le reste</div>
+        </div>
+        <span class="activity-badge badge-red">Illégal — Principal</span>
+      </div>
+
+      <div class="activity-row">
+        <div>
+          <div class="activity-title">Protection et racket</div>
+          <div class="activity-desc">Les commerçants, entrepreneurs et gangs locaux sous protection paient une contribution régulière. Le club garantit leur sécurité — et s'assure que personne d'autre ne vient opérer sur leur territoire. Géré par le Tyr et le Heimdall. Le racket est discret — on ne menace pas, on rappelle ce que ça coûte de ne pas être protégé.</div>
+          <div class="activity-link">→ Génère du cash régulier et contrôle le territoire</div>
+        </div>
+        <span class="activity-badge badge-red">Illégal — Principal</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+      <div class="section-label">Activités illégales — Secondaires</div>
+
+      <div class="activity-row">
+        <div>
+          <div class="activity-title">Passage de clandestins</div>
+          <div class="activity-desc">La connaissance de la frontière rhénane fait du Dunkelgang les meilleurs passeurs de la région. Les mêmes routes que les armes, dans l'autre sens. Le triangle Breisach / Pont / Volgelsheim est au cœur de cette activité — quelques minutes suffisent pour passer d'une juridiction à l'autre. Activité développée dans les années 80 quand les flux migratoires augmentent.</div>
+          <div class="activity-link">→ Exploite les mêmes canaux que le trafic d'armes</div>
+        </div>
+        <span class="activity-badge badge-amber">Illégal — Secondaire</span>
+      </div>
+
+      <div class="activity-row">
+        <div>
+          <div class="activity-title">Jeu illégal</div>
+          <div class="activity-desc">Clubs de jeu privés pour une clientèle fortunée — hommes d'affaires, politiques, contacts de Sentinel. Organisés dans des locaux discrets sur les deux rives. L'argent du jeu est la principale courroie de blanchiment des revenus illégaux du club. La clientèle aisée crée aussi un réseau de relations précieuses pour le Heimdall.</div>
+          <div class="activity-link">→ Principal outil de blanchiment des revenus illégaux</div>
+        </div>
+        <span class="activity-badge badge-amber">Illégal — Secondaire</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+      <div class="section-label">Corrélation des activités</div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md,8px);padding:0.85rem 1rem">
+        <div class="flux-row">
+          <div class="flux-dot dot-red"></div>
+          <div class="flux-text">Le trafic d'armes approvisionne les gangs locaux → les gangs deviennent clients de protection → la protection génère un réseau que le club contrôle</div>
+        </div>
+        <div class="flux-row">
+          <div class="flux-dot dot-teal"></div>
+          <div class="flux-text">Sentinel couvre les caches du Hoard, justifie les mouvements d'argent, contrôle les ports, et recrute via la formation au combat</div>
+        </div>
+        <div class="flux-row">
+          <div class="flux-dot dot-red"></div>
+          <div class="flux-text">Le passage de clandestins exploite les mêmes routes que le trafic d'armes — mêmes passeurs, mêmes points de passage, logistique identique</div>
+        </div>
+        <div class="flux-row">
+          <div class="flux-dot dot-amber"></div>
+          <div class="flux-text">Le jeu illégal blanchit les revenus du trafic et de la protection — l'argent passe ensuite par Sentinel ou la SCI du club</div>
+        </div>
+        <div class="flux-row">
+          <div class="flux-dot dot-amber"></div>
+          <div class="flux-text">La clientèle du jeu — décideurs, politiques — alimente le réseau du Heimdall et ouvre des portes que le club ne pourrait pas ouvrir seul</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+      <div class="section-label">La ligne rouge</div>
+      <div class="note note-red">Le Dunkelgang ne touche pas à la drogue. Jamais. Ce n'est pas une question de morale — c'est une question de contrôle. La drogue attire trop d'attention, crée trop de dépendances, corrompt trop vite. Kaiser a posé cette règle en 1971. Elle n'a jamais été remise en question.</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

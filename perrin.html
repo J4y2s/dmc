@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunkelgang MC — Grillon</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;font-family:var(--font-sans,sans-serif);padding:1rem 0}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg,12px);overflow:hidden}
+.card-header{background:var(--color-background-secondary);padding:1.25rem;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:1rem}
+.initials{width:48px;height:48px;border-radius:50%;background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;color:var(--color-text-secondary);flex-shrink:0;letter-spacing:0.04em}
+.name{font-size:18px;font-weight:500;color:var(--color-text-primary);margin:0 0 3px}
+.role{font-size:12px;color:var(--color-text-tertiary);letter-spacing:0.06em;text-transform:uppercase}
+.card-body{padding:1.25rem;display:flex;flex-direction:column;gap:1rem}
+.section-label{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:6px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md,8px);padding:0.75rem 1rem}
+.stat-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px}
+.stat-val{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
+.badge-dark{background:#2C2C2A;color:#B4B2A9}
+.badge-amber{background:#FAEEDA;color:#854F0B}
+.badge-gray{background:#F1EFE8;color:#5F5E5A}
+.divider{height:0.5px;background:var(--color-border-tertiary)}
+.note{font-size:13px;color:var(--color-text-secondary);line-height:1.6;padding-left:12px;margin-top:2px}
+.note-amber{border-left:2px solid #854F0B}
+.note-gray{border-left:2px solid #5F5E5A}
+.citation{font-size:12px;color:var(--color-text-tertiary);font-style:italic;margin-top:8px;padding-left:14px}</style>
+</head>
+<body>
+<div class="back-bar"><a href="index.html" class="back-btn">← Dunkelgang MC</a></div>
+<div class="card">
+  <div class="card-header">
+    <div class="initials">LP</div>
+    <div>
+      <div class="name">Luc Perrin</div>
+      <div style="font-size:13px;font-weight:500;color:#A32D2D;letter-spacing:0.04em">« Grillon »</div>
+      <div class="role">Mime — Treasurer / Secretary / Dunkelgang MC</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div>
+      <div class="section-label">Identité</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-label">Nationalité</div><div class="stat-val">Française</div></div>
+        <div class="stat"><div class="stat-label">Origine</div><div class="stat-val">Lorraine</div></div>
+        <div class="stat"><div class="stat-label">Né vers</div><div class="stat-val">1930</div></div>
+        <div class="stat"><div class="stat-label">Unité</div><div class="stat-val">11e Choc</div></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="section-label">Parcours militaire</div>
+      <div class="badge-row">
+        <span class="badge badge-dark">11e Choc — SDECE</span>
+        <span class="badge badge-dark">Algérie</span>
+        <span class="badge badge-dark">Cellule DACHS</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="section-label">Profil</div>
+      <div class="badge-row">
+        <span class="badge badge-gray">Méthodique</span>
+        <span class="badge badge-gray">Anxieux</span>
+        <span class="badge badge-amber">Génial techniquement</span>
+        <span class="badge badge-dark">Invisible</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="section-label">Ce qui le rend atypique</div>
+      <div class="note note-gray">Le seul de DACHS qui n'a jamais tué directement. Il posait les charges, gérait les radios, disparaissait avant. Ça ne l'a pas rendu plus propre — il sait exactement ce que ses dispositifs ont fait. Un homme qui vit avec des calculs, pas des visages.</div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="section-label">Écussons portés</div>
+      <div class="badge-row">
+        <span class="badge badge-dark">Ursprung</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="section-label">Blessure fondamentale</div>
+      <div class="note note-amber">Une opération en Algérie où sa charge a tué des civils. L'ordre était mauvais, l'information était fausse. Il a tout exécuté parfaitement — c'est ça le problème.</div>
+      <div class="citation">« La mécanique était impeccable. C'est le reste qui ne l'était pas. »</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

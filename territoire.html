@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunkelgang MC — Territoire</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;font-family:var(--font-sans,sans-serif);padding:1rem 0}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg,12px);overflow:hidden;margin-bottom:1rem}
+.card-header{background:var(--color-background-secondary);padding:1.25rem;border-bottom:0.5px solid var(--color-border-tertiary);text-align:center}
+.club-name{font-size:18px;font-weight:500;color:var(--color-text-primary);letter-spacing:0.06em}
+.club-sub{font-size:11px;color:var(--color-text-tertiary);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+.card-body{padding:1.25rem;display:flex;flex-direction:column;gap:1rem}
+.section-label{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:8px}
+.chapter-row{background:var(--color-background-secondary);border-radius:var(--border-radius-md,8px);padding:0.85rem 1rem;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+.chapter-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.chapter-date{font-size:11px;color:var(--color-text-tertiary);margin-bottom:6px;font-style:italic}
+.chapter-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.6}
+.chapter-badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;white-space:nowrap;align-self:start}
+.badge-red{background:#FCEBEB;color:#A32D2D}
+.badge-amber{background:#FAEEDA;color:#854F0B}
+.badge-gray{background:#F1EFE8;color:#5F5E5A}
+.badge-dark{background:#2C2C2A;color:#B4B2A9}
+.badge-teal{background:#E1F5EE;color:#0F6E56}
+.badge-blue{background:#E6F1FB;color:#185FA5}
+.divider{height:0.5px;background:var(--color-border-tertiary);margin:0.25rem 0}
+.axis-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.axis-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:8px}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary)}</style>
+</head>
+<body>
+<div class="back-bar"><a href="index.html" class="back-btn">← Dunkelgang MC</a></div>
+<!-- Triangle central -->
+<div class="card">
+  <div class="card-header">
+    <div class="club-name">Triangle central</div>
+    <div class="club-sub">Breisach — Pont du Rhin — Volgelsheim</div>
+  </div>
+  <div class="card-body">
+    <div>
+      <div class="axis-desc">Le cœur absolu du Dunkelgang. Trois points séparés de moins de 3 km, reliés par le Rhin et une histoire commune. C'est ici que tout commence, ici que tout revient. Personne n'entre dans ce triangle sans que le club le sache.</div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-label">Chapters</div>
+
+    <div class="chapter-row">
+      <div>
+        <div class="chapter-title">Breisach am Rhein — Chapter-mère</div>
+        <div class="chapter-date">Fondé en 1971</div>
+        <div class="chapter-desc">L'origine. Ancien entrepôt dans la zone industrielle, transformé en clubhouse. C'est ici que le CEC 4 formait des commandos — c'est ici que les fondateurs reviennent après la trahison de 1971. Le chapter-mère exerce une autorité sur tous les autres chapters du Dunkelgang.</div>
+        <div class="tag-row">
+          <span class="tag">Zone industrielle</span>
+          <span class="tag">Forêt Noire à l'est</span>
+          <span class="tag">Pont vers Neuf-Brisach</span>
+        </div>
+      </div>
+      <span class="chapter-badge badge-red">Chapter-mère</span>
+    </div>
+
+    <div class="chapter-row">
+      <div>
+        <div class="chapter-title">Volgelsheim — Chapter France</div>
+        <div class="chapter-date">Fondé en 1973</div>
+        <div class="chapter-desc">Le premier chapter français, créé deux ans après le club. Volgelsheim est à quelques minutes du pont — une extension naturelle du chapter-mère sur la rive gauche. Il gère les affaires côté français, les contacts alsaciens, et sert de base pour les opérations vers Colmar et Mulhouse.</div>
+        <div class="tag-row">
+          <span class="tag">Côté français</span>
+          <span class="tag">Face à Breisach</span>
+          <span class="tag">Accès Colmar</span>
+        </div>
+      </div>
+      <span class="chapter-badge badge-blue">Chapter France</span>
+    </div>
+
+    <div class="chapter-row">
+      <div>
+        <div class="chapter-title">Pont du Rhin — Refuge</div>
+        <div class="chapter-date">Actif depuis 1971</div>
+        <div class="chapter-desc">Pas un chapter — un point de passage contrôlé. Un local discret à proximité immédiate du pont, utilisé pour les échanges rapides entre les deux rives, les planques d'urgence, et les transferts qui ne doivent pas passer par le clubhouse. Géré directement par le Mime et le Hoard.</div>
+        <div class="tag-row">
+          <span class="tag">Point de passage</span>
+          <span class="tag">Planque d'urgence</span>
+          <span class="tag">Géré par le Mime</span>
+        </div>
+      </div>
+      <span class="chapter-badge badge-dark">Refuge</span>
+    </div>
+  </div>
+</div>
+
+<!-- Axe Nord -->
+<div class="card">
+  <div class="card-header">
+    <div class="club-name">Axe Nord</div>
+    <div class="club-sub">Couloir rhénan — Breisach → Strasbourg / Kehl</div>
+  </div>
+  <div class="card-body">
+    <div>
+      <div class="axis-desc">La grande route commerciale du club. Le long du Rhin vers le nord, deux couloirs parallèles — côté français via Marckolsheim et Rhinau, côté allemand via Sasbach et Offenburg. Strasbourg et Kehl représentent le terminus nord — une ville européenne avec tout ce que ça implique en termes de contacts, de marchés et de discrétion.</div>
+      <div class="tag-row">
+        <span class="tag">Transit principal</span>
+        <span class="tag">Contacts institutionnels</span>
+        <span class="tag">Marché de Strasbourg</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-label">Chapter</div>
+
+    <div class="chapter-row">
+      <div>
+        <div class="chapter-title">Kehl — Chapter Nord</div>
+        <div class="chapter-date">Fondé en 1978</div>
+        <div class="chapter-desc">Kehl face à Strasbourg — le pont entre l'Allemagne et la capitale alsacienne. Le chapter Nord gère les relations avec les contacts strasbourgeois, les milieux politiques et institutionnels, et supervise le transit sur l'axe nord. Strasbourg étant une ville européenne avec des institutions internationales, le Heimdall y entretient des contacts particulièrement précieux.</div>
+        <div class="tag-row">
+          <span class="tag">Face à Strasbourg</span>
+          <span class="tag">Contacts politiques</span>
+          <span class="tag">Transit nord</span>
+        </div>
+      </div>
+      <span class="chapter-badge badge-amber">Chapter Nord</span>
+    </div>
+  </div>
+</div>
+
+<!-- Axe Sud -->
+<div class="card">
+  <div class="card-header">
+    <div class="club-name">Axe Sud</div>
+    <div class="club-sub">Neuenburg → Mulhouse → Bâle</div>
+  </div>
+  <div class="card-body">
+    <div>
+      <div class="axis-desc">L'axe le plus lucratif — et le plus dangereux. Neuenburg am Rhein d'abord, avec sa zone industrielle et son pont vers Chalampé. Puis Mulhouse, grande ville industrielle alsacienne avec un port fluvial actif. Et au bout, Bâle — triple frontière France-Allemagne-Suisse, centre bancaire et financier, porte d'entrée vers la Suisse. Cet axe est le cœur des activités économiques du club.</div>
+      <div class="tag-row">
+        <span class="tag">Transit principal</span>
+        <span class="tag">Blanchiment</span>
+        <span class="tag">Triple frontière</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-label">Chapters</div>
+
+    <div class="chapter-row">
+      <div>
+        <div class="chapter-title">Mulhouse — Chapter Sud France</div>
+        <div class="chapter-date">Fondé en 1981</div>
+        <div class="chapter-desc">Mulhouse est une ville ouvrière et industrielle — exactement le terrain du Dunkelgang. Le chapter Sud France supervise les opérations dans le Haut-Rhin, les contacts avec le milieu local, et gère le flux vers Bâle et la Suisse. La zone portuaire de Mulhouse est particulièrement utile pour le transit de marchandises discrètes.</div>
+        <div class="tag-row">
+          <span class="tag">Zone portuaire</span>
+          <span class="tag">Haut-Rhin</span>
+          <span class="tag">Porte vers la Suisse</span>
+        </div>
+      </div>
+      <span class="chapter-badge badge-amber">Chapter Sud France</span>
+    </div>
+  </div>
+</div>
+
+<!-- Axe Est -->
+<div class="card">
+  <div class="card-header">
+    <div class="club-name">Axe Est</div>
+    <div class="club-sub">Breisach → Freiburg → Forêt Noire</div>
+  </div>
+  <div class="card-body">
+    <div>
+      <div class="axis-desc">Le territoire de repli et de discrétion. Freiburg est la grande ville universitaire du Bade — des contacts intellectuels, juridiques et médicaux y entretiennent des relations avec le club depuis les premières années. Au-delà, la Forêt Noire — des centaines de kilomètres de terrain boisé, peu surveillé, idéal pour des caches, des planques et des rencontres discrètes. C'est ici que le club disparaît quand il le faut.</div>
+      <div class="tag-row">
+        <span class="tag">Caches d'armes</span>
+        <span class="tag">Planques</span>
+        <span class="tag">Contacts universitaires</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-label">Chapter</div>
+
+    <div class="chapter-row">
+      <div>
+        <div class="chapter-title">Freiburg im Breisgau — Chapter Est</div>
+        <div class="chapter-date">Fondé en 1985</div>
+        <div class="chapter-desc">Le chapter le plus récent des axes principaux. Freiburg est à 25 km à l'est de Breisach — proche mais distinct. Le chapter Est gère les relations dans le Breisgau, entretient les contacts locaux, et supervise les caches en Forêt Noire. C'est aussi le chapter qui maintient les couvertures civiles du club dans la région — médecins, avocats, commerçants.</div>
+        <div class="tag-row">
+          <span class="tag">Couvertures civiles</span>
+          <span class="tag">Forêt Noire</span>
+          <span class="tag">Contacts locaux</span>
+        </div>
+      </div>
+      <span class="chapter-badge badge-amber">Chapter Est</span>
+    </div>
+  </div>
+</div>
+
+<!-- Axe Ouest -->
+<div class="card">
+  <div class="card-header">
+    <div class="club-name">Axe Ouest</div>
+    <div class="club-sub">Volgelsheim → Colmar → Plaine alsacienne</div>
+  </div>
+  <div class="card-body">
+    <div>
+      <div class="axis-desc">Le côté alsacien du club. À partir de Volgelsheim, l'axe remonte vers Colmar — ville touristique et viticole, parfaite pour des activités de blanchiment via des commerces légaux. La plaine alsacienne entre Colmar et Mulhouse est un terrain agricole peu surveillé, avec des routes secondaires idéales pour le transit discret. C'est l'axe de la façade — ce que le monde voit du Dunkelgang.</div>
+      <div class="tag-row">
+        <span class="tag">Activités légales</span>
+        <span class="tag">Blanchiment</span>
+        <span class="tag">Routes secondaires</span>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-label">Points clés — pas de chapter distinct</div>
+
+    <div class="chapter-row">
+      <div>
+        <div class="chapter-title">Colmar — Point de contact</div>
+        <div class="chapter-date">Actif depuis 1974</div>
+        <div class="chapter-desc">Colmar n'a pas de chapter — le Dunkelgang y maintient des contacts commerciaux et des couvertures légales gérées depuis Volgelsheim. Restaurants, caves viticoles, galeries — des façades entretenues avec soin par le Mime depuis les premières années du club. Colmar est le visage présentable du Dunkelgang en Alsace.</div>
+        <div class="tag-row">
+          <span class="tag">Façades légales</span>
+          <span class="tag">Géré depuis Volgelsheim</span>
+          <span class="tag">Pas de chapter</span>
+        </div>
+      </div>
+      <span class="chapter-badge badge-gray">Point de contact</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

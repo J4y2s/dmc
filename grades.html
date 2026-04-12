@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunkelgang MC — Grades</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:transparent;font-family:var(--font-sans,sans-serif);padding:1rem 0}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg,12px);overflow:hidden}
+.card-header{background:var(--color-background-secondary);padding:1.25rem;border-bottom:0.5px solid var(--color-border-tertiary);text-align:center}
+.club-name{font-size:18px;font-weight:500;color:var(--color-text-primary);letter-spacing:0.06em}
+.club-sub{font-size:11px;color:var(--color-text-tertiary);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+.card-body{padding:1.25rem;display:flex;flex-direction:column;gap:0.75rem}
+.section-label{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:8px}
+.grade-row{background:var(--color-background-secondary);border-radius:var(--border-radius-md,8px);padding:0.85rem 1rem;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start}
+.grade-num{font-size:11px;font-weight:500;color:var(--color-text-tertiary);width:20px;padding-top:2px}
+.grade-content{}
+.grade-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px}
+.grade-holder{font-size:11px;color:#A32D2D;font-weight:500;margin-bottom:5px}
+.grade-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.grade-badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;white-space:nowrap;align-self:start;margin-top:2px}
+.badge-red{background:#FCEBEB;color:#A32D2D}
+.badge-amber{background:#FAEEDA;color:#854F0B}
+.badge-gray{background:#F1EFE8;color:#5F5E5A}
+.badge-dark{background:#2C2C2A;color:#B4B2A9}
+.divider{height:0.5px;background:var(--color-border-tertiary);margin:0.25rem 0}
+.section-title{font-size:13px;font-weight:500;color:var(--color-text-primary);padding:0.5rem 0 0.25rem}</style>
+</head>
+<body>
+<div class="back-bar"><a href="index.html" class="back-btn">← Dunkelgang MC</a></div>
+<div class="card">
+  <div class="card-header">
+    <div class="club-name">DUNKELGANG MC</div>
+    <div class="club-sub">Structure hiérarchique — Grades & Fonctions</div>
+  </div>
+  <div class="card-body">
+
+    <div class="section-label">Conseil — Officiers</div>
+
+    <div class="grade-row">
+      <div class="grade-num">01</div>
+      <div class="grade-content">
+        <div class="grade-title">Wotan <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— President</span></div>
+        <div class="grade-desc">Autorité absolue sur le chapter. Toute décision finale lui appartient. Il tranche, il assume. Personne ne parle au nom du club sans sa validation. Son silence vaut un ordre.</div>
+      </div>
+      <span class="grade-badge badge-red">Conseil</span>
+    </div>
+
+    <div class="grade-row">
+      <div class="grade-num">02</div>
+      <div class="grade-content">
+        <div class="grade-title">Gunnar <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Vice-President</span></div>
+        <div class="grade-desc">Bras droit du Wotan. Gère le chapter en son absence. Mémoire morale du club — il est le seul autorisé à contester une décision du Wotan devant le Conseil. Son opposition est un droit, pas une trahison.</div>
+      </div>
+      <span class="grade-badge badge-red">Conseil</span>
+    </div>
+
+    <div class="grade-row">
+      <div class="grade-num">03</div>
+      <div class="grade-content">
+        <div class="grade-title">Tyr <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Sergeant-at-Arms</span></div>
+        <div class="grade-desc">Discipline interne et sécurité du club. Il fait respecter les règles entre les membres. Supervise la sélection des nouveaux membres en lien avec le Prüfer. Quand un frère franchit une ligne, c'est lui qui se lève — pas par colère, par nécessité.</div>
+      </div>
+      <span class="grade-badge badge-red">Conseil</span>
+    </div>
+
+    <div class="grade-row">
+      <div class="grade-num">04</div>
+      <div class="grade-content">
+        <div class="grade-title">Sleipnir <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Road Captain</span></div>
+        <div class="grade-desc">Logistique des runs et sécurité des déplacements. Aucun convoi ne bouge sans son feu vert. Il connaît les routes, les points de passage, les zones à risque. Sur la route, son autorité est égale à celle du Wotan.</div>
+      </div>
+      <span class="grade-badge badge-red">Conseil</span>
+    </div>
+
+    <div class="grade-row">
+      <div class="grade-num">05</div>
+      <div class="grade-content">
+        <div class="grade-title">Mime <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Treasurer / Secretary</span></div>
+        <div class="grade-desc">Gestion des finances et des archives du club. Il tient les comptes propres et sales, garde la mémoire écrite de ce qui peut l'être. Ce qui ne doit pas être écrit, il le mémorise. Supervise le Hoard sur la gestion des ressources matérielles.</div>
+      </div>
+      <span class="grade-badge badge-red">Conseil</span>
+    </div>
+
+    <div class="grade-row">
+      <div class="grade-num">06</div>
+      <div class="grade-content">
+        <div class="grade-title">Heimdall <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Enforcer</span></div>
+        <div class="grade-desc">Menace extérieure et renseignement. Il surveille ce qui se passe autour du club — autres clubs, police, ennemis potentiels. Il neutralise les menaces avant qu'elles se matérialisent. Rarement par la violence — le plus souvent par ce qu'il sait. Rend compte uniquement au Wotan.</div>
+      </div>
+      <span class="grade-badge badge-red">Conseil</span>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-label">Fonctions spéciales — hors Conseil</div>
+
+    <div class="grade-row">
+      <div class="grade-num">—</div>
+      <div class="grade-content">
+        <div class="grade-title">Eir <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Médecin de club</span></div>
+        <div class="grade-desc">Soins médicaux sans questions pour tous les membres. Sa fonction première est médicale — il maintient les frères opérationnels. Sa fonction secondaire est réservée au Conseil : il dispose de compétences d'interrogatoire que le reste du club ne connaît pas. Une porte fermée avec lui a une signification particulière.</div>
+      </div>
+      <span class="grade-badge badge-amber">Fonction</span>
+    </div>
+
+    <div class="grade-row">
+      <div class="grade-num">—</div>
+      <div class="grade-content">
+        <div class="grade-title">Hoard <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Quartermaster</span></div>
+        <div class="grade-desc">Gestion des stocks, des équipements et des caches. Il contrôle ce qui entre et sort — matériel, marchandises, ressources. Travaille en binôme direct avec le Mime dont il est le second opérationnel. Ne siège pas au Conseil mais son rapport est lu en réunion.</div>
+      </div>
+      <span class="grade-badge badge-amber">Fonction</span>
+    </div>
+
+    <div class="grade-row">
+      <div class="grade-num">—</div>
+      <div class="grade-content">
+        <div class="grade-title">Prüfer <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Prospect Handler</span></div>
+        <div class="grade-desc">Formation et évaluation des prospects. Il applique les critères de sélection définis par le Tyr et lui rend compte. Il sait jusqu'où pousser un homme pour savoir ce qu'il a dans le ventre. Ne siège pas au Conseil — mais son avis sur un prospect est rarement contesté.</div>
+      </div>
+      <span class="grade-badge badge-amber">Fonction</span>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-label">Membres</div>
+
+    <div class="grade-row">
+      <div class="grade-num">—</div>
+      <div class="grade-content">
+        <div class="grade-title">Einherjar <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Full Patch Member</span></div>
+        <div class="grade-desc">Le cœur du club. Membre à part entière, voix au Conseil lors des votes. Il a prouvé ce qu'il vaut — personne ne le remet en question. Ce qu'il fait pour le club ne s'écrit pas, ça se sait.</div>
+      </div>
+      <span class="grade-badge badge-gray">Membre</span>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-label">Rangs d'accès</div>
+
+    <div class="grade-row">
+      <div class="grade-num">—</div>
+      <div class="grade-content">
+        <div class="grade-title">Novize <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Prospect</span></div>
+        <div class="grade-desc">En probation. Il porte le patch du club sans le centre. Il exécute, il observe, il se tait. La durée minimum est d'un an. C'est le Prüfer qui décide quand c'est fini — et le Tyr qui valide. Le Conseil vote à l'unanimité pour le passage Einherjar.</div>
+      </div>
+      <span class="grade-badge badge-dark">Accès</span>
+    </div>
+
+    <div class="grade-row">
+      <div class="grade-num">—</div>
+      <div class="grade-content">
+        <div class="grade-title">Schatten <span style="font-size:11px;color:var(--color-text-tertiary);font-weight:400">— Hangaround</span></div>
+        <div class="grade-desc">En orbite. Il tourne autour du club sans y appartenir. Observé, testé sans le savoir. Si le club ne l'invite pas à devenir Novize dans les six mois, il disparaît — et il ne demande pas pourquoi.</div>
+      </div>
+      <span class="grade-badge badge-dark">Accès</span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunkelgang MC — Carte</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+
+</head>
+<body>
+<div class="back-bar"><a href="index.html" class="back-btn">← Dunkelgang MC</a></div>
+
+<style>
+.map-wrap{width:100%;background:#131110;border-radius:6px;overflow:hidden;border:0.5px solid #26201A;font-family:'Barlow Condensed',sans-serif}
+.map-header{background:#131110;border-bottom:1px solid #26201A;padding:.85rem 1.1rem}
+.map-title{font-family:"Bebas Neue",sans-serif;font-size:16px;letter-spacing:.15em;color:#D8CEBC}
+.map-sub{font-size:11px;color:#70665A;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+.map-filters{display:flex;flex-wrap:wrap;gap:5px;padding:.6rem 1rem;background:#0C0A08;border-bottom:1px solid #26201A}
+.mf{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;border:1px solid;cursor:pointer;transition:all .15s;background:transparent;font-family:'Barlow Condensed',sans-serif}
+.map-container{position:relative;background:#0C0A08;overflow:hidden;cursor:grab;user-select:none}
+.map-container:active{cursor:grabbing}
+.map-svg{display:block;width:100%;transition:none}
+.map-legend{display:flex;flex-wrap:wrap;gap:12px;padding:.65rem 1rem;background:#131110;border-top:1px solid #26201A}
+.leg{display:flex;align-items:center;gap:5px;font-size:10px;color:#A89E8E;letter-spacing:.07em;text-transform:uppercase}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.map-tooltip{position:absolute;background:#1A1714;border:1px solid #342C24;border-radius:4px;padding:8px 10px;pointer-events:none;display:none;z-index:10;max-width:200px;min-width:150px}
+.tt-name{font-family:"Bebas Neue",sans-serif;font-size:13px;letter-spacing:.1em;color:#D8CEBC;margin-bottom:2px}
+.tt-sub{font-size:10px;color:#8B1A1A;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.tt-desc{font-size:11px;color:#A89E8E;line-height:1.4}
+.zoom-btns{position:absolute;bottom:12px;right:12px;display:flex;flex-direction:column;gap:4px;z-index:5}
+.zoom-btn{width:28px;height:28px;background:#131110;border:1px solid #342C24;color:#A89E8E;font-size:16px;cursor:pointer;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:monospace;transition:all .1s}
+.zoom-btn:hover{background:#221E1A;color:#D8CEBC}
+</style>
+
+<div class="map-wrap">
+  <div class="map-header">
+    <div class="map-title">DUNKELGANG MC — Territoire</div>
+    <div class="map-sub">Rhin Supérieur — État 1989</div>
+  </div>
+  <div class="map-filters" id="map-filters">
+    <button class="mf" style="border-color:#D8CEBC;color:#D8CEBC;background:#342C24" data-filter="all" onclick="dmcFilter(this)">Tout</button>
+    <button class="mf" style="border-color:#8B1A1A;color:#8B1A1A" data-filter="mere" onclick="dmcFilter(this)">Chapter-mère</button>
+    <button class="mf" style="border-color:#185FA5;color:#185FA5" data-filter="chapter" onclick="dmcFilter(this)">Chapters</button>
+    <button class="mf" style="border-color:#70665A;color:#70665A" data-filter="refuge" onclick="dmcFilter(this)">Refuge</button>
+    <button class="mf" style="border-color:#854F0B;color:#854F0B" data-filter="axe" onclick="dmcFilter(this)">Axes</button>
+  </div>
+  <div class="map-container" id="dmc-map-container" style="height:460px">
+    <svg id="dmc-svg" class="map-svg" viewBox="0 0 800 580" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="map-tooltip" id="dmc-tt">
+      <div class="tt-name" id="tt-name"></div>
+      <div class="tt-sub" id="tt-sub"></div>
+      <div class="tt-desc" id="tt-desc"></div>
+    </div>
+    <div class="zoom-btns">
+      <button class="zoom-btn" onclick="dmcZoom(1.25)">+</button>
+      <button class="zoom-btn" onclick="dmcZoom(0.8)">−</button>
+      <button class="zoom-btn" onclick="dmcReset()" title="Reset" style="font-size:11px">⌂</button>
+    </div>
+  </div>
+  <div class="map-legend">
+    <div class="leg"><div class="leg-dot" style="background:#8B1A1A"></div>Chapter-mère</div>
+    <div class="leg"><div class="leg-dot" style="background:#185FA5"></div>Chapter</div>
+    <div class="leg"><div class="leg-dot" style="background:#70665A"></div>Refuge</div>
+    <div class="leg"><div class="leg-dot" style="background:#854F0B"></div>Axe</div>
+  </div>
+</div>
+
+<script>
+(function(){
+// Geographic bounds for projection
+// Lat: 44.5 (Lyon) to 50.5 (Frankfurt)  Lng: 4.5 to 10.0
+const LAT_MIN=44.5, LAT_MAX=50.8, LNG_MIN=4.2, LNG_MAX=10.2;
+const W=800, H=580;
+
+function proj(lat,lng){
+  const x = (lng - LNG_MIN) / (LNG_MAX - LNG_MIN) * W;
+  const y = (1 - (lat - LAT_MIN) / (LAT_MAX - LAT_MIN)) * H;
+  return [Math.round(x), Math.round(y)];
+}
+
+const POINTS = [
+  {id:'mere', type:'mere', lat:48.0348, lng:7.5836, r:9, color:'#8B1A1A',
+   name:'Breisach am Rhein', sub:'Chapter-mère — 1971',
+   desc:'Clubhouse zone industrielle. Autorité absolue sur tous les chapters. Ancienne planque DACHS.'},
+  {id:'volg', type:'chapter', lat:48.0159, lng:7.5559, r:7, color:'#185FA5',
+   name:'Volgelsheim', sub:'Chapter Rhein FR — 1973',
+   desc:'Premier chapter français. Stellvertreter : Brume. Bottom rocker RHEIN des deux côtés.'},
+  {id:'pont', type:'refuge', lat:48.026, lng:7.573, r:6, color:'#70665A',
+   name:'Pont du Rhin', sub:'Refuge permanent — 1971',
+   desc:'Point de passage contrôlé. Planque urgence. Géré par le Mime et le Hoard.'},
+  {id:'kehl', type:'chapter', lat:48.5789, lng:7.8161, r:7, color:'#185FA5',
+   name:'Kehl', sub:'Chapter Nord — 1978',
+   desc:'Wotan : Maulwurf. Face à Strasbourg. Transit nord, contacts politiques, antenne Sentinel.'},
+  {id:'stras', type:'chapter', lat:48.5734, lng:7.7521, r:7, color:'#185FA5',
+   name:'Strasbourg', sub:'Chapter — 1987',
+   desc:'Capitale alsacienne. Institutions européennes. Contacts politiques du Heimdall.'},
+  {id:'mulh', type:'chapter', lat:47.7508, lng:7.3359, r:7, color:'#185FA5',
+   name:'Mulhouse', sub:'Chapter Sud FR — 1981',
+   desc:'Zone portuaire. Porte vers Bâle et la Suisse. Trafic armes et clandestins axe sud.'},
+  {id:'frei', type:'chapter', lat:47.9990, lng:7.8421, r:7, color:'#185FA5',
+   name:'Freiburg', sub:'Chapter Est — 1985',
+   desc:'Couvertures civiles, contacts universitaires. Porte de la Forêt Noire.'},
+  {id:'karl', type:'chapter', lat:49.0069, lng:8.4037, r:7, color:'#185FA5',
+   name:'Karlsruhe', sub:'Chapter — 1986',
+   desc:'Industrie et contacts militaires. Antenne Sentinel. Tension réseaux turcs.'},
+  {id:'stutt', type:'chapter', lat:48.7758, lng:9.1829, r:7, color:'#185FA5',
+   name:'Stuttgart', sub:'Chapter — 1988',
+   desc:'Capitale Bade-Wurtemberg. Industrie auto/militaire. Bureau Sentinel principal hors Breisach.'},
+  {id:'lyon', type:'chapter', lat:45.7640, lng:4.8357, r:7, color:'#185FA5',
+   name:'Lyon', sub:'Chapter France — 1988',
+   desc:'Carrefour trafic français. Jeu illégal clientèle aisée. Pression Bandidos dès 1989.'},
+  {id:'frank', type:'chapter', lat:50.1109, lng:8.6821, r:7, color:'#185FA5',
+   name:'Frankfurt', sub:'Chapter — 1989',
+   desc:'Centre financier européen. Blanchiment. Fondé semaines avant la chute du mur.'},
+];
+
+const AXES = [
+  {id:'nord_fr', type:'axe', color:'#854F0B', pts:[[48.0348,7.5836],[48.1639,7.544],[48.3188,7.7046],[48.5734,7.7521]]},
+  {id:'nord_de', type:'axe', color:'#854F0B', pts:[[48.0348,7.5836],[48.1397,7.6173],[48.5789,7.8161]]},
+  {id:'sud_de', type:'axe', color:'#854F0B', pts:[[48.0348,7.5836],[47.814,7.559],[47.7508,7.3359],[47.56,7.59]]},
+  {id:'est', type:'axe', color:'#854F0B', pts:[[48.0348,7.5836],[47.999,7.842],[48.1,8.3],[48.5,8.7]]},
+  {id:'ouest', type:'axe', color:'#854F0B', pts:[[48.016,7.556],[48.08,7.359],[48.078,7.36]]},
+];
+
+// Pan/zoom state
+let vx=0, vy=0, scale=1;
+let dragging=false, startX=0, startY=0, startVX=0, startVY=0;
+let activeFilter='all';
+
+const svg = document.getElementById('dmc-svg');
+const container = document.getElementById('dmc-map-container');
+const tt = document.getElementById('dmc-tt');
+
+function toSVG(lat,lng){
+  const [px,py] = proj(lat,lng);
+  return [(px * scale + vx), (py * scale + vy)];
+}
+
+function drawRiverRhine(){
+  // Rhine river approximate path
+  const rhinePts = [
+    [47.56,7.59],[47.65,7.54],[47.75,7.50],[47.85,7.52],[47.95,7.53],
+    [48.00,7.57],[48.025,7.572],[48.05,7.57],[48.10,7.57],[48.16,7.54],
+    [48.25,7.55],[48.32,7.70],[48.40,7.72],[48.48,7.76],[48.57,7.75],[48.58,7.81]
+  ];
+  const pts = rhinePts.map(([la,ln])=>toSVG(la,ln).join(',')).join(' ');
+  return \
+</body>
+</html>
