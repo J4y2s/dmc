@@ -6,54 +6,49 @@
 <title>Dunkelgang MC — Carte</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-.map-wrap{width:100%;background:#131110;border-radius:6px;overflow:hidden;border:0.5px solid #26201A}
-.map-header{background:#131110;border-bottom:1px solid #26201A;padding:.85rem 1.1rem}
-.map-title{font-family:"Bebas Neue",sans-serif;font-size:16px;letter-spacing:.15em;color:#D8CEBC}
-.map-sub{font-size:11px;color:#70665A;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
-.map-filters{display:flex;flex-wrap:wrap;gap:5px;padding:.6rem 1rem;background:#0C0A08;border-bottom:1px solid #26201A}
-.mf{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;border:1px solid;cursor:pointer;transition:all .15s;background:transparent;font-family:'Barlow Condensed',sans-serif}
-.map-container{position:relative;background:#0C0A08;overflow:hidden;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none}
-.map-container:active{cursor:grabbing}
-.map-legend{display:flex;flex-wrap:wrap;gap:12px;padding:.65rem 1rem;background:#131110;border-top:1px solid #26201A}
-.leg{display:flex;align-items:center;gap:5px;font-size:10px;color:#A89E8E;letter-spacing:.07em;text-transform:uppercase}
-.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.dmc-tt{position:absolute;background:#1A1714;border:1px solid #342C24;border-radius:4px;padding:8px 10px;pointer-events:none;display:none;z-index:10;max-width:200px;min-width:150px;box-shadow:0 4px 12px rgba(0,0,0,.6)}
-.tt-name{font-family:"Bebas Neue",sans-serif;font-size:13px;letter-spacing:.1em;color:#D8CEBC;margin-bottom:2px}
-.tt-sub{font-size:10px;color:#8B1A1A;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
-.tt-desc{font-size:11px;color:#A89E8E;line-height:1.4}
-.zoom-btns{position:absolute;bottom:12px;right:12px;display:flex;flex-direction:column;gap:4px;z-index:5}
-.zoom-btn{width:28px;height:28px;background:#131110;border:1px solid #342C24;color:#A89E8E;font-size:16px;cursor:pointer;border-radius:3px;line-height:1;font-family:monospace}
-.zoom-btn:hover{background:#221E1A;color:#D8CEBC}
+body { padding: 1rem 0; }
+.map-wrap { background:#131110; border-radius:6px; overflow:hidden; border:0.5px solid #26201A; max-width:680px; margin:0 auto; font-family:'Barlow Condensed',sans-serif; }
+.map-header { background:#131110; border-bottom:1px solid #26201A; padding:.85rem 1.1rem; }
+.map-title { font-family:"Bebas Neue",sans-serif; font-size:16px; letter-spacing:.15em; color:#D8CEBC; }
+.map-sub { font-size:11px; color:#70665A; letter-spacing:.1em; text-transform:uppercase; margin-top:2px; }
+.map-filters { display:flex; flex-wrap:wrap; gap:5px; padding:.6rem 1rem; background:#0C0A08; border-bottom:1px solid #26201A; }
+.mf { font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:2px; border:1px solid; cursor:pointer; background:transparent; font-family:'Barlow Condensed',sans-serif; -webkit-tap-highlight-color:transparent; }
+#dmc-map { height:480px; width:100%; }
+.map-legend { display:flex; flex-wrap:wrap; gap:12px; padding:.65rem 1rem; background:#131110; border-top:1px solid #26201A; }
+.leg { display:flex; align-items:center; gap:5px; font-size:10px; color:#A89E8E; letter-spacing:.07em; text-transform:uppercase; }
+.leg-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+/* Leaflet popup style */
+.leaflet-popup-content-wrapper {
+  background:#1A1714; border:1px solid #342C24; border-radius:4px;
+  box-shadow:0 4px 16px rgba(0,0,0,.8); padding:0;
+}
+.leaflet-popup-content { margin:10px 12px; }
+.leaflet-popup-tip { background:#1A1714; }
+.leaflet-popup-close-button { color:#70665A !important; }
+.pop-name { font-family:"Bebas Neue",sans-serif; font-size:14px; letter-spacing:.1em; color:#D8CEBC; margin-bottom:2px; }
+.pop-sub { font-size:10px; color:#8B1A1A; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px; }
+.pop-desc { font-size:11px; color:#A89E8E; line-height:1.5; max-width:180px; }
 </style>
 </head>
 <body>
 <div class="back-bar"><a href="index.html" class="back-btn">← Dunkelgang MC</a></div>
+
 <div class="map-wrap">
   <div class="map-header">
     <div class="map-title">DUNKELGANG MC — Territoire</div>
     <div class="map-sub">Rhin Supérieur — État 1989</div>
   </div>
-  <div class="map-filters">
-    <button class="mf" style="border-color:#D8CEBC;color:#D8CEBC;background:#342C24" data-filter="all" onclick="dmcFilter(this)">Tout</button>
-    <button class="mf" style="border-color:#8B1A1A;color:#8B1A1A" data-filter="mere" onclick="dmcFilter(this)">Chapter-mère</button>
-    <button class="mf" style="border-color:#185FA5;color:#185FA5" data-filter="chapter" onclick="dmcFilter(this)">Chapters</button>
-    <button class="mf" style="border-color:#70665A;color:#70665A" data-filter="refuge" onclick="dmcFilter(this)">Refuge</button>
-    <button class="mf" style="border-color:#854F0B;color:#854F0B" data-filter="axe" onclick="dmcFilter(this)">Axes</button>
+  <div class="map-filters" id="filters">
+    <button class="mf active-btn" data-f="all"     style="border-color:#D8CEBC;color:#D8CEBC;background:#342C24">Tout</button>
+    <button class="mf" data-f="mere"    style="border-color:#8B1A1A;color:#8B1A1A">Chapter-mère</button>
+    <button class="mf" data-f="chapter" style="border-color:#185FA5;color:#185FA5">Chapters</button>
+    <button class="mf" data-f="refuge"  style="border-color:#70665A;color:#70665A">Refuge</button>
+    <button class="mf" data-f="axe"     style="border-color:#854F0B;color:#854F0B">Axes</button>
   </div>
-  <div class="map-container" id="map-cont" style="height:460px">
-    <svg id="dmc-svg" viewBox="0 0 800 580" style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg"></svg>
-    <div class="dmc-tt" id="dmc-tt">
-      <div class="tt-name" id="tt-name"></div>
-      <div class="tt-sub" id="tt-sub"></div>
-      <div class="tt-desc" id="tt-desc"></div>
-    </div>
-    <div class="zoom-btns">
-      <button class="zoom-btn" onclick="dmcZoom(1.25)">+</button>
-      <button class="zoom-btn" onclick="dmcZoom(0.8)">&#x2212;</button>
-      <button class="zoom-btn" onclick="dmcReset()" style="font-size:11px">&#x2302;</button>
-    </div>
-  </div>
+  <div id="dmc-map"></div>
   <div class="map-legend">
     <div class="leg"><div class="leg-dot" style="background:#8B1A1A"></div>Chapter-mère</div>
     <div class="leg"><div class="leg-dot" style="background:#185FA5"></div>Chapter</div>
@@ -61,97 +56,118 @@
     <div class="leg"><div class="leg-dot" style="background:#854F0B"></div>Axes</div>
   </div>
 </div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var LMN=44.5,LMX=50.8,GMN=4.2,GMX=10.2,W=800,H=580;
-var vx=0,vy=0,sc=1,drag=false,sx=0,sy=0,svx=0,svy=0,filt='all';
-var PTS=[
-  {id:'mere',t:'mere',la:48.0348,ln:7.5836,r:9,c:'#8B1A1A',n:'Breisach am Rhein',s:'Chapter-mère — 1971',d:'Clubhouse zone industrielle. Autorité absolue. Ancienne planque DACHS.'},
-  {id:'volg',t:'chapter',la:48.0159,ln:7.5559,r:7,c:'#185FA5',n:'Volgelsheim',s:'Chapter Rhein FR — 1973',d:'Premier chapter français. Stellvertreter : Brume. Bottom rocker RHEIN.'},
-  {id:'pont',t:'refuge',la:48.026,ln:7.573,r:6,c:'#70665A',n:'Pont du Rhin',s:'Refuge permanent — 1971',d:'Point de passage contrôlé. Planque urgence. Géré par Mime et Hoard.'},
-  {id:'kehl',t:'chapter',la:48.5789,ln:7.8161,r:7,c:'#185FA5',n:'Kehl',s:'Chapter Nord — 1978',d:'Wotan : Maulwurf. Face à Strasbourg. Transit nord, contacts politiques.'},
-  {id:'str',t:'chapter',la:48.5734,ln:7.7521,r:7,c:'#185FA5',n:'Strasbourg',s:'Chapter — 1987',d:'Capitale alsacienne. Institutions européennes. Contacts Heimdall.'},
-  {id:'mul',t:'chapter',la:47.7508,ln:7.3359,r:7,c:'#185FA5',n:'Mulhouse',s:'Chapter Sud FR — 1981',d:'Zone portuaire. Porte vers Bâle et la Suisse.'},
-  {id:'fre',t:'chapter',la:47.999,ln:7.8421,r:7,c:'#185FA5',n:'Freiburg',s:'Chapter Est — 1985',d:'Couvertures civiles, contacts universitaires. Porte Forêt Noire.'},
-  {id:'kar',t:'chapter',la:49.0069,ln:8.4037,r:7,c:'#185FA5',n:'Karlsruhe',s:'Chapter — 1986',d:'Industrie et contacts militaires. Antenne Sentinel.'},
-  {id:'stu',t:'chapter',la:48.7758,ln:9.1829,r:7,c:'#185FA5',n:'Stuttgart',s:'Chapter — 1988',d:'Capitale Bade-Wurtemberg. Industrie auto/militaire.'},
-  {id:'lyo',t:'chapter',la:45.764,ln:4.8357,r:7,c:'#185FA5',n:'Lyon',s:'Chapter France — 1988',d:'Carrefour français. Jeu illégal. Pression Bandidos dès 1989.'},
-  {id:'fra',t:'chapter',la:50.1109,ln:8.6821,r:7,c:'#185FA5',n:'Frankfurt',s:'Chapter — 1989',d:'Centre financier. Blanchiment. Fondé avant la chute du mur.'}
+var PTS = [
+  {id:'mere', t:'mere',    la:48.0348, ln:7.5836, c:'#8B1A1A', n:'Breisach am Rhein', s:'Chapter-mère — 1971',     d:'Clubhouse zone industrielle. Autorité absolue sur tous les chapters. Ancienne planque DACHS.'},
+  {id:'volg', t:'chapter', la:48.0159, ln:7.5559, c:'#185FA5', n:'Volgelsheim',       s:'Chapter Rhein FR — 1973', d:'Premier chapter français. Stellvertreter : Brume. Bottom rocker RHEIN.'},
+  {id:'pont', t:'refuge',  la:48.026,  ln:7.575,  c:'#70665A', n:'Pont du Rhin',      s:'Refuge permanent — 1971', d:'Point de passage contrôlé. Planque urgence. Géré par le Mime et le Hoard.'},
+  {id:'kehl', t:'chapter', la:48.5789, ln:7.8161, c:'#185FA5', n:'Kehl',              s:'Chapter Nord — 1978',     d:'Wotan : Maulwurf. Face à Strasbourg. Transit nord, contacts politiques.'},
+  {id:'str',  t:'chapter', la:48.5734, ln:7.7521, c:'#185FA5', n:'Strasbourg',        s:'Chapter — 1987',          d:'Capitale alsacienne. Institutions européennes. Contacts Heimdall.'},
+  {id:'mul',  t:'chapter', la:47.7508, ln:7.3359, c:'#185FA5', n:'Mulhouse',          s:'Chapter Sud FR — 1981',   d:'Zone portuaire. Porte vers Bâle et la Suisse.'},
+  {id:'fre',  t:'chapter', la:47.999,  ln:7.8421, c:'#185FA5', n:'Freiburg',          s:'Chapter Est — 1985',      d:'Couvertures civiles, contacts universitaires. Porte Forêt Noire.'},
+  {id:'kar',  t:'chapter', la:49.0069, ln:8.4037, c:'#185FA5', n:'Karlsruhe',         s:'Chapter — 1986',          d:'Industrie et contacts militaires. Antenne Sentinel.'},
+  {id:'stu',  t:'chapter', la:48.7758, ln:9.1829, c:'#185FA5', n:'Stuttgart',         s:'Chapter — 1988',          d:'Capitale Bade-Wurtemberg. Bureau Sentinel principal.'},
+  {id:'lyo',  t:'chapter', la:45.764,  ln:4.8357, c:'#185FA5', n:'Lyon',              s:'Chapter France — 1988',   d:'Carrefour français. Jeu illégal. Pression Bandidos dès 1989.'},
+  {id:'fra',  t:'chapter', la:50.1109, ln:8.6821, c:'#185FA5', n:'Frankfurt',         s:'Chapter — 1989',          d:'Centre financier. Blanchiment. Fondé avant la chute du mur.'}
 ];
-var AXS=[
-  [[48.0348,7.5836],[48.1639,7.544],[48.3188,7.7046],[48.5734,7.7521]],
-  [[48.0348,7.5836],[48.1397,7.6173],[48.5789,7.8161]],
-  [[48.0348,7.5836],[47.814,7.559],[47.7508,7.3359],[47.56,7.59]],
-  [[48.0348,7.5836],[47.999,7.842],[48.3,8.4],[48.7,8.8]],
-  [[48.016,7.556],[48.08,7.44],[48.08,7.36]]
+
+var AXES = [
+  {t:'axe', pts:[[48.0348,7.5836],[48.1639,7.544],[48.3188,7.7046],[48.5734,7.7521]]},
+  {t:'axe', pts:[[48.0348,7.5836],[48.1397,7.6173],[48.5789,7.8161]]},
+  {t:'axe', pts:[[48.0348,7.5836],[47.814,7.559],[47.7508,7.3359],[47.56,7.59]]},
+  {t:'axe', pts:[[48.0348,7.5836],[47.999,7.842],[48.3,8.4],[48.7,8.8]]},
+  {t:'axe', pts:[[48.016,7.556],[48.08,7.44],[48.08,7.36]]}
 ];
-var RHN=[[47.56,7.59],[47.65,7.54],[47.75,7.5],[47.85,7.52],[47.95,7.53],[48.0,7.57],[48.025,7.572],[48.05,7.57],[48.1,7.57],[48.16,7.54],[48.25,7.55],[48.32,7.7],[48.4,7.72],[48.48,7.76],[48.57,7.75],[48.58,7.81]];
 
-function pr(la,ln){return[(ln-GMN)/(GMX-GMN)*W,(1-(la-LMN)/(LMX-LMN))*H];}
-function ts(la,ln){var p=pr(la,ln);return[p[0]*sc+vx,p[1]*sc+vy];}
+// Init map — fond CartoDB Dark Matter (sombre, style biker)
+var map = L.map('dmc-map', {
+  center: [48.2, 7.9],
+  zoom: 7,
+  zoomControl: true,
+  attributionControl: false
+});
 
-function render(){
-  var sv=document.getElementById('dmc-svg');
-  var h='<rect width="800" height="580" fill="#0C0A08"/>';
-  var c1=ts(48.5,7.9),c2=ts(47.8,8.5);
-  var cx=(c1[0]+c2[0])/2,cy=(c1[1]+c2[1])/2,rx=Math.abs(c2[0]-c1[0])/2+12,ry=Math.abs(c2[1]-c1[1])/2+12;
-  h+='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+rx+'" ry="'+ry+'" fill="#141a0e"/>';
-  h+='<text x="'+cx+'" y="'+cy+'" text-anchor="middle" dominant-baseline="middle" fill="#1e2a10" font-size="9" font-family="Barlow Condensed,sans-serif" letter-spacing="2">FORET NOIRE</text>';
-  var rp=RHN.map(function(p){return ts(p[0],p[1]).join(',');}).join(' ');
-  h+='<polyline points="'+rp+'" fill="none" stroke="#1a3a5a" stroke-width="3" opacity="0.5" stroke-linecap="round"/>';
-  var b1=ts(48.65,7.58),b2=ts(47.4,7.58);
-  h+='<line x1="'+b1[0]+'" y1="'+b1[1]+'" x2="'+b2[0]+'" y2="'+b2[1]+'" stroke="#2a2018" stroke-width="1" stroke-dasharray="5,4"/>';
-  h+='<text x="'+(b1[0]-8)+'" y="'+(b1[1]+30)+'" text-anchor="end" fill="#3a3020" font-size="8" font-family="Barlow Condensed,sans-serif" letter-spacing="2">FR</text>';
-  h+='<text x="'+(b1[0]+8)+'" y="'+(b1[1]+30)+'" text-anchor="start" fill="#3a3020" font-size="8" font-family="Barlow Condensed,sans-serif" letter-spacing="2">DE</text>';
-  if(filt==='all'||filt==='axe'){
-    for(var a=0;a<AXS.length;a++){
-      var ap=AXS[a].map(function(p){return ts(p[0],p[1]).join(',');}).join(' ');
-      h+='<polyline points="'+ap+'" fill="none" stroke="#854F0B" stroke-width="1.5" stroke-dasharray="7,3" opacity="0.75"/>';
-    }
-  }
-  for(var i=0;i<PTS.length;i++){
-    var p=PTS[i];
-    if(filt!=='all'&&filt!==p.t)continue;
-    var pos=ts(p.la,p.ln),x=pos[0],y=pos[1];
-    h+='<circle cx="'+x+'" cy="'+y+'" r="'+(p.r+4)+'" fill="'+p.c+'" opacity="0.15"/>';
-    h+='<circle cx="'+x+'" cy="'+y+'" r="'+p.r+'" fill="'+p.c+'" stroke="#0C0A08" stroke-width="1.5" class="pt" data-id="'+p.id+'" style="cursor:pointer"/>';
-    h+='<text x="'+x+'" y="'+(y-p.r-4)+'" text-anchor="middle" fill="#D8CEBC" font-size="'+(p.t==='mere'?10:8)+'" font-family="Bebas Neue,sans-serif" letter-spacing="1" pointer-events="none">'+p.n.split(' ')[0]+'</text>';
-  }
-  sv.innerHTML=h;
-  sv.querySelectorAll('.pt').forEach(function(el){
-    el.addEventListener('mouseenter',function(e){showTT(e,el.dataset.id);});
-    el.addEventListener('mouseleave',hideTT);
-    el.addEventListener('click',function(e){showTT(e,el.dataset.id);});
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  maxZoom: 18,
+  subdomains: 'abcd'
+}).addTo(map);
+
+// Custom marker
+function makeIcon(color, big) {
+  var size = big ? 16 : 12;
+  return L.divIcon({
+    html: '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:'+color+';border:2px solid #0C0A08;box-shadow:0 0 8px '+color+'88;"></div>',
+    className: '',
+    iconSize: [size, size],
+    iconAnchor: [size/2, size/2],
+    popupAnchor: [0, -(size/2+4)]
   });
 }
 
-function showTT(e,id){
-  var p=null;for(var i=0;i<PTS.length;i++){if(PTS[i].id===id){p=PTS[i];break;}}
-  if(!p)return;
-  document.getElementById('tt-name').textContent=p.n;
-  document.getElementById('tt-sub').textContent=p.s;
-  document.getElementById('tt-desc').textContent=p.d;
-  var c=document.getElementById('map-cont').getBoundingClientRect();
-  var lx=e.clientX-c.left+14,ly=e.clientY-c.top-10;
-  if(lx+215>c.width)lx-=225;if(ly+110>c.height)ly-=120;
-  if(lx<5)lx=5;if(ly<5)ly=5;
-  var tt=document.getElementById('dmc-tt');
-  tt.style.left=lx+'px';tt.style.top=ly+'px';tt.style.display='block';
+function popHtml(p) {
+  return '<div class="pop-name">'+p.n+'</div>'
+       + '<div class="pop-sub">'+p.s+'</div>'
+       + '<div class="pop-desc">'+p.d+'</div>';
 }
-function hideTT(){document.getElementById('dmc-tt').style.display='none';}
 
-var c=document.getElementById('map-cont');
-c.addEventListener('mousedown',function(e){if(e.target.classList.contains('pt'))return;drag=true;sx=e.clientX;sy=e.clientY;svx=vx;svy=vy;});
-document.addEventListener('mousemove',function(e){if(!drag)return;vx=svx+(e.clientX-sx);vy=svy+(e.clientY-sy);render();});
-document.addEventListener('mouseup',function(){drag=false;});
-c.addEventListener('touchstart',function(e){if(e.touches.length===1&&!e.target.classList.contains('pt')){drag=true;sx=e.touches[0].clientX;sy=e.touches[0].clientY;svx=vx;svy=vy;}},{passive:true});
-c.addEventListener('touchmove',function(e){if(!drag||e.touches.length!==1)return;vx=svx+(e.touches[0].clientX-sx);vy=svy+(e.touches[0].clientY-sy);render();},{passive:true});
-c.addEventListener('touchend',function(){drag=false;});
-c.addEventListener('wheel',function(e){e.preventDefault();var f=e.deltaY<0?1.12:0.88;var r=c.getBoundingClientRect();var mx=e.clientX-r.left,my=e.clientY-r.top;vx=mx-(mx-vx)*f;vy=my-(my-vy)*f;sc*=f;render();},{passive:false});
-function dmcZoom(f){vx=W/2-(W/2-vx)*f;vy=H/2-(H/2-vy)*f;sc*=f;render();}
-function dmcReset(){vx=0;vy=0;sc=1;render();}
-function dmcFilter(btn){document.querySelectorAll('.mf').forEach(function(b){b.style.background='transparent';});filt=btn.dataset.filter;var cols={all:'#342C24',mere:'#8B1A1A',chapter:'#185FA5',refuge:'#70665A',axe:'#854F0B'};btn.style.background=cols[filt]||'#342C24';hideTT();render();}
-window.dmcInitMap=render;
-render();
+// Draw markers
+var markers = [];
+PTS.forEach(function(p) {
+  var m = L.marker([p.la, p.ln], {
+    icon: makeIcon(p.c, p.t === 'mere')
+  }).addTo(map);
+  m.bindPopup(popHtml(p), { maxWidth: 220 });
+  m._dmcType = p.t;
+  markers.push(m);
+});
+
+// Draw axes
+var lines = [];
+AXES.forEach(function(a) {
+  var l = L.polyline(a.pts, {
+    color: '#854F0B',
+    weight: 2,
+    opacity: 0.8,
+    dashArray: '8 5'
+  }).addTo(map);
+  l._dmcType = 'axe';
+  lines.push(l);
+});
+
+// Filter
+var filt = 'all';
+var filterColors = {all:'#342C24', mere:'#8B1A1A', chapter:'#185FA5', refuge:'#70665A', axe:'#854F0B'};
+
+document.getElementById('filters').addEventListener('click', function(e) {
+  var btn = e.target.closest('.mf');
+  if (!btn) return;
+  document.querySelectorAll('.mf').forEach(function(b) { b.style.background = 'transparent'; });
+  filt = btn.dataset.f;
+  btn.style.background = filterColors[filt] || '#342C24';
+
+  markers.forEach(function(m) {
+    if (filt === 'all' || m._dmcType === filt) {
+      if (!map.hasLayer(m)) map.addLayer(m);
+    } else {
+      if (map.hasLayer(m)) map.removeLayer(m);
+    }
+  });
+
+  lines.forEach(function(l) {
+    if (filt === 'all' || filt === 'axe') {
+      if (!map.hasLayer(l)) map.addLayer(l);
+    } else {
+      if (map.hasLayer(l)) map.removeLayer(l);
+    }
+  });
+});
+
+// Expose for index.html load()
+window.dmcInitMap = function() {
+  setTimeout(function() { map.invalidateSize(); }, 100);
+};
 </script>
 </body>
 </html>
