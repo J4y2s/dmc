@@ -4,37 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dunkelgang MC — Volk</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css">
-<style>*{margin:0;padding:0;box-sizing:border-box}
-body{background:transparent;font-family:var(--font-sans,sans-serif);padding:1rem 0}
-.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg,12px);overflow:hidden}
-.card-header{background:var(--color-background-secondary);padding:1.25rem;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:1rem}
-.initials{width:48px;height:48px;border-radius:50%;background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;color:var(--color-text-secondary);flex-shrink:0;letter-spacing:0.04em}
-.name{font-size:18px;font-weight:500;color:var(--color-text-primary);margin:0 0 3px}
-.role{font-size:12px;color:var(--color-text-tertiary);letter-spacing:0.06em;text-transform:uppercase}
-.card-body{padding:1.25rem;display:flex;flex-direction:column;gap:1rem}
-.section-label{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:6px}
-.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md,8px);padding:0.75rem 1rem}
-.stat-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px}
-.stat-val{font-size:14px;font-weight:500;color:var(--color-text-primary)}
-.badge-row{display:flex;flex-wrap:wrap;gap:6px}
-.badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
-.badge-dark{background:#2C2C2A;color:#B4B2A9}
-.badge-red{background:#FCEBEB;color:#A32D2D}
-.badge-gray{background:#F1EFE8;color:#5F5E5A}
-.badge-coral{background:#FAECE7;color:#993C1D}
-.divider{height:0.5px;background:var(--color-border-tertiary)}
-.note{font-size:13px;color:var(--color-text-secondary);line-height:1.6;padding-left:12px;margin-top:2px}
-.note-coral{border-left:2px solid #993C1D}
-.note-gray{border-left:2px solid #5F5E5A}
-.citation{font-size:12px;color:var(--color-text-tertiary);font-style:italic;margin-top:8px;padding-left:14px}
-.flags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
-.flag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:4px;background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary)}</style>
+<link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-<div class="back-bar"><a href="index.html" class="back-btn">← Dunkelgang MC</a></div>
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Dunkelgang MC">
+    <div>
+      <div class="nav-club-title">DUNKELGANG MC</div>
+      <div class="nav-club-sub">Rhin Supérieur — 1971</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <button class="nav-menu-btn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="menu-drawer" id="drawer">
+  <div class="menu-close"><button onclick="toggleMenu()">&#x2715;</button></div>
+  <div class="menu-section"><div class="menu-label">Club</div><a href="synthese.html" class="menu-item"><span class="menu-dot"></span>Synthèse</a></div><div class="menu-section"><div class="menu-label">Membres</div><a href="kaspar.html" class="menu-item"><span class="menu-dot"></span>Kaiser — Kaspar</a><a href="morel.html" class="menu-item"><span class="menu-dot"></span>Pater — Morel</a><a href="wolff.html" class="menu-item"><span class="menu-dot"></span>Klingen — Wolff</a><a href="perrin.html" class="menu-item"><span class="menu-dot"></span>Grillon — Perrin</a><a href="stein.html" class="menu-item"><span class="menu-dot"></span>Brume — Stein</a><a href="aubry.html" class="menu-item"><span class="menu-dot"></span>Chacal — Aubry</a><a href="keller.html" class="menu-item"><span class="menu-dot"></span>Rabe — Keller</a><a href="brandt.html" class="menu-item"><span class="menu-dot"></span>Maulwurf — Brandt</a><a href="voss.html" class="menu-item"><span class="menu-dot"></span>Nichts — Voss</a><a href="volkov.html" class="menu-item active"><span class="menu-dot"></span>Volk — Volkov</a></div><div class="menu-section"><div class="menu-label">Territoire</div><a href="territoire.html" class="menu-item"><span class="menu-dot"></span>Chapters & axes</a><a href="carte.html" class="menu-item"><span class="menu-dot"></span>Carte interactive</a></div><div class="menu-section"><div class="menu-label">Activités</div><a href="activites.html" class="menu-item"><span class="menu-dot"></span>Activités du club</a><a href="sentinel.html" class="menu-item"><span class="menu-dot"></span>Sentinel GmbH</a></div><div class="menu-section"><div class="menu-label">Histoire</div><a href="historique.html" class="menu-item"><span class="menu-dot"></span>Fil historique</a><a href="crises.html" class="menu-item"><span class="menu-dot"></span>Grandes crises</a></div><div class="menu-section"><div class="menu-label">Relations</div><a href="relations.html" class="menu-item"><span class="menu-dot"></span>Alliances & ennemis</a></div><div class="menu-section"><div class="menu-label">Code</div><a href="grades.html" class="menu-item"><span class="menu-dot"></span>Grades & fonctions</a><a href="ecussons.html" class="menu-item"><span class="menu-dot"></span>Écussons spéciaux</a><a href="regles.html" class="menu-item"><span class="menu-dot"></span>Règles internes</a></div>
+</div>
+<script>
+function toggleMenu(){
+  document.getElementById('overlay').classList.toggle('open');
+  document.getElementById('drawer').classList.toggle('open');
+}
+</script>
+<div class="page">
 <div class="card">
   <div class="card-header">
     <div class="initials">AV</div>
@@ -118,6 +117,7 @@ body{background:transparent;font-family:var(--font-sans,sans-serif);padding:1rem
     </div>
 
   </div>
+</div>
 </div>
 </body>
 </html>
