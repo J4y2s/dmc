@@ -6,26 +6,25 @@
 <title>Dunkelgang MC — Membres</title>
 <link rel="stylesheet" href="style.css">
 <style>
-.filter-bar { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:1.25rem; }
-.fb { font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:2px; border:1px solid var(--border2); color:var(--cream3); background:transparent; cursor:pointer; font-family:"Barlow Condensed",sans-serif; -webkit-tap-highlight-color:transparent; transition:all .1s; }
-.fb.on { background:var(--accent); border-color:var(--accent); color:#fff; }
-.chapter-section { margin-bottom:1.5rem; }
-.chapter-heading { font-family:"Bebas Neue",sans-serif; font-size:16px; letter-spacing:.15em; color:var(--cream); padding:.5rem 0 .4rem; border-bottom:1px solid var(--border); margin-bottom:.6rem; display:flex; align-items:center; justify-content:space-between; }
-.chapter-count { font-size:11px; color:var(--cream3); font-family:"Barlow Condensed",sans-serif; letter-spacing:.05em; }
-.member-row { display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:center; padding:.55rem .85rem; background:var(--surface); border-radius:5px; margin-bottom:3px; }
-.member-row.hidden { display:none; }
-.m-init { width:32px; height:32px; border-radius:50%; background:var(--surface2); border:.5px solid var(--border2); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:500; color:var(--cream2); flex-shrink:0; }
-.m-info { min-width:0; }
-.m-name { font-size:13px; font-weight:500; color:var(--cream); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.m-nick { font-size:11px; color:#A32D2D; }
-.m-meta { font-size:10px; color:var(--cream3); margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.m-badge { font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
-.m-nat { width:6px; height:6px; border-radius:50%; flex-shrink:0; margin-left:4px; }
-.fondateur-tag { font-size:9px; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; }
-.stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:1.25rem; }
-.stat-sm { background:var(--surface); border-radius:6px; padding:.6rem .85rem; text-align:center; }
-.stat-sm-val { font-family:"Bebas Neue",sans-serif; font-size:24px; letter-spacing:.05em; color:var(--cream); }
-.stat-sm-lab { font-size:10px; color:var(--cream3); letter-spacing:.08em; text-transform:uppercase; margin-top:2px; }
+.filter-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.25rem}
+.fb{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px;border:1px solid var(--border2);color:var(--cream3);background:transparent;cursor:pointer;font-family:"Barlow Condensed",sans-serif;-webkit-tap-highlight-color:transparent;transition:all .1s}
+.fb.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.chapter-section{margin-bottom:1.5rem}
+.chapter-heading{font-family:"Bebas Neue",sans-serif;font-size:15px;letter-spacing:.15em;color:var(--cream);padding:.5rem 0 .4rem;border-bottom:1px solid var(--border);margin-bottom:.5rem;display:flex;align-items:center;justify-content:space-between}
+.chapter-count{font-size:11px;color:var(--cream3);font-family:"Barlow Condensed",sans-serif}
+.member-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:.55rem .85rem;background:var(--surface);border-radius:5px;margin-bottom:3px}
+.member-row.hidden{display:none}
+.m-init{width:32px;height:32px;border-radius:50%;background:var(--surface2);border:.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:var(--cream2);flex-shrink:0}
+.m-info{min-width:0}
+.m-name{font-size:13px;font-weight:500;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m-nick{font-size:11px;color:#A32D2D}
+.m-meta{font-size:10px;color:var(--cream3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m-badge{font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.m-nat{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-left:4px}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.25rem}
+.stat-sm{background:var(--surface);border-radius:6px;padding:.6rem .85rem;text-align:center}
+.stat-sm-val{font-family:"Bebas Neue",sans-serif;font-size:24px;letter-spacing:.05em;color:var(--cream)}
+.stat-sm-lab{font-size:10px;color:var(--cream3);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
 </style>
 </head>
 <body>
@@ -46,44 +45,7 @@
 <div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
 <div class="menu-drawer" id="drawer">
   <div class="menu-close"><button onclick="toggleMenu()">&#x2715;</button></div>
-  <div class="menu-section"><div class="menu-label">Club</div><a href="synthese.html" class="menu-item"><span class="menu-dot"></span>Synthèse</a></div>
-  <div class="menu-section"><div class="menu-label">Membres</div>
-    <a href="kaspar.html" class="menu-item"><span class="menu-dot"></span>Kaiser — Kaspar</a>
-    <a href="morel.html" class="menu-item"><span class="menu-dot"></span>Pater — Morel</a>
-    <a href="wolff.html" class="menu-item"><span class="menu-dot"></span>Klingen — Wolff</a>
-    <a href="perrin.html" class="menu-item"><span class="menu-dot"></span>Grillon — Perrin</a>
-    <a href="stein.html" class="menu-item"><span class="menu-dot"></span>Brume — Stein</a>
-    <a href="aubry.html" class="menu-item"><span class="menu-dot"></span>Chacal — Aubry</a>
-    <a href="keller.html" class="menu-item"><span class="menu-dot"></span>Rabe — Keller</a>
-    <a href="brandt.html" class="menu-item"><span class="menu-dot"></span>Maulwurf — Brandt</a>
-    <a href="voss.html" class="menu-item"><span class="menu-dot"></span>Nichts — Voss</a>
-    <a href="volkov.html" class="menu-item"><span class="menu-dot"></span>Volk — Volkov</a>
-    <a href="membres.html" class="menu-item active"><span class="menu-dot"></span>Tous les membres</a>
-  </div>
-  <div class="menu-section"><div class="menu-label">Territoire</div>
-    <a href="territoire.html" class="menu-item"><span class="menu-dot"></span>Chapters & axes</a>
-    <a href="carte.html" class="menu-item"><span class="menu-dot"></span>Carte interactive</a>
-  </div>
-  <div class="menu-section"><div class="menu-label">Activités</div>
-    <a href="activites.html" class="menu-item"><span class="menu-dot"></span>Activités du club</a>
-    <a href="sentinel.html" class="menu-item"><span class="menu-dot"></span>Sentinel GmbH</a>
-  </div>
-  <div class="menu-section"><div class="menu-label">Histoire</div>
-    <a href="historique.html" class="menu-item"><span class="menu-dot"></span>Fil historique</a>
-    <a href="crises.html" class="menu-item"><span class="menu-dot"></span>Grandes crises</a>
-  </div>
-  <div class="menu-section"><div class="menu-label">Relations</div>
-    <a href="relations.html" class="menu-item"><span class="menu-dot"></span>Alliances & ennemis</a>
-  </div>
-  <div class="menu-section"><div class="menu-label">Code</div>
-    <a href="grades.html" class="menu-item"><span class="menu-dot"></span>Grades & fonctions</a>
-    <a href="ecussons.html" class="menu-item"><span class="menu-dot"></span>Écussons spéciaux</a>
-    <a href="regles.html" class="menu-item"><span class="menu-dot"></span>Règles internes</a>
-    <a href="integration.html" class="menu-item"><span class="menu-dot"></span>Intégration</a>
-  </div>
-  <div class="menu-section"><div class="menu-label">Machines</div>
-    <a href="motos.html" class="menu-item"><span class="menu-dot"></span>Les motos</a>
-  </div>
+  <div class="menu-section"><div class="menu-label">Club</div><a href="synthese.html" class="menu-item"><span class="menu-dot"></span>Synthèse</a></div><div class="menu-section"><div class="menu-label">Membres</div><a href="kaspar.html" class="menu-item"><span class="menu-dot"></span>Kaiser — Kaspar</a><a href="morel.html" class="menu-item"><span class="menu-dot"></span>Pater — Morel</a><a href="wolff.html" class="menu-item"><span class="menu-dot"></span>Klingen — Wolff</a><a href="perrin.html" class="menu-item"><span class="menu-dot"></span>Grillon — Perrin</a><a href="stein.html" class="menu-item"><span class="menu-dot"></span>Brume — Stein</a><a href="aubry.html" class="menu-item"><span class="menu-dot"></span>Chacal — Aubry</a><a href="keller.html" class="menu-item"><span class="menu-dot"></span>Rabe — Keller</a><a href="brandt.html" class="menu-item"><span class="menu-dot"></span>Maulwurf — Brandt</a><a href="voss.html" class="menu-item"><span class="menu-dot"></span>Nichts — Voss</a><a href="volkov.html" class="menu-item"><span class="menu-dot"></span>Volk — Volkov</a><a href="membres.html" class="menu-item active"><span class="menu-dot"></span>Tous les membres</a></div><div class="menu-section"><div class="menu-label">Territoire</div><a href="territoire.html" class="menu-item"><span class="menu-dot"></span>Chapters & axes</a><a href="carte.html" class="menu-item"><span class="menu-dot"></span>Carte interactive</a></div><div class="menu-section"><div class="menu-label">Activités</div><a href="activites.html" class="menu-item"><span class="menu-dot"></span>Activités du club</a><a href="sentinel.html" class="menu-item"><span class="menu-dot"></span>Sentinel GmbH</a></div><div class="menu-section"><div class="menu-label">Histoire</div><a href="historique.html" class="menu-item"><span class="menu-dot"></span>Fil historique</a><a href="crises.html" class="menu-item"><span class="menu-dot"></span>Grandes crises</a></div><div class="menu-section"><div class="menu-label">Relations</div><a href="relations.html" class="menu-item"><span class="menu-dot"></span>Alliances & ennemis</a></div><div class="menu-section"><div class="menu-label">Code</div><a href="grades.html" class="menu-item"><span class="menu-dot"></span>Grades & fonctions</a><a href="ecussons.html" class="menu-item"><span class="menu-dot"></span>Écussons spéciaux</a><a href="regles.html" class="menu-item"><span class="menu-dot"></span>Règles internes</a><a href="integration.html" class="menu-item"><span class="menu-dot"></span>Intégration</a></div><div class="menu-section"><div class="menu-label">Machines</div><a href="motos.html" class="menu-item"><span class="menu-dot"></span>Les motos</a></div>
 </div>
 <script>
 function toggleMenu(){
@@ -94,7 +56,7 @@ function toggleMenu(){
 <div class="page">
 
   <div class="stats-row">
-    <div class="stat-sm"><div class="stat-sm-val">126</div><div class="stat-sm-lab">Membres totaux</div></div>
+    <div class="stat-sm"><div class="stat-sm-val">126</div><div class="stat-sm-lab">Membres</div></div>
     <div class="stat-sm"><div class="stat-sm-val">9</div><div class="stat-sm-lab">Chapters</div></div>
     <div class="stat-sm"><div class="stat-sm-val">1989</div><div class="stat-sm-lab">État au</div></div>
   </div>
@@ -104,16 +66,17 @@ function toggleMenu(){
     <button class="fb" data-f="Wotan" onclick="filterM(this)">Wotan</button>
     <button class="fb" data-f="conseil" onclick="filterM(this)">Conseil</button>
     <button class="fb" data-f="Einherjar" onclick="filterM(this)">Einherjar</button>
+    <button class="fb" data-f="Ancien" onclick="filterM(this)">Anciens</button>
     <button class="fb" data-f="FR" onclick="filterM(this)">Français</button>
     <button class="fb" data-f="DE" onclick="filterM(this)">Allemands</button>
     <button class="fb" data-f="fondateur" onclick="filterM(this)">Fondateurs</button>
   </div>
 <div class="chapter-section">
-<div class="chapter-heading">Chapter Rhein — Fondateurs <span class="chapter-count">10 membres</span></div>
+<div class="chapter-heading">Chapter Rhein — Breisach / Volgelsheim <span class="chapter-count">21 membres</span></div>
 <div class="member-row" data-grade="Wotan" data-nat="FR" data-conseil="1" data-fondateur="1">
       <div class="m-init">PK</div>
       <div class="m-info">
-        <div class="m-name">Pierre Kaspar <span class="m-nick">« Kaiser »</span> <span class="fondateur-tag">Fondateur</span></div>
+        <div class="m-name">Pierre Kaspar <span class="m-nick">« Kaiser »</span> <span style="font-size:9px;color:#534AB7;letter-spacing:.08em;text-transform:uppercase">Fondateur</span></div>
         <div class="m-meta">12/03/1924 &nbsp;·&nbsp; 11e Choc SDECE — Opérateur</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -121,22 +84,44 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Gunnar" data-nat="FR" data-conseil="1" data-fondateur="1">
-      <div class="m-init">AM</div>
+<div class="member-row" data-grade="Gunnar" data-nat="FR" data-conseil="1" data-fondateur="0">
+      <div class="m-init">HF</div>
       <div class="m-info">
-        <div class="m-name">André Morel <span class="m-nick">« Pater »</span> <span class="fondateur-tag">Fondateur</span></div>
-        <div class="m-meta">07/08/1923 &nbsp;·&nbsp; 11e Choc SDECE — Opérateur</div>
+        <div class="m-name">Henri Fischer <span class="m-nick">« Braise »</span></div>
+        <div class="m-meta">04/12/1937 &nbsp;·&nbsp; PJ — Inspecteur</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
         <span class="m-badge" style="background:#FCEBEB;color:#A32D2D">Gunnar</span>
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
+<div class="member-row" data-grade="Tyr" data-nat="DE" data-conseil="1" data-fondateur="0">
+      <div class="m-init">DZ</div>
+      <div class="m-info">
+        <div class="m-name">Dieter Ziegler <span class="m-nick">« Barsch »</span></div>
+        <div class="m-meta">05/05/1947 &nbsp;·&nbsp; Douanes allemandes — Zollhauptsekretär</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+        <span class="m-badge" style="background:#FAEEDA;color:#854F0B">Tyr</span>
+        <div class="m-nat" style="background:#185FA5"></div>
+      </div>
+    </div>
 <div class="member-row" data-grade="Sleipnir" data-nat="DE" data-conseil="1" data-fondateur="1">
       <div class="m-init">KW</div>
       <div class="m-info">
-        <div class="m-name">Karl Wolff <span class="m-nick">« Klingen »</span> <span class="fondateur-tag">Fondateur</span></div>
+        <div class="m-name">Karl Wolff <span class="m-nick">« Klingen »</span> <span style="font-size:9px;color:#534AB7;letter-spacing:.08em;text-transform:uppercase">Fondateur</span></div>
         <div class="m-meta">22/05/1928 &nbsp;·&nbsp; Fernspäher — Stabsunteroffizier</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+        <span class="m-badge" style="background:#FAEEDA;color:#854F0B">Sleipnir</span>
+        <div class="m-nat" style="background:#185FA5"></div>
+      </div>
+    </div>
+<div class="member-row" data-grade="Sleipnir" data-nat="DE" data-conseil="1" data-fondateur="0">
+      <div class="m-init">GW</div>
+      <div class="m-info">
+        <div class="m-name">Günter Werner <span class="m-nick">« Dübel »</span></div>
+        <div class="m-meta">08/05/1942 &nbsp;·&nbsp; Fallschirmjäger — Oberfeldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
         <span class="m-badge" style="background:#FAEEDA;color:#854F0B">Sleipnir</span>
@@ -146,8 +131,19 @@ function toggleMenu(){
 <div class="member-row" data-grade="Mime" data-nat="FR" data-conseil="1" data-fondateur="1">
       <div class="m-init">LP</div>
       <div class="m-info">
-        <div class="m-name">Luc Perrin <span class="m-nick">« Grillon »</span> <span class="fondateur-tag">Fondateur</span></div>
+        <div class="m-name">Luc Perrin <span class="m-nick">« Grillon »</span> <span style="font-size:9px;color:#534AB7;letter-spacing:.08em;text-transform:uppercase">Fondateur</span></div>
         <div class="m-meta">14/11/1930 &nbsp;·&nbsp; Armée de terre — Transmissions</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+        <span class="m-badge" style="background:#F1EFE8;color:#5F5E5A">Mime</span>
+        <div class="m-nat" style="background:#A32D2D"></div>
+      </div>
+    </div>
+<div class="member-row" data-grade="Mime" data-nat="FR" data-conseil="1" data-fondateur="0">
+      <div class="m-init">GH</div>
+      <div class="m-info">
+        <div class="m-name">Gérard Huber <span class="m-nick">« Grêle »</span></div>
+        <div class="m-meta">05/06/1945 &nbsp;·&nbsp; Armée de terre — Sergent-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
         <span class="m-badge" style="background:#F1EFE8;color:#5F5E5A">Mime</span>
@@ -157,7 +153,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Heimdall" data-nat="FR" data-conseil="1" data-fondateur="1">
       <div class="m-init">RS</div>
       <div class="m-info">
-        <div class="m-name">Raymond Stein <span class="m-nick">« Brume »</span> <span class="fondateur-tag">Fondateur</span></div>
+        <div class="m-name">Raymond Stein <span class="m-nick">« Brume »</span> <span style="font-size:9px;color:#534AB7;letter-spacing:.08em;text-transform:uppercase">Fondateur</span></div>
         <div class="m-meta">03/09/1926 &nbsp;·&nbsp; SDECE — HUMINT</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -165,123 +161,21 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Prüfer" data-nat="FR" data-conseil="0" data-fondateur="1">
-      <div class="m-init">MA</div>
-      <div class="m-info">
-        <div class="m-name">Michel Aubry <span class="m-nick">« Chacal »</span> <span class="fondateur-tag">Fondateur</span></div>
-        <div class="m-meta">19/04/1935 &nbsp;·&nbsp; Légion étrangère — Caporal-chef</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-        <span class="m-badge" style="background:#F1EFE8;color:#5F5E5A">Prüfer</span>
-        <div class="m-nat" style="background:#A32D2D"></div>
-      </div>
-    </div>
-<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="0" data-fondateur="1">
-      <div class="m-init">EK</div>
-      <div class="m-info">
-        <div class="m-name">Ernst Keller <span class="m-nick">« Rabe »</span> <span class="fondateur-tag">Fondateur</span></div>
-        <div class="m-meta">28/02/1925 &nbsp;·&nbsp; Médecin militaire</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-        <span class="m-badge" style="background:#E1F5EE;color:#0F6E56">Eir</span>
-        <div class="m-nat" style="background:#185FA5"></div>
-      </div>
-    </div>
-<div class="member-row" data-grade="Wotan" data-nat="DE" data-conseil="1" data-fondateur="1">
-      <div class="m-init">HB</div>
-      <div class="m-info">
-        <div class="m-name">Hans Brandt <span class="m-nick">« Maulwurf »</span> <span class="fondateur-tag">Fondateur</span></div>
-        <div class="m-meta">16/07/1932 &nbsp;·&nbsp; Fernspäher — Stabsunteroffizier</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-        <span class="m-badge" style="background:#FCEBEB;color:#8B1A1A">Wotan Kehl</span>
-        <div class="m-nat" style="background:#185FA5"></div>
-      </div>
-    </div>
-<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="0" data-fondateur="1">
-      <div class="m-init">OV</div>
-      <div class="m-info">
-        <div class="m-name">Otto Voss <span class="m-nick">« Nichts »</span> <span class="fondateur-tag">Fondateur</span></div>
-        <div class="m-meta">??/??/1929 &nbsp;·&nbsp; Réseau TD BJD</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-        <span class="m-badge" style="background:#F1EFE8;color:#5F5E5A">Hoard</span>
-        <div class="m-nat" style="background:#185FA5"></div>
-      </div>
-    </div>
-<div class="member-row" data-grade="Tyr" data-nat="FR" data-conseil="1" data-fondateur="1">
-      <div class="m-init">AV</div>
-      <div class="m-info">
-        <div class="m-name">Alexandre Volkov <span class="m-nick">« Volk »</span> <span class="fondateur-tag">Fondateur</span></div>
-        <div class="m-meta">05/01/1921 &nbsp;·&nbsp; Légion étrangère — Sergent</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-        <span class="m-badge" style="background:#FAEEDA;color:#854F0B">Tyr</span>
-        <div class="m-nat" style="background:#A32D2D"></div>
-      </div>
-    </div>
-</div>
-<div class="chapter-section">
-<div class="chapter-heading">Chapter Rhein — Nouvelle génération <span class="chapter-count">12 membres</span></div>
-<div class="member-row" data-grade="Wotan" data-nat="FR" data-conseil="1" data-fondateur="0">
-      <div class="m-init">HF</div>
-      <div class="m-info">
-        <div class="m-name">Henri Fischer <span class="m-nick">« Braise »</span> </div>
-        <div class="m-meta">04/12/1937 &nbsp;·&nbsp; PJ — Inspecteur</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-        <span class="m-badge" style="background:#FCEBEB;color:#8B1A1A">Wotan</span>
-        <div class="m-nat" style="background:#A32D2D"></div>
-      </div>
-    </div>
-<div class="member-row" data-grade="Gunnar" data-nat="DE" data-conseil="1" data-fondateur="0">
+<div class="member-row" data-grade="Heimdall" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">US</div>
       <div class="m-info">
-        <div class="m-name">Uwe Schröder <span class="m-nick">« Raste »</span> </div>
+        <div class="m-name">Uwe Schröder <span class="m-nick">« Raste »</span></div>
         <div class="m-meta">26/10/1946 &nbsp;·&nbsp; BGS — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-        <span class="m-badge" style="background:#FCEBEB;color:#A32D2D">Gunnar</span>
+        <span class="m-badge" style="background:#F1EFE8;color:#5F5E5A">Heimdall</span>
         <div class="m-nat" style="background:#185FA5"></div>
-      </div>
-    </div>
-<div class="member-row" data-grade="Tyr" data-nat="DE" data-conseil="1" data-fondateur="0">
-      <div class="m-init">DZ</div>
-      <div class="m-info">
-        <div class="m-name">Dieter Ziegler <span class="m-nick">« Barsch »</span> </div>
-        <div class="m-meta">05/05/1947 &nbsp;·&nbsp; Douanes allemandes — Zollhauptsekretär</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-        <span class="m-badge" style="background:#FAEEDA;color:#854F0B">Tyr</span>
-        <div class="m-nat" style="background:#185FA5"></div>
-      </div>
-    </div>
-<div class="member-row" data-grade="Sleipnir" data-nat="DE" data-conseil="1" data-fondateur="0">
-      <div class="m-init">GW</div>
-      <div class="m-info">
-        <div class="m-name">Günter Werner <span class="m-nick">« Dübel »</span> </div>
-        <div class="m-meta">08/05/1942 &nbsp;·&nbsp; Fallschirmjäger — Oberfeldwebel</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-        <span class="m-badge" style="background:#FAEEDA;color:#854F0B">Sleipnir</span>
-        <div class="m-nat" style="background:#185FA5"></div>
-      </div>
-    </div>
-<div class="member-row" data-grade="Mime" data-nat="FR" data-conseil="1" data-fondateur="0">
-      <div class="m-init">GH</div>
-      <div class="m-info">
-        <div class="m-name">Gérard Huber <span class="m-nick">« Grêle »</span> </div>
-        <div class="m-meta">05/06/1945 &nbsp;·&nbsp; Armée de terre — Sergent-chef</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
-        <span class="m-badge" style="background:#F1EFE8;color:#5F5E5A">Mime</span>
-        <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
 <div class="member-row" data-grade="Heimdall" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">NS</div>
       <div class="m-info">
-        <div class="m-name">Norbert Schumacher <span class="m-nick">« Luchs »</span> </div>
+        <div class="m-name">Norbert Schumacher <span class="m-nick">« Luchs »</span></div>
         <div class="m-meta">26/11/1944 &nbsp;·&nbsp; Bundeswehr Panzertruppe — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -289,10 +183,21 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="1" data-fondateur="1">
+      <div class="m-init">OV</div>
+      <div class="m-info">
+        <div class="m-name">Otto Voss <span class="m-nick">« Nichts »</span> <span style="font-size:9px;color:#534AB7;letter-spacing:.08em;text-transform:uppercase">Fondateur</span></div>
+        <div class="m-meta">??/??/1929 &nbsp;·&nbsp; Réseau TD BJD</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+        <span class="m-badge" style="background:#F1EFE8;color:#5F5E5A">Hoard</span>
+        <div class="m-nat" style="background:#185FA5"></div>
+      </div>
+    </div>
+<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">SS</div>
       <div class="m-info">
-        <div class="m-name">Stefan Schäfer <span class="m-nick">« Chaîne »</span> </div>
+        <div class="m-name">Stefan Schäfer <span class="m-nick">« Chaîne »</span></div>
         <div class="m-meta">17/08/1942 &nbsp;·&nbsp; Bundeswehr — Stabsfeldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -300,10 +205,21 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Prüfer" data-nat="FR" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Prüfer" data-nat="FR" data-conseil="1" data-fondateur="1">
+      <div class="m-init">MA</div>
+      <div class="m-info">
+        <div class="m-name">Michel Aubry <span class="m-nick">« Chacal »</span> <span style="font-size:9px;color:#534AB7;letter-spacing:.08em;text-transform:uppercase">Fondateur</span></div>
+        <div class="m-meta">19/04/1935 &nbsp;·&nbsp; Légion étrangère — Caporal-chef</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+        <span class="m-badge" style="background:#F1EFE8;color:#5F5E5A">Prüfer</span>
+        <div class="m-nat" style="background:#A32D2D"></div>
+      </div>
+    </div>
+<div class="member-row" data-grade="Prüfer" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">TF</div>
       <div class="m-info">
-        <div class="m-name">Thierry Fischer <span class="m-nick">« Nagel »</span> </div>
+        <div class="m-name">Thierry Fischer <span class="m-nick">« Nagel »</span></div>
         <div class="m-meta">03/07/1954 &nbsp;·&nbsp; Douanes françaises — Agent principal</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -311,10 +227,21 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="1" data-fondateur="1">
+      <div class="m-init">EK</div>
+      <div class="m-info">
+        <div class="m-name">Ernst Keller <span class="m-nick">« Rabe »</span> <span style="font-size:9px;color:#534AB7;letter-spacing:.08em;text-transform:uppercase">Fondateur</span></div>
+        <div class="m-meta">28/02/1925 &nbsp;·&nbsp; Médecin militaire</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+        <span class="m-badge" style="background:#E1F5EE;color:#0F6E56">Eir</span>
+        <div class="m-nat" style="background:#185FA5"></div>
+      </div>
+    </div>
+<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">EW</div>
       <div class="m-info">
-        <div class="m-name">Ernst Werner <span class="m-nick">« Zunge »</span> </div>
+        <div class="m-name">Ernst Werner <span class="m-nick">« Zunge »</span></div>
         <div class="m-meta">12/06/1943 &nbsp;·&nbsp; Bundeswehr — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -322,10 +249,32 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
+<div class="member-row" data-grade="Ancien" data-nat="FR" data-conseil="1" data-fondateur="1">
+      <div class="m-init">AM</div>
+      <div class="m-info">
+        <div class="m-name">André Morel <span class="m-nick">« Pater »</span> <span style="font-size:9px;color:#534AB7;letter-spacing:.08em;text-transform:uppercase">Fondateur</span></div>
+        <div class="m-meta">07/08/1923 &nbsp;·&nbsp; 11e Choc SDECE — Opérateur</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+        <span class="m-badge" style="background:#EEEDFE;color:#534AB7">Ancien</span>
+        <div class="m-nat" style="background:#A32D2D"></div>
+      </div>
+    </div>
+<div class="member-row" data-grade="Ancien" data-nat="FR" data-conseil="1" data-fondateur="1">
+      <div class="m-init">AV</div>
+      <div class="m-info">
+        <div class="m-name">Alexandre Volkov <span class="m-nick">« Volk »</span> <span style="font-size:9px;color:#534AB7;letter-spacing:.08em;text-transform:uppercase">Fondateur</span></div>
+        <div class="m-meta">05/01/1921 &nbsp;·&nbsp; Légion étrangère — Sergent</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+        <span class="m-badge" style="background:#EEEDFE;color:#534AB7">Ancien</span>
+        <div class="m-nat" style="background:#A32D2D"></div>
+      </div>
+    </div>
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">NB</div>
       <div class="m-info">
-        <div class="m-name">Norbert Brauer <span class="m-nick">« Bielle »</span> </div>
+        <div class="m-name">Norbert Brauer <span class="m-nick">« Bielle »</span></div>
         <div class="m-meta">07/02/1944 &nbsp;·&nbsp; Bundeswehr Panzertruppe — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -336,7 +285,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">HS</div>
       <div class="m-info">
-        <div class="m-name">Hans Schumacher <span class="m-nick">« Buchse »</span> </div>
+        <div class="m-name">Hans Schumacher <span class="m-nick">« Buchse »</span></div>
         <div class="m-meta">12/03/1947 &nbsp;·&nbsp; Marine — Bootsmann</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -347,7 +296,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">GK</div>
       <div class="m-info">
-        <div class="m-name">Günter Koch <span class="m-nick">« Rippe »</span> </div>
+        <div class="m-name">Günter Koch <span class="m-nick">« Rippe »</span></div>
         <div class="m-meta">07/04/1945 &nbsp;·&nbsp; Fallschirmjäger — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -357,11 +306,22 @@ function toggleMenu(){
     </div>
 </div>
 <div class="chapter-section">
-<div class="chapter-heading">Chapter Kehl <span class="chapter-count">15 membres</span></div>
+<div class="chapter-heading">Chapter Kehl — Zum Rheintor <span class="chapter-count">16 membres</span></div>
+<div class="member-row" data-grade="Wotan" data-nat="DE" data-conseil="1" data-fondateur="1">
+      <div class="m-init">HB</div>
+      <div class="m-info">
+        <div class="m-name">Hans Brandt <span class="m-nick">« Maulwurf »</span> <span style="font-size:9px;color:#534AB7;letter-spacing:.08em;text-transform:uppercase">Fondateur</span></div>
+        <div class="m-meta">16/07/1932 &nbsp;·&nbsp; Fernspäher — Stabsunteroffizier</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
+        <span class="m-badge" style="background:#FCEBEB;color:#8B1A1A">Wotan</span>
+        <div class="m-nat" style="background:#185FA5"></div>
+      </div>
+    </div>
 <div class="member-row" data-grade="Gunnar" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">LB</div>
       <div class="m-info">
-        <div class="m-name">Lothar Baum <span class="m-nick">« Zapfen »</span> </div>
+        <div class="m-name">Lothar Baum <span class="m-nick">« Zapfen »</span></div>
         <div class="m-meta">02/08/1951 &nbsp;·&nbsp; Bundeswehr — Unteroffizier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -372,7 +332,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Tyr" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HK</div>
       <div class="m-info">
-        <div class="m-name">Hans Köhler <span class="m-nick">« Hammer »</span> </div>
+        <div class="m-name">Hans Köhler <span class="m-nick">« Hammer »</span></div>
         <div class="m-meta">08/05/1943 &nbsp;·&nbsp; Marine — Bootsmann</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -383,7 +343,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Sleipnir" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HM</div>
       <div class="m-info">
-        <div class="m-name">Harald Maier <span class="m-nick">« Achse »</span> </div>
+        <div class="m-name">Harald Maier <span class="m-nick">« Achse »</span></div>
         <div class="m-meta">10/09/1951 &nbsp;·&nbsp; Marine — Bootsmann</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -394,7 +354,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Mime" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HH</div>
       <div class="m-info">
-        <div class="m-name">Harald Hartmann <span class="m-nick">« Draht »</span> </div>
+        <div class="m-name">Harald Hartmann <span class="m-nick">« Draht »</span></div>
         <div class="m-meta">06/10/1950 &nbsp;·&nbsp; BGS — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -405,7 +365,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Heimdall" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">BZ</div>
       <div class="m-info">
-        <div class="m-name">Bernd Zimmermann <span class="m-nick">« Klinke »</span> </div>
+        <div class="m-name">Bernd Zimmermann <span class="m-nick">« Klinke »</span></div>
         <div class="m-meta">22/10/1956 &nbsp;·&nbsp; BGS — Meister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -413,10 +373,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">AS</div>
       <div class="m-info">
-        <div class="m-name">Axel Schumacher <span class="m-nick">« Lynx »</span> </div>
+        <div class="m-name">Axel Schumacher <span class="m-nick">« Lynx »</span></div>
         <div class="m-meta">01/11/1952 &nbsp;·&nbsp; BGS Bundesgrenzschutz — Hauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -424,10 +384,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Prüfer" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Prüfer" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">VK</div>
       <div class="m-info">
-        <div class="m-name">Volker Koch <span class="m-nick">« Nocke »</span> </div>
+        <div class="m-name">Volker Koch <span class="m-nick">« Nocke »</span></div>
         <div class="m-meta">25/12/1949 &nbsp;·&nbsp; Bundeswehr — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -435,10 +395,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">OS</div>
       <div class="m-info">
-        <div class="m-name">Otto Schröder <span class="m-nick">« Splint »</span> </div>
+        <div class="m-name">Otto Schröder <span class="m-nick">« Splint »</span></div>
         <div class="m-meta">21/12/1957 &nbsp;·&nbsp; Polizei BW — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -449,7 +409,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">HB</div>
       <div class="m-info">
-        <div class="m-name">Harald Becker <span class="m-nick">« Sturm »</span> </div>
+        <div class="m-name">Harald Becker <span class="m-nick">« Sturm »</span></div>
         <div class="m-meta">16/09/1955 &nbsp;·&nbsp; Kriminalpolizei — Kriminalkommissar</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -460,7 +420,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">GB</div>
       <div class="m-info">
-        <div class="m-name">Gerhard Brauer <span class="m-nick">« Welle »</span> </div>
+        <div class="m-name">Gerhard Brauer <span class="m-nick">« Welle »</span></div>
         <div class="m-meta">07/08/1944 &nbsp;·&nbsp; Bundeswehr Panzertruppe — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -471,7 +431,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">HV</div>
       <div class="m-info">
-        <div class="m-name">Hans Vogel <span class="m-nick">« Bolzen »</span> </div>
+        <div class="m-name">Hans Vogel <span class="m-nick">« Bolzen »</span></div>
         <div class="m-meta">15/05/1942 &nbsp;·&nbsp; Douanes allemandes — Zollhauptsekretär</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -482,7 +442,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">HB</div>
       <div class="m-info">
-        <div class="m-name">Helmut Baum <span class="m-nick">« Stahl »</span> </div>
+        <div class="m-name">Helmut Baum <span class="m-nick">« Stahl »</span></div>
         <div class="m-meta">13/03/1955 &nbsp;·&nbsp; Fernspäher — Stabsunteroffizier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -493,7 +453,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">RK</div>
       <div class="m-info">
-        <div class="m-name">Reinhard Koch <span class="m-nick">« Fumée »</span> </div>
+        <div class="m-name">Reinhard Koch <span class="m-nick">« Fumée »</span></div>
         <div class="m-meta">13/07/1954 &nbsp;·&nbsp; Fallschirmjäger — Oberfeldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -504,7 +464,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">GH</div>
       <div class="m-info">
-        <div class="m-name">Gerhard Hartmann <span class="m-nick">« Grau »</span> </div>
+        <div class="m-name">Gerhard Hartmann <span class="m-nick">« Grau »</span></div>
         <div class="m-meta">13/03/1954 &nbsp;·&nbsp; Marine — Bootsmann</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -515,7 +475,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">SS</div>
       <div class="m-info">
-        <div class="m-name">Stefan Schröder <span class="m-nick">« Spatz »</span> </div>
+        <div class="m-name">Stefan Schröder <span class="m-nick">« Spatz »</span></div>
         <div class="m-meta">26/11/1955 &nbsp;·&nbsp; BGS Bundesgrenzschutz — Hauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -525,11 +485,11 @@ function toggleMenu(){
     </div>
 </div>
 <div class="chapter-section">
-<div class="chapter-heading">Chapter Mulhouse <span class="chapter-count">13 membres</span></div>
+<div class="chapter-heading">Chapter Mulhouse — Le Fond de Cale <span class="chapter-count">13 membres</span></div>
 <div class="member-row" data-grade="Wotan" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">LM</div>
       <div class="m-info">
-        <div class="m-name">Laurent Mayer <span class="m-nick">« Eisen »</span> </div>
+        <div class="m-name">Laurent Mayer <span class="m-nick">« Eisen »</span></div>
         <div class="m-meta">28/09/1956 &nbsp;·&nbsp; Légion étrangère — Sergent</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -540,7 +500,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Gunnar" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">FM</div>
       <div class="m-info">
-        <div class="m-name">François Meyer <span class="m-nick">« Klotz »</span> </div>
+        <div class="m-name">François Meyer <span class="m-nick">« Klotz »</span></div>
         <div class="m-meta">24/08/1945 &nbsp;·&nbsp; Marine nationale — Second maître</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -551,7 +511,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Tyr" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">TF</div>
       <div class="m-info">
-        <div class="m-name">Thierry Frey <span class="m-nick">« Sense »</span> </div>
+        <div class="m-name">Thierry Frey <span class="m-nick">« Sense »</span></div>
         <div class="m-meta">07/02/1961 &nbsp;·&nbsp; Armée de terre — Adjudant-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -562,7 +522,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Sleipnir" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">HW</div>
       <div class="m-info">
-        <div class="m-name">Henri Walter <span class="m-nick">« Pflug »</span> </div>
+        <div class="m-name">Henri Walter <span class="m-nick">« Pflug »</span></div>
         <div class="m-meta">01/07/1958 &nbsp;·&nbsp; Gendarmerie — Adjudant</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -573,7 +533,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Mime" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">SW</div>
       <div class="m-info">
-        <div class="m-name">Stéphane Wagner <span class="m-nick">« Wels »</span> </div>
+        <div class="m-name">Stéphane Wagner <span class="m-nick">« Wels »</span></div>
         <div class="m-meta">28/04/1958 &nbsp;·&nbsp; Légion étrangère — Sergent</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -584,7 +544,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Heimdall" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">RS</div>
       <div class="m-info">
-        <div class="m-name">Raymond Schreiber <span class="m-nick">« Riegel »</span> </div>
+        <div class="m-name">Raymond Schreiber <span class="m-nick">« Riegel »</span></div>
         <div class="m-meta">04/08/1951 &nbsp;·&nbsp; Légion étrangère — Sergent</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -592,10 +552,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Hoard" data-nat="FR" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Hoard" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">PR</div>
       <div class="m-info">
-        <div class="m-name">Patrick Roth <span class="m-nick">« Fuchs »</span> </div>
+        <div class="m-name">Patrick Roth <span class="m-nick">« Fuchs »</span></div>
         <div class="m-meta">16/01/1958 &nbsp;·&nbsp; Armée de terre — Sergent-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -603,10 +563,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Prüfer" data-nat="FR" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Prüfer" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">CL</div>
       <div class="m-info">
-        <div class="m-name">Christian Lehmann <span class="m-nick">« Asche »</span> </div>
+        <div class="m-name">Christian Lehmann <span class="m-nick">« Asche »</span></div>
         <div class="m-meta">10/10/1950 &nbsp;·&nbsp; Police nationale — Brigadier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -614,10 +574,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Eir" data-nat="FR" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Eir" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">GF</div>
       <div class="m-info">
-        <div class="m-name">Gérard Fischer <span class="m-nick">« Dachs »</span> </div>
+        <div class="m-name">Gérard Fischer <span class="m-nick">« Dachs »</span></div>
         <div class="m-meta">18/07/1953 &nbsp;·&nbsp; Marine nationale — Second maître</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -628,7 +588,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="FR" data-conseil="0" data-fondateur="0">
       <div class="m-init">LB</div>
       <div class="m-info">
-        <div class="m-name">Louis Braun <span class="m-nick">« Clou »</span> </div>
+        <div class="m-name">Louis Braun <span class="m-nick">« Clou »</span></div>
         <div class="m-meta">09/10/1959 &nbsp;·&nbsp; Police nationale — Brigadier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -639,7 +599,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="FR" data-conseil="0" data-fondateur="0">
       <div class="m-init">LS</div>
       <div class="m-info">
-        <div class="m-name">Lucien Schwartz <span class="m-nick">« Verrou »</span> </div>
+        <div class="m-name">Lucien Schwartz <span class="m-nick">« Verrou »</span></div>
         <div class="m-meta">23/09/1948 &nbsp;·&nbsp; Armée de terre — Sergent-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -650,7 +610,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="FR" data-conseil="0" data-fondateur="0">
       <div class="m-init">LG</div>
       <div class="m-info">
-        <div class="m-name">Louis Gross <span class="m-nick">« Gond »</span> </div>
+        <div class="m-name">Louis Gross <span class="m-nick">« Gond »</span></div>
         <div class="m-meta">01/01/1954 &nbsp;·&nbsp; Armée de terre — Caporal-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -661,7 +621,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="FR" data-conseil="0" data-fondateur="0">
       <div class="m-init">AB</div>
       <div class="m-info">
-        <div class="m-name">Alain Burger <span class="m-nick">« Vilbrequin »</span> </div>
+        <div class="m-name">Alain Burger <span class="m-nick">« Vilbrequin »</span></div>
         <div class="m-meta">04/03/1959 &nbsp;·&nbsp; Para — 1er RPIMa</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -671,11 +631,11 @@ function toggleMenu(){
     </div>
 </div>
 <div class="chapter-section">
-<div class="chapter-heading">Chapter Strasbourg <span class="chapter-count">13 membres</span></div>
+<div class="chapter-heading">Chapter Strasbourg — Le Consulat <span class="chapter-count">13 membres</span></div>
 <div class="member-row" data-grade="Wotan" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">PS</div>
       <div class="m-info">
-        <div class="m-name">Paul Schneider <span class="m-nick">« Bélier »</span> </div>
+        <div class="m-name">Paul Schneider <span class="m-nick">« Bélier »</span></div>
         <div class="m-meta">17/10/1954 &nbsp;·&nbsp; Police nationale — Brigadier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -686,7 +646,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Gunnar" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">LF</div>
       <div class="m-info">
-        <div class="m-name">Laurent Frantz <span class="m-nick">« Anker »</span> </div>
+        <div class="m-name">Laurent Frantz <span class="m-nick">« Anker »</span></div>
         <div class="m-meta">12/06/1950 &nbsp;·&nbsp; Douanes françaises — Agent principal</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -697,7 +657,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Tyr" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">FZ</div>
       <div class="m-info">
-        <div class="m-name">Fernand Zimmermann <span class="m-nick">« Trappe »</span> </div>
+        <div class="m-name">Fernand Zimmermann <span class="m-nick">« Trappe »</span></div>
         <div class="m-meta">12/07/1952 &nbsp;·&nbsp; Para — 1er RPIMa</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -708,7 +668,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Sleipnir" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">BH</div>
       <div class="m-info">
-        <div class="m-name">Bernard Hahn <span class="m-nick">« Culasse »</span> </div>
+        <div class="m-name">Bernard Hahn <span class="m-nick">« Culasse »</span></div>
         <div class="m-meta">12/05/1949 &nbsp;·&nbsp; Armée de terre — Sergent-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -719,7 +679,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Mime" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">FM</div>
       <div class="m-info">
-        <div class="m-name">Fernand Muller <span class="m-nick">« Sperr »</span> </div>
+        <div class="m-name">Fernand Muller <span class="m-nick">« Sperr »</span></div>
         <div class="m-meta">04/12/1950 &nbsp;·&nbsp; Gendarmerie — Adjudant</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -730,7 +690,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Heimdall" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">YG</div>
       <div class="m-info">
-        <div class="m-name">Yves Gross <span class="m-nick">« Biber »</span> </div>
+        <div class="m-name">Yves Gross <span class="m-nick">« Biber »</span></div>
         <div class="m-meta">24/11/1954 &nbsp;·&nbsp; Gendarmerie mobile — Maréchal des logis</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -738,10 +698,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Hoard" data-nat="FR" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Hoard" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">PH</div>
       <div class="m-info">
-        <div class="m-name">Philippe Hahn <span class="m-nick">« Fonte »</span> </div>
+        <div class="m-name">Philippe Hahn <span class="m-nick">« Fonte »</span></div>
         <div class="m-meta">18/10/1951 &nbsp;·&nbsp; PJ — Inspecteur</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -749,10 +709,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Prüfer" data-nat="FR" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Prüfer" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">GK</div>
       <div class="m-info">
-        <div class="m-name">Gérard Kramer <span class="m-nick">« Rauch »</span> </div>
+        <div class="m-name">Gérard Kramer <span class="m-nick">« Rauch »</span></div>
         <div class="m-meta">24/11/1949 &nbsp;·&nbsp; Armée de terre — Sergent-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -760,10 +720,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Eir" data-nat="FR" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Eir" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">TS</div>
       <div class="m-info">
-        <div class="m-name">Thierry Schmitt <span class="m-nick">« Falke »</span> </div>
+        <div class="m-name">Thierry Schmitt <span class="m-nick">« Falke »</span></div>
         <div class="m-meta">18/09/1958 &nbsp;·&nbsp; Armée de terre — Adjudant-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -774,7 +734,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="FR" data-conseil="0" data-fondateur="0">
       <div class="m-init">PH</div>
       <div class="m-info">
-        <div class="m-name">Patrick Hahn <span class="m-nick">« Forge »</span> </div>
+        <div class="m-name">Patrick Hahn <span class="m-nick">« Forge »</span></div>
         <div class="m-meta">21/01/1949 &nbsp;·&nbsp; Légion étrangère — Sergent</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -785,7 +745,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="FR" data-conseil="0" data-fondateur="0">
       <div class="m-init">PS</div>
       <div class="m-info">
-        <div class="m-name">Paul Schmitt <span class="m-nick">« Tonnerre »</span> </div>
+        <div class="m-name">Paul Schmitt <span class="m-nick">« Tonnerre »</span></div>
         <div class="m-meta">13/11/1956 &nbsp;·&nbsp; Légion étrangère — Caporal-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -796,7 +756,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="FR" data-conseil="0" data-fondateur="0">
       <div class="m-init">AK</div>
       <div class="m-info">
-        <div class="m-name">Alain Kieffer <span class="m-nick">« Éclair »</span> </div>
+        <div class="m-name">Alain Kieffer <span class="m-nick">« Éclair »</span></div>
         <div class="m-meta">13/10/1957 &nbsp;·&nbsp; Légion étrangère — Caporal-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -807,7 +767,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="FR" data-conseil="0" data-fondateur="0">
       <div class="m-init">CF</div>
       <div class="m-info">
-        <div class="m-name">Christian Frey <span class="m-nick">« Lager »</span> </div>
+        <div class="m-name">Christian Frey <span class="m-nick">« Lager »</span></div>
         <div class="m-meta">02/05/1950 &nbsp;·&nbsp; Marine nationale — Second maître</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -817,11 +777,11 @@ function toggleMenu(){
     </div>
 </div>
 <div class="chapter-section">
-<div class="chapter-heading">Chapter Freiburg <span class="chapter-count">12 membres</span></div>
+<div class="chapter-heading">Chapter Freiburg — Der Waldrand <span class="chapter-count">12 membres</span></div>
 <div class="member-row" data-grade="Wotan" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">RH</div>
       <div class="m-info">
-        <div class="m-name">Reinhard Hartmann <span class="m-nick">« Faucon »</span> </div>
+        <div class="m-name">Reinhard Hartmann <span class="m-nick">« Faucon »</span></div>
         <div class="m-meta">18/05/1950 &nbsp;·&nbsp; Bundeswehr — Unteroffizier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -832,7 +792,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Gunnar" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">NG</div>
       <div class="m-info">
-        <div class="m-name">Norbert Gruber <span class="m-nick">« Gel »</span> </div>
+        <div class="m-name">Norbert Gruber <span class="m-nick">« Gel »</span></div>
         <div class="m-meta">12/12/1961 &nbsp;·&nbsp; Bundeswehr Panzertruppe — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -843,7 +803,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Tyr" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">TW</div>
       <div class="m-info">
-        <div class="m-name">Thomas Wolf <span class="m-nick">« Marder »</span> </div>
+        <div class="m-name">Thomas Wolf <span class="m-nick">« Marder »</span></div>
         <div class="m-meta">22/11/1951 &nbsp;·&nbsp; BGS Bundesgrenzschutz — Hauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -854,7 +814,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Sleipnir" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">TH</div>
       <div class="m-info">
-        <div class="m-name">Thomas Hofmann <span class="m-nick">« Rouille »</span> </div>
+        <div class="m-name">Thomas Hofmann <span class="m-nick">« Rouille »</span></div>
         <div class="m-meta">13/04/1951 &nbsp;·&nbsp; Douanes allemandes — Zollhauptsekretär</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -865,7 +825,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Mime" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HK</div>
       <div class="m-info">
-        <div class="m-name">Horst Krüger <span class="m-nick">« Feuer »</span> </div>
+        <div class="m-name">Horst Krüger <span class="m-nick">« Feuer »</span></div>
         <div class="m-meta">05/05/1961 &nbsp;·&nbsp; Kriminalpolizei — Kriminalkommissar</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -876,7 +836,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Heimdall" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">LW</div>
       <div class="m-info">
-        <div class="m-name">Lothar Winkler <span class="m-nick">« Adler »</span> </div>
+        <div class="m-name">Lothar Winkler <span class="m-nick">« Adler »</span></div>
         <div class="m-meta">06/07/1954 &nbsp;·&nbsp; BGS — Meister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -884,10 +844,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">DH</div>
       <div class="m-info">
-        <div class="m-name">Dieter Hofmann <span class="m-nick">« Habicht »</span> </div>
+        <div class="m-name">Dieter Hofmann <span class="m-nick">« Habicht »</span></div>
         <div class="m-meta">15/11/1962 &nbsp;·&nbsp; BGS — Meister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -895,10 +855,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Prüfer" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Prüfer" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">KS</div>
       <div class="m-info">
-        <div class="m-name">Kurt Schäfer <span class="m-nick">« Bombe »</span> </div>
+        <div class="m-name">Kurt Schäfer <span class="m-nick">« Bombe »</span></div>
         <div class="m-meta">15/09/1959 &nbsp;·&nbsp; BGS Bundesgrenzschutz — Hauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -906,10 +866,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">RM</div>
       <div class="m-info">
-        <div class="m-name">Rainer Maier <span class="m-nick">« Piston »</span> </div>
+        <div class="m-name">Rainer Maier <span class="m-nick">« Piston »</span></div>
         <div class="m-meta">07/07/1961 &nbsp;·&nbsp; BGS Bundesgrenzschutz — Hauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -920,7 +880,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">EW</div>
       <div class="m-info">
-        <div class="m-name">Egon Wolf <span class="m-nick">« Came »</span> </div>
+        <div class="m-name">Egon Wolf <span class="m-nick">« Came »</span></div>
         <div class="m-meta">08/06/1949 &nbsp;·&nbsp; Polizei BW — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -931,7 +891,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">KN</div>
       <div class="m-info">
-        <div class="m-name">Kurt Neumann <span class="m-nick">« Esse »</span> </div>
+        <div class="m-name">Kurt Neumann <span class="m-nick">« Esse »</span></div>
         <div class="m-meta">27/04/1955 &nbsp;·&nbsp; Bundeswehr Panzertruppe — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -942,7 +902,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">EB</div>
       <div class="m-info">
-        <div class="m-name">Egon Braun <span class="m-nick">« Carter »</span> </div>
+        <div class="m-name">Egon Braun <span class="m-nick">« Carter »</span></div>
         <div class="m-meta">17/12/1958 &nbsp;·&nbsp; Douanes allemandes — Zollhauptsekretär</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -952,11 +912,11 @@ function toggleMenu(){
     </div>
 </div>
 <div class="chapter-section">
-<div class="chapter-heading">Chapter Karlsruhe <span class="chapter-count">12 membres</span></div>
+<div class="chapter-heading">Chapter Karlsruhe — Die Schmiede <span class="chapter-count">12 membres</span></div>
 <div class="member-row" data-grade="Wotan" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">UZ</div>
       <div class="m-info">
-        <div class="m-name">Uwe Ziegler <span class="m-nick">« Vautour »</span> </div>
+        <div class="m-name">Uwe Ziegler <span class="m-nick">« Vautour »</span></div>
         <div class="m-meta">09/01/1958 &nbsp;·&nbsp; BGS — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -967,7 +927,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Gunnar" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HW</div>
       <div class="m-info">
-        <div class="m-name">Hans Wolf <span class="m-nick">« Marteau »</span> </div>
+        <div class="m-name">Hans Wolf <span class="m-nick">« Marteau »</span></div>
         <div class="m-meta">07/11/1962 &nbsp;·&nbsp; Polizei BW — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -978,7 +938,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Tyr" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">KS</div>
       <div class="m-info">
-        <div class="m-name">Kurt Schröder <span class="m-nick">« Grise »</span> </div>
+        <div class="m-name">Kurt Schröder <span class="m-nick">« Grise »</span></div>
         <div class="m-meta">25/02/1962 &nbsp;·&nbsp; BGS — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -989,7 +949,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Sleipnir" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">MB</div>
       <div class="m-info">
-        <div class="m-name">Manfred Braun <span class="m-nick">« Aigle »</span> </div>
+        <div class="m-name">Manfred Braun <span class="m-nick">« Aigle »</span></div>
         <div class="m-meta">19/06/1949 &nbsp;·&nbsp; Bundeswehr Panzertruppe — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1000,7 +960,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Mime" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HR</div>
       <div class="m-info">
-        <div class="m-name">Helmut Richter <span class="m-nick">« Cendre »</span> </div>
+        <div class="m-name">Helmut Richter <span class="m-nick">« Cendre »</span></div>
         <div class="m-meta">19/08/1958 &nbsp;·&nbsp; Bundeswehr — Unteroffizier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1011,7 +971,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Heimdall" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HK</div>
       <div class="m-info">
-        <div class="m-name">Helmut Krüger <span class="m-nick">« Keil »</span> </div>
+        <div class="m-name">Helmut Krüger <span class="m-nick">« Keil »</span></div>
         <div class="m-meta">23/07/1954 &nbsp;·&nbsp; Fallschirmjäger — Oberfeldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1019,10 +979,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">AW</div>
       <div class="m-info">
-        <div class="m-name">Axel Wolf <span class="m-nick">« Givre »</span> </div>
+        <div class="m-name">Axel Wolf <span class="m-nick">« Givre »</span></div>
         <div class="m-meta">02/07/1955 &nbsp;·&nbsp; Fernspäher — Stabsunteroffizier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1030,10 +990,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Prüfer" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Prüfer" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">OS</div>
       <div class="m-info">
-        <div class="m-name">Otto Schwarz <span class="m-nick">« Renard »</span> </div>
+        <div class="m-name">Otto Schwarz <span class="m-nick">« Renard »</span></div>
         <div class="m-meta">04/11/1954 &nbsp;·&nbsp; Douanes allemandes — Zollhauptsekretär</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1041,10 +1001,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HN</div>
       <div class="m-info">
-        <div class="m-name">Harald Neumann <span class="m-nick">« Sperre »</span> </div>
+        <div class="m-name">Harald Neumann <span class="m-nick">« Sperre »</span></div>
         <div class="m-meta">13/04/1949 &nbsp;·&nbsp; Fallschirmjäger — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1055,7 +1015,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">BL</div>
       <div class="m-info">
-        <div class="m-name">Bernd Lange <span class="m-nick">« Flanke »</span> </div>
+        <div class="m-name">Bernd Lange <span class="m-nick">« Flanke »</span></div>
         <div class="m-meta">22/04/1950 &nbsp;·&nbsp; Bundeswehr — Unteroffizier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1066,7 +1026,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">UK</div>
       <div class="m-info">
-        <div class="m-name">Uwe Krause <span class="m-nick">« Narbe »</span> </div>
+        <div class="m-name">Uwe Krause <span class="m-nick">« Narbe »</span></div>
         <div class="m-meta">12/05/1956 &nbsp;·&nbsp; Bundeswehr — Stabsfeldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1077,7 +1037,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">GB</div>
       <div class="m-info">
-        <div class="m-name">Günter Baum <span class="m-nick">« Blitz »</span> </div>
+        <div class="m-name">Günter Baum <span class="m-nick">« Blitz »</span></div>
         <div class="m-meta">02/01/1958 &nbsp;·&nbsp; BGS — Meister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1087,11 +1047,11 @@ function toggleMenu(){
     </div>
 </div>
 <div class="chapter-section">
-<div class="chapter-heading">Chapter Stuttgart <span class="chapter-count">11 membres</span></div>
+<div class="chapter-heading">Chapter Stuttgart — Der Kolben <span class="chapter-count">11 membres</span></div>
 <div class="member-row" data-grade="Wotan" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">AB</div>
       <div class="m-info">
-        <div class="m-name">Axel Becker <span class="m-nick">« Soupape »</span> </div>
+        <div class="m-name">Axel Becker <span class="m-nick">« Soupape »</span></div>
         <div class="m-meta">21/02/1951 &nbsp;·&nbsp; Fallschirmjäger — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1102,7 +1062,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Gunnar" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">UB</div>
       <div class="m-info">
-        <div class="m-name">Uwe Brauer <span class="m-nick">« Hecht »</span> </div>
+        <div class="m-name">Uwe Brauer <span class="m-nick">« Hecht »</span></div>
         <div class="m-meta">07/07/1949 &nbsp;·&nbsp; Polizei BW — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1113,7 +1073,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Tyr" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">OB</div>
       <div class="m-info">
-        <div class="m-name">Otto Braun <span class="m-nick">« Scherbe »</span> </div>
+        <div class="m-name">Otto Braun <span class="m-nick">« Scherbe »</span></div>
         <div class="m-meta">08/01/1962 &nbsp;·&nbsp; Fernspäher — Stabsunteroffizier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1124,7 +1084,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Sleipnir" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HB</div>
       <div class="m-info">
-        <div class="m-name">Hans Brauer <span class="m-nick">« Lame »</span> </div>
+        <div class="m-name">Hans Brauer <span class="m-nick">« Lame »</span></div>
         <div class="m-meta">08/11/1949 &nbsp;·&nbsp; Polizei BW — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1135,7 +1095,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Mime" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">DW</div>
       <div class="m-info">
-        <div class="m-name">Dieter Wolf <span class="m-nick">« Feder »</span> </div>
+        <div class="m-name">Dieter Wolf <span class="m-nick">« Feder »</span></div>
         <div class="m-meta">11/02/1960 &nbsp;·&nbsp; Fallschirmjäger — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1146,7 +1106,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Heimdall" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">NB</div>
       <div class="m-info">
-        <div class="m-name">Norbert Braun <span class="m-nick">« Zander »</span> </div>
+        <div class="m-name">Norbert Braun <span class="m-nick">« Zander »</span></div>
         <div class="m-meta">14/03/1957 &nbsp;·&nbsp; BGS — Meister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1154,10 +1114,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Hoard" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HZ</div>
       <div class="m-info">
-        <div class="m-name">Helmut Ziegler <span class="m-nick">« Igel »</span> </div>
+        <div class="m-name">Helmut Ziegler <span class="m-nick">« Igel »</span></div>
         <div class="m-meta">09/10/1960 &nbsp;·&nbsp; Fallschirmjäger — Oberfeldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1165,10 +1125,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Prüfer" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Prüfer" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">RS</div>
       <div class="m-info">
-        <div class="m-name">Reinhard Schwarz <span class="m-nick">« Hülse »</span> </div>
+        <div class="m-name">Reinhard Schwarz <span class="m-nick">« Hülse »</span></div>
         <div class="m-meta">25/03/1949 &nbsp;·&nbsp; BGS Bundesgrenzschutz — Hauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1176,10 +1136,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#185FA5"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Eir" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">BG</div>
       <div class="m-info">
-        <div class="m-name">Bernd Gruber <span class="m-nick">« Drosser »</span> </div>
+        <div class="m-name">Bernd Gruber <span class="m-nick">« Drosser »</span></div>
         <div class="m-meta">07/07/1959 &nbsp;·&nbsp; Fallschirmjäger — Oberfeldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1190,7 +1150,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">WK</div>
       <div class="m-info">
-        <div class="m-name">Werner Krüger <span class="m-nick">« Kette »</span> </div>
+        <div class="m-name">Werner Krüger <span class="m-nick">« Kette »</span></div>
         <div class="m-meta">12/02/1959 &nbsp;·&nbsp; Polizei BW — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1201,7 +1161,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">SR</div>
       <div class="m-info">
-        <div class="m-name">Stefan Richter <span class="m-nick">« Amboss »</span> </div>
+        <div class="m-name">Stefan Richter <span class="m-nick">« Amboss »</span></div>
         <div class="m-meta">03/12/1951 &nbsp;·&nbsp; Douanes allemandes — Zollhauptsekretär</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1211,11 +1171,11 @@ function toggleMenu(){
     </div>
 </div>
 <div class="chapter-section">
-<div class="chapter-heading">Chapter Lyon <span class="chapter-count">9 membres</span></div>
+<div class="chapter-heading">Chapter Lyon — Le Confluent <span class="chapter-count">9 membres</span></div>
 <div class="member-row" data-grade="Wotan" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">BW</div>
       <div class="m-info">
-        <div class="m-name">Bruno Wagner <span class="m-nick">« Sanglier »</span> </div>
+        <div class="m-name">Bruno Wagner <span class="m-nick">« Sanglier »</span></div>
         <div class="m-meta">04/02/1950 &nbsp;·&nbsp; Para — 1er RPIMa</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1226,7 +1186,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Gunnar" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">YL</div>
       <div class="m-info">
-        <div class="m-name">Yves Lehmann <span class="m-nick">« Nebel »</span> </div>
+        <div class="m-name">Yves Lehmann <span class="m-nick">« Nebel »</span></div>
         <div class="m-meta">21/06/1952 &nbsp;·&nbsp; Para — 1er RPIMa</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1237,7 +1197,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Tyr" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">RS</div>
       <div class="m-info">
-        <div class="m-name">Raymond Schmitt <span class="m-nick">« Otter »</span> </div>
+        <div class="m-name">Raymond Schmitt <span class="m-nick">« Otter »</span></div>
         <div class="m-meta">09/12/1961 &nbsp;·&nbsp; Marine nationale — Second maître</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1248,7 +1208,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Sleipnir" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">MF</div>
       <div class="m-info">
-        <div class="m-name">Marc Frantz <span class="m-nick">« Kohle »</span> </div>
+        <div class="m-name">Marc Frantz <span class="m-nick">« Kohle »</span></div>
         <div class="m-meta">04/04/1955 &nbsp;·&nbsp; Légion étrangère — Sergent</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1259,7 +1219,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Mime" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">ÉF</div>
       <div class="m-info">
-        <div class="m-name">Éric Fischer <span class="m-nick">« Geier »</span> </div>
+        <div class="m-name">Éric Fischer <span class="m-nick">« Geier »</span></div>
         <div class="m-meta">11/05/1955 &nbsp;·&nbsp; Police nationale — Brigadier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1270,7 +1230,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Heimdall" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">BR</div>
       <div class="m-info">
-        <div class="m-name">Bruno Roth <span class="m-nick">« X094 »</span> </div>
+        <div class="m-name">Bruno Roth <span class="m-nick">« X094 »</span></div>
         <div class="m-meta">27/02/1950 &nbsp;·&nbsp; Gendarmerie — Adjudant</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1278,10 +1238,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Hoard" data-nat="FR" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Hoard" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">DW</div>
       <div class="m-info">
-        <div class="m-name">Denis Walter <span class="m-nick">« X095 »</span> </div>
+        <div class="m-name">Denis Walter <span class="m-nick">« X095 »</span></div>
         <div class="m-meta">06/08/1954 &nbsp;·&nbsp; Légion étrangère — Caporal-chef</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1289,10 +1249,10 @@ function toggleMenu(){
         <div class="m-nat" style="background:#A32D2D"></div>
       </div>
     </div>
-<div class="member-row" data-grade="Prüfer" data-nat="FR" data-conseil="0" data-fondateur="0">
+<div class="member-row" data-grade="Prüfer" data-nat="FR" data-conseil="1" data-fondateur="0">
       <div class="m-init">RF</div>
       <div class="m-info">
-        <div class="m-name">René Frantz <span class="m-nick">« X096 »</span> </div>
+        <div class="m-name">René Frantz <span class="m-nick">« X096 »</span></div>
         <div class="m-meta">13/01/1953 &nbsp;·&nbsp; Légion étrangère — Sergent</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1303,7 +1263,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="FR" data-conseil="0" data-fondateur="0">
       <div class="m-init">TZ</div>
       <div class="m-info">
-        <div class="m-name">Thierry Zimmermann <span class="m-nick">« X097 »</span> </div>
+        <div class="m-name">Thierry Zimmermann <span class="m-nick">« X097 »</span></div>
         <div class="m-meta">02/12/1954 &nbsp;·&nbsp; Marine nationale — Second maître</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1313,11 +1273,11 @@ function toggleMenu(){
     </div>
 </div>
 <div class="chapter-section">
-<div class="chapter-heading">Chapter Frankfurt <span class="chapter-count">7 membres</span></div>
+<div class="chapter-heading">Chapter Frankfurt — Die Kammer <span class="chapter-count">7 membres</span></div>
 <div class="member-row" data-grade="Wotan" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">RB</div>
       <div class="m-info">
-        <div class="m-name">Rolf Becker <span class="m-nick">« X098 »</span> </div>
+        <div class="m-name">Rolf Becker <span class="m-nick">« X098 »</span></div>
         <div class="m-meta">11/12/1950 &nbsp;·&nbsp; BGS — Polizeihauptmeister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1328,7 +1288,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Gunnar" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">EB</div>
       <div class="m-info">
-        <div class="m-name">Ernst Brauer <span class="m-nick">« X099 »</span> </div>
+        <div class="m-name">Ernst Brauer <span class="m-nick">« X099 »</span></div>
         <div class="m-meta">09/01/1951 &nbsp;·&nbsp; BGS — Meister</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1339,7 +1299,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Tyr" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">SK</div>
       <div class="m-info">
-        <div class="m-name">Stefan Krüger <span class="m-nick">« X100 »</span> </div>
+        <div class="m-name">Stefan Krüger <span class="m-nick">« X100 »</span></div>
         <div class="m-meta">05/03/1954 &nbsp;·&nbsp; Bundeswehr Panzertruppe — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1350,7 +1310,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Sleipnir" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">BB</div>
       <div class="m-info">
-        <div class="m-name">Bernd Braun <span class="m-nick">« X101 »</span> </div>
+        <div class="m-name">Bernd Braun <span class="m-nick">« X101 »</span></div>
         <div class="m-meta">03/06/1955 &nbsp;·&nbsp; Fallschirmjäger — Feldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1361,7 +1321,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Mime" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">SB</div>
       <div class="m-info">
-        <div class="m-name">Stefan Bauer <span class="m-nick">« X102 »</span> </div>
+        <div class="m-name">Stefan Bauer <span class="m-nick">« X102 »</span></div>
         <div class="m-meta">02/05/1950 &nbsp;·&nbsp; Fernspäher — Stabsunteroffizier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1372,7 +1332,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Heimdall" data-nat="DE" data-conseil="1" data-fondateur="0">
       <div class="m-init">HM</div>
       <div class="m-info">
-        <div class="m-name">Heinrich Maier <span class="m-nick">« X103 »</span> </div>
+        <div class="m-name">Heinrich Maier <span class="m-nick">« X103 »</span></div>
         <div class="m-meta">12/06/1950 &nbsp;·&nbsp; Fallschirmjäger — Oberfeldwebel</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1383,7 +1343,7 @@ function toggleMenu(){
 <div class="member-row" data-grade="Einherjar" data-nat="DE" data-conseil="0" data-fondateur="0">
       <div class="m-init">KS</div>
       <div class="m-info">
-        <div class="m-name">Karl Steiner <span class="m-nick">« X104 »</span> </div>
+        <div class="m-name">Karl Steiner <span class="m-nick">« X104 »</span></div>
         <div class="m-meta">20/05/1952 &nbsp;·&nbsp; Fernspäher — Stabsunteroffizier</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;flex-shrink:0">
@@ -1398,10 +1358,11 @@ function filterM(btn) {
   document.querySelectorAll('.fb').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   var f = btn.dataset.f;
+  var CONSEIL = ['Wotan','Gunnar','Tyr','Sleipnir','Mime','Heimdall','Hoard','Prüfer','Eir','Ancien'];
   document.querySelectorAll('.member-row').forEach(function(row) {
     var show = false;
     if (f === 'all') show = true;
-    else if (f === 'conseil') show = row.dataset.conseil === '1';
+    else if (f === 'conseil') show = CONSEIL.indexOf(row.dataset.grade) > -1;
     else if (f === 'fondateur') show = row.dataset.fondateur === '1';
     else if (f === 'FR' || f === 'DE') show = row.dataset.nat === f;
     else show = row.dataset.grade === f;

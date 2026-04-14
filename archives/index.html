@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUNKELGANG MC — Archives</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.home-hero { text-align:center; padding:2.5rem 1rem 2rem; }
+.home-hero img { width:130px; height:130px; object-fit:contain; margin-bottom:1.25rem; }
+.hero-title { font-family:"Bebas Neue",sans-serif; font-size:42px; letter-spacing:.2em; color:#D8CEBC; line-height:1; }
+.hero-rule  { width:44px; height:2px; background:#8B1A1A; margin:1rem auto; }
+.hero-sub   { font-size:11px; color:#70665A; letter-spacing:.18em; text-transform:uppercase; line-height:1.9; }
+.hero-pills { display:flex; gap:5px; flex-wrap:wrap; justify-content:center; margin-top:1rem; }
+.hero-pill  { font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:3px 9px; border-radius:2px; border:1px solid #342C24; color:#70665A; }
+.hero-pill.red { border-color:#8B1A1A; color:#8B1A1A; }
+
+.section-block { margin-bottom:1.25rem; }
+.section-links { display:flex; flex-direction:column; gap:2px; }
+.section-link  { display:flex; align-items:center; gap:8px; padding:.45rem 1rem; font-size:12px; font-weight:500; letter-spacing:.07em; color:#A89E8E; text-decoration:none; text-transform:uppercase; border-radius:4px; border-left:2px solid transparent; background:#131110; transition:all .1s; -webkit-tap-highlight-color:transparent; }
+.section-link:hover, .section-link:active { color:#D8CEBC; border-left-color:#8B1A1A; background:#1A1714; }
+.sl-dot   { width:4px; height:4px; border-radius:50%; background:#342C24; flex-shrink:0; }
+.sl-arrow { margin-left:auto; color:#342C24; font-size:14px; }
+.section-link:hover .sl-dot, .section-link:active .sl-dot { background:#8B1A1A; }
+.section-link:hover .sl-arrow, .section-link:active .sl-arrow { color:#8B1A1A; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Dunkelgang MC">
+    <div>
+      <div class="nav-club-title">DUNKELGANG MC</div>
+      <div class="nav-club-sub">Rhin Supérieur — 1971</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <button class="nav-menu-btn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="menu-drawer" id="drawer">
+  <div class="menu-close"><button onclick="toggleMenu()">&#x2715;</button></div>
+<div class="menu-section"><div class="menu-label">Club</div><a href="synthese.html" class="menu-item"><span class="menu-dot"></span>Synthèse</a></div><div class="menu-section"><div class="menu-label">Membres</div><a href="kaspar.html" class="menu-item"><span class="menu-dot"></span>Kaiser — Kaspar</a><a href="morel.html" class="menu-item"><span class="menu-dot"></span>Pater — Morel</a><a href="wolff.html" class="menu-item"><span class="menu-dot"></span>Klingen — Wolff</a><a href="perrin.html" class="menu-item"><span class="menu-dot"></span>Grillon — Perrin</a><a href="stein.html" class="menu-item"><span class="menu-dot"></span>Brume — Stein</a><a href="aubry.html" class="menu-item"><span class="menu-dot"></span>Chacal — Aubry</a><a href="keller.html" class="menu-item"><span class="menu-dot"></span>Rabe — Keller</a><a href="brandt.html" class="menu-item"><span class="menu-dot"></span>Maulwurf — Brandt</a><a href="voss.html" class="menu-item"><span class="menu-dot"></span>Nichts — Voss</a><a href="volkov.html" class="menu-item"><span class="menu-dot"></span>Volk — Volkov</a></div><div class="menu-section"><div class="menu-label">Territoire</div><a href="territoire.html" class="menu-item"><span class="menu-dot"></span>Chapters & axes</a><a href="carte.html" class="menu-item"><span class="menu-dot"></span>Carte interactive</a></div><div class="menu-section"><div class="menu-label">Activités</div><a href="activites.html" class="menu-item"><span class="menu-dot"></span>Activités du club</a><a href="sentinel.html" class="menu-item"><span class="menu-dot"></span>Sentinel GmbH</a></div><div class="menu-section"><div class="menu-label">Histoire</div><a href="historique.html" class="menu-item"><span class="menu-dot"></span>Fil historique</a><a href="crises.html" class="menu-item"><span class="menu-dot"></span>Grandes crises</a></div><div class="menu-section"><div class="menu-label">Relations</div><a href="relations.html" class="menu-item"><span class="menu-dot"></span>Alliances & ennemis</a></div><div class="menu-section"><div class="menu-label">Code</div><a href="grades.html" class="menu-item"><span class="menu-dot"></span>Grades & fonctions</a><a href="ecussons.html" class="menu-item"><span class="menu-dot"></span>Écussons spéciaux</a><a href="regles.html" class="menu-item"><span class="menu-dot"></span>Règles internes</a></div>
+</div>
+
+<div class="page">
+  <div class="home-hero">
+    <img src="logo.png" alt="Dunkelgang MC">
+    <div class="hero-title">DUNKELGANG MC</div>
+    <div class="hero-rule"></div>
+    <div class="hero-sub">Archives internes du club</div>
+    <div class="hero-pills">
+      <span class="hero-pill red">1 % Outlaw</span>
+      <span class="hero-pill">Fondé 1971</span>
+      <span class="hero-pill">Rhin Supérieur</span>
+      <span class="hero-pill">10 fondateurs</span>
+      <span class="hero-pill">9 chapters — 1989</span>
+    </div>
+  </div>
+
+<div class="section-block"><div class="section-label">Club</div><div class="section-links"><a href="synthese.html" class="section-link"><span class="sl-dot"></span>Synthèse<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Membres</div><div class="section-links"><a href="kaspar.html" class="section-link"><span class="sl-dot"></span>Kaiser — Kaspar<span class="sl-arrow">→</span></a><a href="morel.html" class="section-link"><span class="sl-dot"></span>Pater — Morel<span class="sl-arrow">→</span></a><a href="wolff.html" class="section-link"><span class="sl-dot"></span>Klingen — Wolff<span class="sl-arrow">→</span></a><a href="perrin.html" class="section-link"><span class="sl-dot"></span>Grillon — Perrin<span class="sl-arrow">→</span></a><a href="stein.html" class="section-link"><span class="sl-dot"></span>Brume — Stein<span class="sl-arrow">→</span></a><a href="aubry.html" class="section-link"><span class="sl-dot"></span>Chacal — Aubry<span class="sl-arrow">→</span></a><a href="keller.html" class="section-link"><span class="sl-dot"></span>Rabe — Keller<span class="sl-arrow">→</span></a><a href="brandt.html" class="section-link"><span class="sl-dot"></span>Maulwurf — Brandt<span class="sl-arrow">→</span></a><a href="voss.html" class="section-link"><span class="sl-dot"></span>Nichts — Voss<span class="sl-arrow">→</span></a><a href="volkov.html" class="section-link"><span class="sl-dot"></span>Volk — Volkov<span class="sl-arrow">→</span></a><a href="membres.html" class="section-link"><span class="sl-dot"></span>Tous les membres<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Territoire</div><div class="section-links"><a href="territoire.html" class="section-link"><span class="sl-dot"></span>Chapters & axes<span class="sl-arrow">→</span></a><a href="carte.html" class="section-link"><span class="sl-dot"></span>Carte interactive<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Activités</div><div class="section-links"><a href="activites.html" class="section-link"><span class="sl-dot"></span>Activités du club<span class="sl-arrow">→</span></a><a href="sentinel.html" class="section-link"><span class="sl-dot"></span>Sentinel GmbH<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Histoire</div><div class="section-links"><a href="historique.html" class="section-link"><span class="sl-dot"></span>Fil historique<span class="sl-arrow">→</span></a><a href="crises.html" class="section-link"><span class="sl-dot"></span>Grandes crises<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Relations</div><div class="section-links"><a href="relations.html" class="section-link"><span class="sl-dot"></span>Alliances & ennemis<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Code</div><div class="section-links"><a href="grades.html" class="section-link"><span class="sl-dot"></span>Grades & fonctions<span class="sl-arrow">→</span></a><a href="ecussons.html" class="section-link"><span class="sl-dot"></span>Écussons spéciaux<span class="sl-arrow">→</span></a><a href="regles.html" class="section-link"><span class="sl-dot"></span>Règles internes<span class="sl-arrow">→</span></a><a href="integration.html" class="section-link"><span class="sl-dot"></span>Intégration<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Machines</div><div class="section-links"><a href="motos.html" class="section-link"><span class="sl-dot"></span>Les motos<span class="sl-arrow">→</span></a></div></div>
+</div>
+
+<script>
+function toggleMenu(){
+  document.getElementById('overlay').classList.toggle('open');
+  document.getElementById('drawer').classList.toggle('open');
+}
+</script>
+</body>
+</html>
