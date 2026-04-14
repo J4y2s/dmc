@@ -3,39 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DUNKELGANG MC — Archives</title>
+<title>Dunkelgang MC — Archives</title>
 <link rel="stylesheet" href="style.css">
 <style>
-.home-hero { text-align:center; padding:2.5rem 1rem 2rem; }
-.home-hero img { width:130px; height:130px; object-fit:contain; margin-bottom:1.25rem; }
-.hero-title { font-family:"Bebas Neue",sans-serif; font-size:42px; letter-spacing:.2em; color:#D8CEBC; line-height:1; }
-.hero-rule  { width:44px; height:2px; background:#8B1A1A; margin:1rem auto; }
-.hero-sub   { font-size:11px; color:#70665A; letter-spacing:.18em; text-transform:uppercase; line-height:1.9; }
-.hero-pills { display:flex; gap:5px; flex-wrap:wrap; justify-content:center; margin-top:1rem; }
-.hero-pill  { font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:3px 9px; border-radius:2px; border:1px solid #342C24; color:#70665A; }
-.hero-pill.red { border-color:#8B1A1A; color:#8B1A1A; }
-
-.section-block { margin-bottom:1.25rem; }
-.section-links { display:flex; flex-direction:column; gap:2px; }
-.section-link  { display:flex; align-items:center; gap:8px; padding:.45rem 1rem; font-size:12px; font-weight:500; letter-spacing:.07em; color:#A89E8E; text-decoration:none; text-transform:uppercase; border-radius:4px; border-left:2px solid transparent; background:#131110; transition:all .1s; -webkit-tap-highlight-color:transparent; }
-.section-link:hover, .section-link:active { color:#D8CEBC; border-left-color:#8B1A1A; background:#1A1714; }
-.sl-dot   { width:4px; height:4px; border-radius:50%; background:#342C24; flex-shrink:0; }
-.sl-arrow { margin-left:auto; color:#342C24; font-size:14px; }
-.section-link:hover .sl-dot, .section-link:active .sl-dot { background:#8B1A1A; }
-.section-link:hover .sl-arrow, .section-link:active .sl-arrow { color:#8B1A1A; }
+.gate-overlay{position:fixed;inset:0;background:#0C0A08;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;padding:2rem;font-family:'Share Tech Mono',monospace}
+.gate-logo{width:70px;height:70px;object-fit:contain}
+.gate-title{font-family:'VT323',monospace;font-size:28px;letter-spacing:.18em;color:#D8CEBC;text-align:center}
+.gate-sub{font-size:10px;color:#342C24;letter-spacing:.18em;text-align:center;margin-top:-.5rem}
+.gate-form{display:flex;flex-direction:column;align-items:center;gap:.85rem;width:100%;max-width:260px}
+.gate-label{font-size:9px;color:#342C24;letter-spacing:.2em;align-self:flex-start}
+.gate-input{width:100%;background:#0F0D0B;border:1px solid #1C1714;padding:.6rem 1rem;font-family:'VT323',monospace;font-size:22px;letter-spacing:.3em;color:#D8CEBC;text-align:center;text-transform:uppercase;outline:none;transition:border-color .15s}
+.gate-input:focus{border-color:#8B1A1A}
+.gate-input.error{border-color:#8B1A1A;animation:shake .3s ease}
+.gate-btn{width:100%;background:#8B1A1A;border:none;padding:.6rem;font-family:'VT323',monospace;font-size:18px;letter-spacing:.15em;color:#D8CEBC;cursor:pointer;transition:background .15s}
+.gate-btn:hover{background:#6B1414}
+.gate-error{font-size:10px;color:#8B1A1A;letter-spacing:.12em;display:none}
+.gate-error.show{display:block}
+.gate-back{font-size:10px;color:#1C1714;letter-spacing:.15em;text-decoration:none;margin-top:.25rem;transition:color .15s}
+.gate-back:hover{color:#342C24}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 </style>
 </head>
 <body>
 
+<div class="gate-overlay" id="gate">
+  <img src="logo.png" alt="DMC" class="gate-logo">
+  <div>
+    <div class="gate-title">DUNKELGANG_MC</div>
+    <div class="gate-sub">// ARCHIVES_INTERNES — ACCES_RESTREINT</div>
+  </div>
+  <div class="gate-form">
+    <div class="gate-label">// MOT_DE_PASSE</div>
+    <input type="password" class="gate-input" id="gate-input" maxlength="20" placeholder="· · · · ·" autocomplete="off">
+    <button class="gate-btn" onclick="checkPass()">[ENTRER]</button>
+    <div class="gate-error" id="gate-error">// ACCES_REFUSE</div>
+    <a href="../index.html" class="gate-back">// RETOUR</a>
+  </div>
+</div>
+
 <nav class="site-nav">
   <a href="index.html" class="nav-logo">
-    <img src="logo.png" alt="Dunkelgang MC">
+    <img src="logo.png" alt="DMC">
     <div>
-      <div class="nav-club-title">DUNKELGANG MC</div>
-      <div class="nav-club-sub">Rhin Supérieur — 1971</div>
+      <div class="nav-club-title">DUNKELGANG_MC</div>
+      <div class="nav-club-sub">REF://DMC-71-ARCH-001</div>
     </div>
   </a>
   <div class="nav-right">
+    <div class="nav-badge">[DACHS]</div>
     <button class="nav-menu-btn" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -44,185 +59,65 @@
 <div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
 <div class="menu-drawer" id="drawer">
   <div class="menu-close"><button onclick="toggleMenu()">&#x2715;</button></div>
-<div class="menu-section"><div class="menu-label">Club</div><a href="synthese.html" class="menu-item"><span class="menu-dot"></span>Synthèse</a></div><div class="menu-section"><div class="menu-label">Membres</div><a href="kaspar.html" class="menu-item"><span class="menu-dot"></span>Kaiser — Kaspar</a><a href="morel.html" class="menu-item"><span class="menu-dot"></span>Pater — Morel</a><a href="wolff.html" class="menu-item"><span class="menu-dot"></span>Klingen — Wolff</a><a href="perrin.html" class="menu-item"><span class="menu-dot"></span>Grillon — Perrin</a><a href="stein.html" class="menu-item"><span class="menu-dot"></span>Brume — Stein</a><a href="aubry.html" class="menu-item"><span class="menu-dot"></span>Chacal — Aubry</a><a href="keller.html" class="menu-item"><span class="menu-dot"></span>Rabe — Keller</a><a href="brandt.html" class="menu-item"><span class="menu-dot"></span>Maulwurf — Brandt</a><a href="voss.html" class="menu-item"><span class="menu-dot"></span>Nichts — Voss</a><a href="volkov.html" class="menu-item"><span class="menu-dot"></span>Volk — Volkov</a></div><div class="menu-section"><div class="menu-label">Territoire</div><a href="territoire.html" class="menu-item"><span class="menu-dot"></span>Chapters & axes</a><a href="carte.html" class="menu-item"><span class="menu-dot"></span>Carte interactive</a></div><div class="menu-section"><div class="menu-label">Activités</div><a href="activites.html" class="menu-item"><span class="menu-dot"></span>Activités du club</a><a href="sentinel.html" class="menu-item"><span class="menu-dot"></span>Sentinel GmbH</a></div><div class="menu-section"><div class="menu-label">Histoire</div><a href="historique.html" class="menu-item"><span class="menu-dot"></span>Fil historique</a><a href="crises.html" class="menu-item"><span class="menu-dot"></span>Grandes crises</a></div><div class="menu-section"><div class="menu-label">Relations</div><a href="relations.html" class="menu-item"><span class="menu-dot"></span>Alliances & ennemis</a></div><div class="menu-section"><div class="menu-label">Code</div><a href="grades.html" class="menu-item"><span class="menu-dot"></span>Grades & fonctions</a><a href="ecussons.html" class="menu-item"><span class="menu-dot"></span>Écussons spéciaux</a><a href="regles.html" class="menu-item"><span class="menu-dot"></span>Règles internes</a></div>
+  <div class="menu-section"><div class="menu-label">CLUB</div><a href='synthese.html' class='menu-item'>Synthèse</a></div><div class="menu-section"><div class="menu-label">MEMBRES</div><a href='kaspar.html' class='menu-item'>Kaiser</a><a href='morel.html' class='menu-item'>Pater</a><a href='wolff.html' class='menu-item'>Klingen</a><a href='perrin.html' class='menu-item'>Grillon</a><a href='stein.html' class='menu-item'>Brume</a><a href='aubry.html' class='menu-item'>Chacal</a><a href='keller.html' class='menu-item'>Rabe</a><a href='brandt.html' class='menu-item'>Maulwurf</a><a href='voss.html' class='menu-item'>Nichts</a><a href='volkov.html' class='menu-item'>Volk</a><a href='membres.html' class='menu-item'>Tous les membres</a></div><div class="menu-section"><div class="menu-label">TERRITOIRE</div><a href='territoire.html' class='menu-item'>Chapters &amp; axes</a><a href='carte.html' class='menu-item'>Carte interactive</a></div><div class="menu-section"><div class="menu-label">ACTIVITES</div><a href='activites.html' class='menu-item'>Activités</a><a href='sentinel.html' class='menu-item'>Sentinel_GmbH</a></div><div class="menu-section"><div class="menu-label">HISTOIRE</div><a href='historique.html' class='menu-item'>Fil historique</a><a href='crises.html' class='menu-item'>Grandes crises</a></div><div class="menu-section"><div class="menu-label">RELATIONS</div><a href='relations.html' class='menu-item'>Alliances &amp; ennemis</a></div><div class="menu-section"><div class="menu-label">CODE</div><a href='grades.html' class='menu-item'>Grades &amp; fonctions</a><a href='ecussons.html' class='menu-item'>Écussons</a><a href='regles.html' class='menu-item'>Règles internes</a><a href='integration.html' class='menu-item'>Intégration</a></div><div class="menu-section"><div class="menu-label">MACHINES</div><a href='motos.html' class='menu-item'>Les motos</a></div>
 </div>
+
+<div class="site-layout">
+<aside class="site-sidebar">
+  <div class="ss-section"><div class="ss-label">CLUB</div><a href="synthese.html" class="ss-item">Synthèse</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">MEMBRES</div><a href="kaspar.html" class="ss-item">Kaiser</a><a href="morel.html" class="ss-item">Pater</a><a href="wolff.html" class="ss-item">Klingen</a><a href="perrin.html" class="ss-item">Grillon</a><a href="stein.html" class="ss-item">Brume</a><a href="aubry.html" class="ss-item">Chacal</a><a href="keller.html" class="ss-item">Rabe</a><a href="brandt.html" class="ss-item">Maulwurf</a><a href="voss.html" class="ss-item">Nichts</a><a href="volkov.html" class="ss-item">Volk</a><a href="membres.html" class="ss-item">Tous les membres</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">TERRITOIRE</div><a href="territoire.html" class="ss-item">Chapters &amp; axes</a><a href="carte.html" class="ss-item">Carte interactive</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">ACTIVITES</div><a href="activites.html" class="ss-item">Activités</a><a href="sentinel.html" class="ss-item">Sentinel_GmbH</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">HISTOIRE</div><a href="historique.html" class="ss-item">Fil historique</a><a href="crises.html" class="ss-item">Grandes crises</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">RELATIONS</div><a href="relations.html" class="ss-item">Alliances &amp; ennemis</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">CODE</div><a href="grades.html" class="ss-item">Grades &amp; fonctions</a><a href="ecussons.html" class="ss-item">Écussons</a><a href="regles.html" class="ss-item">Règles internes</a><a href="integration.html" class="ss-item">Intégration</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">MACHINES</div><a href="motos.html" class="ss-item">Les motos</a></div><div class="ss-divider"></div>
+  <div class="ss-footer">
+    <div class="ss-footer-ref">DMC-ARCH-V1989.11</div>
+    <div class="ss-stamp">[RESTREINT]</div>
+  </div>
+</aside>
 
 <div class="page">
   <div class="home-hero">
     <img src="logo.png" alt="Dunkelgang MC">
-    <div class="hero-title">DUNKELGANG MC</div>
+    <div class="hero-title">DUNKELGANG_MC</div>
     <div class="hero-rule"></div>
-    <div class="hero-sub">Archives internes du club</div>
+    <div class="hero-sub">// ARCHIVES_INTERNES — BREISACH_AM_RHEIN</div>
     <div class="hero-pills">
-      <span class="hero-pill red">1 % Outlaw</span>
-      <span class="hero-pill">Fondé 1971</span>
-      <span class="hero-pill">Rhin Supérieur</span>
-      <span class="hero-pill">10 fondateurs</span>
-      <span class="hero-pill">9 chapters — 1989</span>
+      <span class="hero-pill red">[1%_OUTLAW]</span>
+      <span class="hero-pill">[FONDE_1971]</span>
+      <span class="hero-pill">[RHIN_SUPERIEUR]</span>
+      <span class="hero-pill">[10_FONDATEURS]</span>
+      <span class="hero-pill">[9_CHAPTERS_1989]</span>
     </div>
   </div>
-
-<div class="section-block"><div class="section-label">Club</div><div class="section-links"><a href="synthese.html" class="section-link"><span class="sl-dot"></span>Synthèse<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Membres</div><div class="section-links"><a href="kaspar.html" class="section-link"><span class="sl-dot"></span>Kaiser — Kaspar<span class="sl-arrow">→</span></a><a href="morel.html" class="section-link"><span class="sl-dot"></span>Pater — Morel<span class="sl-arrow">→</span></a><a href="wolff.html" class="section-link"><span class="sl-dot"></span>Klingen — Wolff<span class="sl-arrow">→</span></a><a href="perrin.html" class="section-link"><span class="sl-dot"></span>Grillon — Perrin<span class="sl-arrow">→</span></a><a href="stein.html" class="section-link"><span class="sl-dot"></span>Brume — Stein<span class="sl-arrow">→</span></a><a href="aubry.html" class="section-link"><span class="sl-dot"></span>Chacal — Aubry<span class="sl-arrow">→</span></a><a href="keller.html" class="section-link"><span class="sl-dot"></span>Rabe — Keller<span class="sl-arrow">→</span></a><a href="brandt.html" class="section-link"><span class="sl-dot"></span>Maulwurf — Brandt<span class="sl-arrow">→</span></a><a href="voss.html" class="section-link"><span class="sl-dot"></span>Nichts — Voss<span class="sl-arrow">→</span></a><a href="volkov.html" class="section-link"><span class="sl-dot"></span>Volk — Volkov<span class="sl-arrow">→</span></a><a href="membres.html" class="section-link"><span class="sl-dot"></span>Tous les membres<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Territoire</div><div class="section-links"><a href="territoire.html" class="section-link"><span class="sl-dot"></span>Chapters & axes<span class="sl-arrow">→</span></a><a href="carte.html" class="section-link"><span class="sl-dot"></span>Carte interactive<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Activités</div><div class="section-links"><a href="activites.html" class="section-link"><span class="sl-dot"></span>Activités du club<span class="sl-arrow">→</span></a><a href="sentinel.html" class="section-link"><span class="sl-dot"></span>Sentinel GmbH<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Histoire</div><div class="section-links"><a href="historique.html" class="section-link"><span class="sl-dot"></span>Fil historique<span class="sl-arrow">→</span></a><a href="crises.html" class="section-link"><span class="sl-dot"></span>Grandes crises<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Relations</div><div class="section-links"><a href="relations.html" class="section-link"><span class="sl-dot"></span>Alliances & ennemis<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Code</div><div class="section-links"><a href="grades.html" class="section-link"><span class="sl-dot"></span>Grades & fonctions<span class="sl-arrow">→</span></a><a href="ecussons.html" class="section-link"><span class="sl-dot"></span>Écussons spéciaux<span class="sl-arrow">→</span></a><a href="regles.html" class="section-link"><span class="sl-dot"></span>Règles internes<span class="sl-arrow">→</span></a><a href="integration.html" class="section-link"><span class="sl-dot"></span>Intégration<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">Machines</div><div class="section-links"><a href="motos.html" class="section-link"><span class="sl-dot"></span>Les motos<span class="sl-arrow">→</span></a></div></div>
+  <div class="section-block"><div class="section-label">CLUB</div><div class="section-links"><a href="synthese.html" class="section-link">Synthèse<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">MEMBRES</div><div class="section-links"><a href="kaspar.html" class="section-link">Kaiser<span class="sl-arrow">→</span></a><a href="morel.html" class="section-link">Pater<span class="sl-arrow">→</span></a><a href="wolff.html" class="section-link">Klingen<span class="sl-arrow">→</span></a><a href="perrin.html" class="section-link">Grillon<span class="sl-arrow">→</span></a><a href="stein.html" class="section-link">Brume<span class="sl-arrow">→</span></a><a href="aubry.html" class="section-link">Chacal<span class="sl-arrow">→</span></a><a href="keller.html" class="section-link">Rabe<span class="sl-arrow">→</span></a><a href="brandt.html" class="section-link">Maulwurf<span class="sl-arrow">→</span></a><a href="voss.html" class="section-link">Nichts<span class="sl-arrow">→</span></a><a href="volkov.html" class="section-link">Volk<span class="sl-arrow">→</span></a><a href="membres.html" class="section-link">Tous les membres<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">TERRITOIRE</div><div class="section-links"><a href="territoire.html" class="section-link">Chapters &amp; axes<span class="sl-arrow">→</span></a><a href="carte.html" class="section-link">Carte interactive<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">ACTIVITES</div><div class="section-links"><a href="activites.html" class="section-link">Activités<span class="sl-arrow">→</span></a><a href="sentinel.html" class="section-link">Sentinel_GmbH<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">HISTOIRE</div><div class="section-links"><a href="historique.html" class="section-link">Fil historique<span class="sl-arrow">→</span></a><a href="crises.html" class="section-link">Grandes crises<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">RELATIONS</div><div class="section-links"><a href="relations.html" class="section-link">Alliances &amp; ennemis<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">CODE</div><div class="section-links"><a href="grades.html" class="section-link">Grades &amp; fonctions<span class="sl-arrow">→</span></a><a href="ecussons.html" class="section-link">Écussons<span class="sl-arrow">→</span></a><a href="regles.html" class="section-link">Règles internes<span class="sl-arrow">→</span></a><a href="integration.html" class="section-link">Intégration<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">MACHINES</div><div class="section-links"><a href="motos.html" class="section-link">Les motos<span class="sl-arrow">→</span></a></div></div>
+</div>
 </div>
 
 <script>
+if (sessionStorage.getItem('dmc_auth') === '1') {
+  document.getElementById('gate').style.display = 'none';
+}
 function toggleMenu(){
   document.getElementById('overlay').classList.toggle('open');
   document.getElementById('drawer').classList.toggle('open');
 }
-</script>
-
-<style>
-.gate-overlay {
-  position: fixed;
-  inset: 0;
-  background: #0C0A08;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
-  font-family: 'Barlow Condensed', sans-serif;
-}
-.gate-logo {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 12px rgba(139,26,26,.4));
-}
-.gate-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  letter-spacing: .2em;
-  color: #D8CEBC;
-  text-align: center;
-}
-.gate-sub {
-  font-size: 11px;
-  color: #70665A;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  text-align: center;
-  margin-top: -.5rem;
-}
-.gate-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  max-width: 280px;
-}
-.gate-label {
-  font-size: 10px;
-  color: #70665A;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  align-self: flex-start;
-}
-.gate-input {
-  width: 100%;
-  background: #131110;
-  border: 1px solid #26201A;
-  border-radius: 3px;
-  padding: .7rem 1rem;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
-  letter-spacing: .3em;
-  color: #D8CEBC;
-  text-align: center;
-  text-transform: uppercase;
-  outline: none;
-  transition: border-color .15s;
-}
-.gate-input:focus { border-color: #8B1A1A; }
-.gate-input.error { border-color: #8B1A1A; animation: shake .3s ease; }
-.gate-btn {
-  width: 100%;
-  background: #8B1A1A;
-  border: none;
-  border-radius: 3px;
-  padding: .7rem;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 16px;
-  letter-spacing: .2em;
-  color: #D8CEBC;
-  cursor: pointer;
-  transition: background .15s;
-}
-.gate-btn:hover { background: #6B1414; }
-.gate-error {
-  font-size: 11px;
-  color: #8B1A1A;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  display: none;
-}
-.gate-error.show { display: block; }
-.gate-back {
-  font-size: 10px;
-  color: #342C24;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  text-decoration: none;
-  margin-top: .5rem;
-  transition: color .15s;
-}
-.gate-back:hover { color: #70665A; }
-@keyframes shake {
-  0%,100%{transform:translateX(0)}
-  25%{transform:translateX(-6px)}
-  75%{transform:translateX(6px)}
-}
-</style>
-
-<div class="gate-overlay" id="gate">
-  <img src="logo.png" alt="Dunkelgang MC" class="gate-logo">
-  <div>
-    <div class="gate-title">DUNKELGANG MC</div>
-    <div class="gate-sub">Archives internes — Accès restreint</div>
-  </div>
-  <div class="gate-form">
-    <div class="gate-label">Mot de passe</div>
-    <input type="password" class="gate-input" id="gate-input" maxlength="20" placeholder="· · · · ·" autocomplete="off">
-    <button class="gate-btn" onclick="checkPass()">Entrer</button>
-    <div class="gate-error" id="gate-error">Accès refusé</div>
-    <a href="../index.html" class="gate-back">← Retour</a>
-  </div>
-</div>
-
-<script>
-// Check if already authenticated this session
-if (sessionStorage.getItem('dmc_auth') === '1') {
-  document.getElementById('gate').style.display = 'none';
-}
-
-document.getElementById('gate-input').addEventListener('keydown', function(e) {
+document.getElementById('gate-input').addEventListener('keydown', function(e){
   if (e.key === 'Enter') checkPass();
 });
-
-function checkPass() {
-  var input = document.getElementById('gate-input');
-  var val = input.value.trim().toUpperCase();
+function checkPass(){
+  var val = document.getElementById('gate-input').value.trim().toUpperCase();
   var err = document.getElementById('gate-error');
-  
-  if (val === 'DACHS') {
-    sessionStorage.setItem('dmc_auth', '1');
+  var inp = document.getElementById('gate-input');
+  if (val === 'DACHS'){
+    sessionStorage.setItem('dmc_auth','1');
     var gate = document.getElementById('gate');
-    gate.style.transition = 'opacity .4s ease';
+    gate.style.transition = 'opacity .4s';
     gate.style.opacity = '0';
-    setTimeout(function() { gate.style.display = 'none'; }, 400);
+    setTimeout(function(){ gate.style.display='none'; }, 400);
   } else {
-    input.classList.add('error');
+    inp.classList.add('error');
     err.classList.add('show');
-    input.value = '';
-    setTimeout(function() { input.classList.remove('error'); }, 300);
-    setTimeout(function() { err.classList.remove('show'); }, 2000);
+    inp.value = '';
+    setTimeout(function(){ inp.classList.remove('error'); }, 300);
+    setTimeout(function(){ err.classList.remove('show'); }, 2000);
   }
 }
 </script>
-
 </body>
 </html>

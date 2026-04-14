@@ -6,22 +6,23 @@ if (sessionStorage.getItem('dmc_auth') !== '1') {
   window.location.href = 'index.html';
 }
 </script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dunkelgang MC — Grades</title>
 <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 <nav class="site-nav">
   <a href="index.html" class="nav-logo">
-    <img src="logo.png" alt="Dunkelgang MC">
+    <img src="logo.png" alt="DMC">
     <div>
-      <div class="nav-club-title">DUNKELGANG MC</div>
-      <div class="nav-club-sub">Rhin Supérieur — 1971</div>
+      <div class="nav-club-title">DUNKELGANG_MC</div>
+      <div class="nav-club-sub">REF://DMC-71-ARCH-001</div>
     </div>
   </a>
   <div class="nav-right">
+    <div class="nav-badge">[DACHS]</div>
     <button class="nav-menu-btn" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -30,7 +31,7 @@ if (sessionStorage.getItem('dmc_auth') !== '1') {
 <div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
 <div class="menu-drawer" id="drawer">
   <div class="menu-close"><button onclick="toggleMenu()">&#x2715;</button></div>
-  <div class="menu-section"><div class="menu-label">Club</div><a href="synthese.html" class="menu-item"><span class="menu-dot"></span>Synthèse</a></div><div class="menu-section"><div class="menu-label">Membres</div><a href="kaspar.html" class="menu-item"><span class="menu-dot"></span>Kaiser — Kaspar</a><a href="morel.html" class="menu-item"><span class="menu-dot"></span>Pater — Morel</a><a href="wolff.html" class="menu-item"><span class="menu-dot"></span>Klingen — Wolff</a><a href="perrin.html" class="menu-item"><span class="menu-dot"></span>Grillon — Perrin</a><a href="stein.html" class="menu-item"><span class="menu-dot"></span>Brume — Stein</a><a href="aubry.html" class="menu-item"><span class="menu-dot"></span>Chacal — Aubry</a><a href="keller.html" class="menu-item"><span class="menu-dot"></span>Rabe — Keller</a><a href="brandt.html" class="menu-item"><span class="menu-dot"></span>Maulwurf — Brandt</a><a href="voss.html" class="menu-item"><span class="menu-dot"></span>Nichts — Voss</a><a href="volkov.html" class="menu-item"><span class="menu-dot"></span>Volk — Volkov</a><a href="membres.html" class="menu-item"><span class="menu-dot"></span>Tous les membres</a></div><div class="menu-section"><div class="menu-label">Territoire</div><a href="territoire.html" class="menu-item"><span class="menu-dot"></span>Chapters & axes</a><a href="carte.html" class="menu-item"><span class="menu-dot"></span>Carte interactive</a></div><div class="menu-section"><div class="menu-label">Activités</div><a href="activites.html" class="menu-item"><span class="menu-dot"></span>Activités du club</a><a href="sentinel.html" class="menu-item"><span class="menu-dot"></span>Sentinel GmbH</a></div><div class="menu-section"><div class="menu-label">Histoire</div><a href="historique.html" class="menu-item"><span class="menu-dot"></span>Fil historique</a><a href="crises.html" class="menu-item"><span class="menu-dot"></span>Grandes crises</a></div><div class="menu-section"><div class="menu-label">Relations</div><a href="relations.html" class="menu-item"><span class="menu-dot"></span>Alliances & ennemis</a></div><div class="menu-section"><div class="menu-label">Code</div><a href="grades.html" class="menu-item active"><span class="menu-dot"></span>Grades & fonctions</a><a href="ecussons.html" class="menu-item"><span class="menu-dot"></span>Écussons spéciaux</a><a href="regles.html" class="menu-item"><span class="menu-dot"></span>Règles internes</a><a href="integration.html" class="menu-item"><span class="menu-dot"></span>Intégration</a></div><div class="menu-section"><div class="menu-label">Machines</div><a href="motos.html" class="menu-item"><span class="menu-dot"></span>Les motos</a></div>
+  <div class="menu-section"><div class="menu-label">CLUB</div><a href="synthese.html" class="menu-item">Synthèse</a></div><div class="menu-section"><div class="menu-label">MEMBRES</div><a href="kaspar.html" class="menu-item">Kaiser</a><a href="morel.html" class="menu-item">Pater</a><a href="wolff.html" class="menu-item">Klingen</a><a href="perrin.html" class="menu-item">Grillon</a><a href="stein.html" class="menu-item">Brume</a><a href="aubry.html" class="menu-item">Chacal</a><a href="keller.html" class="menu-item">Rabe</a><a href="brandt.html" class="menu-item">Maulwurf</a><a href="voss.html" class="menu-item">Nichts</a><a href="volkov.html" class="menu-item">Volk</a><a href="membres.html" class="menu-item">Tous les membres</a></div><div class="menu-section"><div class="menu-label">TERRITOIRE</div><a href="territoire.html" class="menu-item">Chapters &amp; axes</a><a href="carte.html" class="menu-item">Carte interactive</a></div><div class="menu-section"><div class="menu-label">ACTIVITES</div><a href="activites.html" class="menu-item">Activités</a><a href="sentinel.html" class="menu-item">Sentinel_GmbH</a></div><div class="menu-section"><div class="menu-label">HISTOIRE</div><a href="historique.html" class="menu-item">Fil historique</a><a href="crises.html" class="menu-item">Grandes crises</a></div><div class="menu-section"><div class="menu-label">RELATIONS</div><a href="relations.html" class="menu-item">Alliances &amp; ennemis</a></div><div class="menu-section"><div class="menu-label">CODE</div><a href="grades.html" class="menu-item active">Grades &amp; fonctions</a><a href="ecussons.html" class="menu-item">Écussons</a><a href="regles.html" class="menu-item">Règles internes</a><a href="integration.html" class="menu-item">Intégration</a></div><div class="menu-section"><div class="menu-label">MACHINES</div><a href="motos.html" class="menu-item">Les motos</a></div>
 </div>
 <script>
 function toggleMenu(){
@@ -38,6 +39,14 @@ function toggleMenu(){
   document.getElementById('drawer').classList.toggle('open');
 }
 </script>
+<div class="site-layout">
+<aside class="site-sidebar">
+  <div class="ss-section"><div class="ss-label">CLUB</div><a href="synthese.html" class="ss-item">Synthèse</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">MEMBRES</div><a href="kaspar.html" class="ss-item">Kaiser</a><a href="morel.html" class="ss-item">Pater</a><a href="wolff.html" class="ss-item">Klingen</a><a href="perrin.html" class="ss-item">Grillon</a><a href="stein.html" class="ss-item">Brume</a><a href="aubry.html" class="ss-item">Chacal</a><a href="keller.html" class="ss-item">Rabe</a><a href="brandt.html" class="ss-item">Maulwurf</a><a href="voss.html" class="ss-item">Nichts</a><a href="volkov.html" class="ss-item">Volk</a><a href="membres.html" class="ss-item">Tous les membres</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">TERRITOIRE</div><a href="territoire.html" class="ss-item">Chapters &amp; axes</a><a href="carte.html" class="ss-item">Carte interactive</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">ACTIVITES</div><a href="activites.html" class="ss-item">Activités</a><a href="sentinel.html" class="ss-item">Sentinel_GmbH</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">HISTOIRE</div><a href="historique.html" class="ss-item">Fil historique</a><a href="crises.html" class="ss-item">Grandes crises</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">RELATIONS</div><a href="relations.html" class="ss-item">Alliances &amp; ennemis</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">CODE</div><a href="grades.html" class="ss-item active">Grades &amp; fonctions</a><a href="ecussons.html" class="ss-item">Écussons</a><a href="regles.html" class="ss-item">Règles internes</a><a href="integration.html" class="ss-item">Intégration</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">MACHINES</div><a href="motos.html" class="ss-item">Les motos</a></div><div class="ss-divider"></div>
+  <div class="ss-footer">
+    <div class="ss-footer-ref">DMC-ARCH-V1989.11</div>
+    <div class="ss-stamp">[RESTREINT]</div>
+  </div>
+</aside>
 <div class="page">
 <div class="card">
   <div class="card-header">
@@ -166,6 +175,7 @@ function toggleMenu(){
     </div>
 
   </div>
+</div>
 </div>
 </div>
 </body>
