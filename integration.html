@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunkelgang MC — Intégration</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.phase-header {
+  background: var(--surface);
+  border-bottom: 0.5px solid var(--border);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.phase-num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  letter-spacing: .1em;
+  color: var(--border2);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.phase-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
+  letter-spacing: .12em;
+  color: var(--cream);
+  line-height: 1;
+}
+.phase-sub {
+  font-size: 10px;
+  color: var(--cream3);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+.phase-badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+.rule-block {
+  background: var(--surface);
+  border-radius: 6px;
+  padding: .85rem 1rem;
+  margin-bottom: 6px;
+}
+.rule-block-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--cream3);
+  margin-bottom: 8px;
+}
+.rule-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 12px;
+  color: var(--cream2);
+  line-height: 1.5;
+  border-bottom: 0.5px solid var(--border);
+}
+.rule-line:last-child { border-bottom: none; }
+.rule-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+.inv-phase {
+  display: flex;
+  gap: 12px;
+  padding: .75rem 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.inv-phase:last-child { border-bottom: none; }
+.inv-num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
+  color: var(--border2);
+  width: 28px;
+  flex-shrink: 0;
+  line-height: 1.1;
+}
+.inv-title { font-size: 13px; font-weight: 500; color: var(--cream); margin-bottom: 3px; }
+.inv-duration { font-size: 10px; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
+.inv-desc { font-size: 12px; color: var(--cream2); line-height: 1.6; }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Dunkelgang MC">
+    <div>
+      <div class="nav-club-title">DUNKELGANG MC</div>
+      <div class="nav-club-sub">Rhin Supérieur — 1971</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <button class="nav-menu-btn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="menu-drawer" id="drawer">
+  <div class="menu-close"><button onclick="toggleMenu()">&#x2715;</button></div>
+  <div class="menu-section"><div class="menu-label">Club</div><a href="synthese.html" class="menu-item"><span class="menu-dot"></span>Synthèse</a></div>
+  <div class="menu-section"><div class="menu-label">Membres</div>
+    <a href="kaspar.html" class="menu-item"><span class="menu-dot"></span>Kaiser — Kaspar</a>
+    <a href="morel.html" class="menu-item"><span class="menu-dot"></span>Pater — Morel</a>
+    <a href="wolff.html" class="menu-item"><span class="menu-dot"></span>Klingen — Wolff</a>
+    <a href="perrin.html" class="menu-item"><span class="menu-dot"></span>Grillon — Perrin</a>
+    <a href="stein.html" class="menu-item"><span class="menu-dot"></span>Brume — Stein</a>
+    <a href="aubry.html" class="menu-item"><span class="menu-dot"></span>Chacal — Aubry</a>
+    <a href="keller.html" class="menu-item"><span class="menu-dot"></span>Rabe — Keller</a>
+    <a href="brandt.html" class="menu-item"><span class="menu-dot"></span>Maulwurf — Brandt</a>
+    <a href="voss.html" class="menu-item"><span class="menu-dot"></span>Nichts — Voss</a>
+    <a href="volkov.html" class="menu-item"><span class="menu-dot"></span>Volk — Volkov</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">Territoire</div>
+    <a href="territoire.html" class="menu-item"><span class="menu-dot"></span>Chapters & axes</a>
+    <a href="carte.html" class="menu-item"><span class="menu-dot"></span>Carte interactive</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">Activités</div>
+    <a href="activites.html" class="menu-item"><span class="menu-dot"></span>Activités du club</a>
+    <a href="sentinel.html" class="menu-item"><span class="menu-dot"></span>Sentinel GmbH</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">Histoire</div>
+    <a href="historique.html" class="menu-item"><span class="menu-dot"></span>Fil historique</a>
+    <a href="crises.html" class="menu-item"><span class="menu-dot"></span>Grandes crises</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">Relations</div>
+    <a href="relations.html" class="menu-item"><span class="menu-dot"></span>Alliances & ennemis</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">Code</div>
+    <a href="grades.html" class="menu-item"><span class="menu-dot"></span>Grades & fonctions</a>
+    <a href="ecussons.html" class="menu-item"><span class="menu-dot"></span>Écussons spéciaux</a>
+    <a href="regles.html" class="menu-item"><span class="menu-dot"></span>Règles internes</a>
+    <a href="integration.html" class="menu-item active"><span class="menu-dot"></span>Intégration</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">Machines</div>
+    <a href="motos.html" class="menu-item"><span class="menu-dot"></span>Les motos</a>
+  </div>
+</div>
+<script>
+function toggleMenu(){
+  document.getElementById('overlay').classList.toggle('open');
+  document.getElementById('drawer').classList.toggle('open');
+}
+</script>
+
+<div class="page">
+
+  <!-- Intro -->
+  <div class="card" style="margin-bottom:1.25rem">
+    <div class="card-header">
+      <div class="card-title">PROCESSUS D'INTÉGRATION</div>
+      <div class="card-sub">Schatten → Novize → Einherjar</div>
+    </div>
+    <div class="card-body">
+      <div class="note note-gray">Le Dunkelgang ne recrute pas. Il observe, sélectionne, et propose — dans cet ordre. Personne n'entre dans ce club en le demandant. Personne n'en sort sans que le club l'ait décidé. La procédure a été entièrement revue après la trahison de 1977 — chaque étape est conçue pour détecter ce que la précédente n'a pas vu.</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-label">Profils privilégiés</div><div class="stat-val" style="font-size:13px">Anciens militaires / policiers</div></div>
+        <div class="stat"><div class="stat-label">Durée totale minimum</div><div class="stat-val" style="font-size:13px">3 à 5 ans</div></div>
+        <div class="stat"><div class="stat-label">Décision finale</div><div class="stat-val" style="font-size:13px">Conseil — unanimité</div></div>
+        <div class="stat"><div class="stat-label">Responsable</div><div class="stat-val" style="font-size:13px">Prüfer — bras droit du Tyr</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Repérage -->
+  <div class="card" style="margin-bottom:1.25rem">
+    <div class="phase-header">
+      <div>
+        <div class="phase-title">Repérage</div>
+        <div class="phase-sub">Passif et patient — le club n'approche pas</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="rule-block">
+        <div class="rule-block-title">Les deux canaux</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#8B1A1A"></div><div><strong>Le bar</strong> — Der Durchgang / Le Passage. Le barman est toujours un Einherjar. Il voit tout, note mentalement, ne dit rien. Un homme qui revient, qui paie, qui ne pose pas de questions, qui gère ses problèmes seul — ça se remarque. Si quelqu'un l'intéresse, il en parle au Heimdall lors de la réunion hebdomadaire.</div></div>
+        <div class="rule-line"><div class="rule-dot" style="background:#8B1A1A"></div><div><strong>Sentinel GmbH</strong> — Un employé qui fait son travail sans poser de questions sur ce qu'il ne doit pas voir, qui a les bons réflexes sous pression, qui ne parle pas de son travail à l'extérieur. Le Prüfer le repère naturellement. Sentinel est un filtre autant qu'une façade.</div></div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-block-title">Disqualification immédiate — sans investigation</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#70665A"></div>Quelqu'un qui demande à rejoindre le club</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#70665A"></div>Quelqu'un qui pose des questions sur les membres</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#70665A"></div>Quelqu'un qui parle trop — sur lui, sur les autres</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#70665A"></div>Quelqu'un avec des dettes visibles ou une addiction</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#70655A"></div>Quelqu'un qui a déjà appartenu à un autre club</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Investigation -->
+  <div class="card" style="margin-bottom:1.25rem">
+    <div class="phase-header">
+      <div>
+        <div class="phase-title">Investigation</div>
+        <div class="phase-sub">9 à 12 mois — trois phases distinctes</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="inv-phase">
+        <div class="inv-num">01</div>
+        <div>
+          <div class="inv-title">Observation passive</div>
+          <div class="inv-duration">3 à 6 mois — la cible ne sait pas</div>
+          <div class="inv-desc">Le Heimdall ouvre un dossier. On regarde les habitudes, les fréquentations, les réactions sous pression. On ne l'approche pas. Si elle disparaît du radar ou montre un signe disqualifiant — le dossier se ferme. Elle ne l'a jamais su. Cette phase filtre 80% des candidats potentiels.</div>
+        </div>
+      </div>
+      <div class="inv-phase">
+        <div class="inv-num">02</div>
+        <div>
+          <div class="inv-title">Vérification du passé</div>
+          <div class="inv-duration">2 à 4 mois — Nichts prend la main</div>
+          <div class="inv-desc">Service militaire ou policier vérifié — unité, grade, distinctions, conditions de départ. Recherche de dettes, casiers, affiliations extrêmes, liens familiaux problématiques. Point non négociable depuis 1977 : vérification si la personne a déjà été approchée par des services de renseignement. Les contacts douaniers et policiers du club servent ici — pas pour corrompre, pour vérifier. Rien qui laisse de trace côté club.</div>
+        </div>
+      </div>
+      <div class="inv-phase">
+        <div class="inv-num">03</div>
+        <div>
+          <div class="inv-title">Validation au Conseil</div>
+          <div class="inv-duration">1 réunion — unanimité requise</div>
+          <div class="inv-desc">Le Heimdall présente le dossier complet. Chaque membre peut poser des questions ou signaler une réserve. Une seule réserve non résolue bloque tout — sans appel. Si le Conseil valide, le Prüfer est chargé du premier contact.</div>
+        </div>
+      </div>
+      <div class="inv-phase">
+        <div class="inv-num">04</div>
+        <div>
+          <div class="inv-title">Premier contact</div>
+          <div class="inv-duration">Le Prüfer — sobre et ambigu</div>
+          <div class="inv-desc">Une conversation naturelle dans un cadre neutre — le bar, Sentinel, un événement. Pas de révélation, pas d'invitation explicite. Le Prüfer évalue la réaction à la proximité du club. Si la personne cherche à en savoir plus — dossier fermé. Si elle reste à sa place — quelques semaines plus tard, une proposition informelle de devenir Schatten.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schatten -->
+  <div class="card" style="margin-bottom:1.25rem">
+    <div class="phase-header">
+      <div class="phase-num">I</div>
+      <div>
+        <div class="phase-title">Schatten</div>
+        <div class="phase-sub">L'ombre — 12 à 24 mois minimum</div>
+      </div>
+      <span class="phase-badge" style="background:#2C2C2A;color:#B4B2A9">Hangaround</span>
+    </div>
+    <div class="card-body">
+      <div class="note note-gray">Le Schatten n'est pas membre. Il n'a pas de patch, pas de couleurs, pas de vote. Il est invité — et il peut être désinvité à tout moment sans explication. Le Prüfer est son seul interlocuteur officiel dans le club.</div>
+      <div class="rule-block">
+        <div class="rule-block-title">Ce qu'il fait</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Fréquente le bar régulièrement — devient une présence familière</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Aide sur des tâches logistiques légales — transport, manutention, sécurité via Sentinel</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Voit ce qu'on veut bien lui montrer — jamais plus</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-block-title">Ce qu'il ne fait pas</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#A32D2D"></div>Il n'assiste à aucune réunion</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#A32D2D"></div>Il ne connaît pas les activités illégales du club</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#A32D2D"></div>Il ne porte rien qui ressemble aux couleurs du club</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#A32D2D"></div>Il ne parle du club à personne dans sa vie personnelle</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#A32D2D"></div>Il ne pose jamais de questions sur ce qu'il ne comprend pas</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-block-title">Ce qui met fin au statut</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#854F0B"></div>Une question de trop</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#854F0B"></div>Un comportement qui attire l'attention des autorités</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#854F0B"></div>Une faiblesse — alcool, dette, entourage qui parle</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#854F0B"></div>Un mensonge détecté par le Heimdall</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Novize -->
+  <div class="card" style="margin-bottom:1.25rem">
+    <div class="phase-header">
+      <div class="phase-num">II</div>
+      <div>
+        <div class="phase-title">Novize</div>
+        <div class="phase-sub">Le prospect — 12 à 24 mois</div>
+      </div>
+      <span class="phase-badge" style="background:#854F0B;color:#FAEEDA">Prospect</span>
+    </div>
+    <div class="card-body">
+      <div class="note note-amber">Le Novize a été choisi. Il le sait. Le club aussi. C'est le moment le plus difficile — il en sait assez pour être dangereux, pas encore assez pour être protégé. Depuis 1977, tout Novize qui entre en contact avec des autorités hors cadre Sentinel doit le signaler immédiatement au Heimdall. Pas demain. Immédiatement.</div>
+      <div class="rule-block">
+        <div class="rule-block-title">Ce qu'il fait</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Porte un patch Novize — une seule pièce, pas de rocker</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Disponible pour le club — pas 24h/24 mais presque</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Prend en charge des missions concrètes sous supervision du Prüfer</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Comprend les activités réelles du club progressivement, par couches</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Assiste aux réunions uniquement pour son intronisation ou si une faute grave le concerne</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-block-title">Ce qu'il ne fait pas</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#A32D2D"></div>Il ne vote pas</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#A32D2D"></div>Il ne connaît pas l'intégralité des activités — c'est délibéré</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#A32D2D"></div>Il ne parle jamais au nom du club sans autorisation explicite</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#A32D2D"></div>Il ne touche pas aux finances</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-block-title">Ce qui met fin au statut</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#854F0B"></div>Il parle — c'est la fin, définitive</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#854F0B"></div>Il refuse un ordre direct du Prüfer ou du Tyr</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#854F0B"></div>Il montre de la faiblesse sous pression</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#854F0B"></div>Le Conseil vote contre sa progression à l'unanimité</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Einherjar -->
+  <div class="card" style="margin-bottom:1.25rem">
+    <div class="phase-header">
+      <div class="phase-num">III</div>
+      <div>
+        <div class="phase-title">Einherjar</div>
+        <div class="phase-sub">Full patch — membre à part entière</div>
+      </div>
+      <span class="phase-badge" style="background:#8B1A1A;color:#FCEBEB">Full Patch</span>
+    </div>
+    <div class="card-body">
+      <div class="rule-block">
+        <div class="rule-block-title">La cérémonie</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#D8CEBC"></div>Le Prüfer présente sa recommandation au Conseil lors d'une réunion ordinaire</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#D8CEBC"></div>Vote à l'unanimité — une seule voix contre bloque tout, sans discussion</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#D8CEBC"></div>Si le vote passe, le Novize est convoqué le soir même</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#D8CEBC"></div>Le Wotan lui remet les couleurs complètes en présence du Conseil uniquement</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#D8CEBC"></div>Personne ne discourt. Kaiser dit quelques mots, jamais les mêmes</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#D8CEBC"></div>Le nouveau membre offre une tournée au bar — c'est la seule tradition</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-block-title">Ce que ça change</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Il vote aux réunions mensuelles</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Il a accès à la caisse commune en cas de besoin validé par le Mime</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Sa famille entre dans la protection du club</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#1D9E75"></div>Son nom est inscrit dans le registre tenu par le Mime depuis 1971</div>
+      </div>
+      <div class="rule-block">
+        <div class="rule-block-title">Ce qui ne change pas</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#70665A"></div>Il reste redevable au Prüfer qui l'a intégré — loyauté informelle mais réelle</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#70665A"></div>Les fondateurs gardent une autorité morale que les règles ne formalisent pas</div>
+        <div class="rule-line"><div class="rule-dot" style="background:#70665A"></div>L'écusson Ursprung reste strictement réservé aux 10 fondateurs — jamais attribué à un Einherjar</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
