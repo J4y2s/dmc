@@ -71,5 +71,158 @@ function toggleMenu(){
   document.getElementById('drawer').classList.toggle('open');
 }
 </script>
+
+<style>
+.gate-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0C0A08;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+.gate-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(139,26,26,.4));
+}
+.gate-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: .2em;
+  color: #D8CEBC;
+  text-align: center;
+}
+.gate-sub {
+  font-size: 11px;
+  color: #70665A;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: -.5rem;
+}
+.gate-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 280px;
+}
+.gate-label {
+  font-size: 10px;
+  color: #70665A;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+.gate-input {
+  width: 100%;
+  background: #131110;
+  border: 1px solid #26201A;
+  border-radius: 3px;
+  padding: .7rem 1rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: .3em;
+  color: #D8CEBC;
+  text-align: center;
+  text-transform: uppercase;
+  outline: none;
+  transition: border-color .15s;
+}
+.gate-input:focus { border-color: #8B1A1A; }
+.gate-input.error { border-color: #8B1A1A; animation: shake .3s ease; }
+.gate-btn {
+  width: 100%;
+  background: #8B1A1A;
+  border: none;
+  border-radius: 3px;
+  padding: .7rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: .2em;
+  color: #D8CEBC;
+  cursor: pointer;
+  transition: background .15s;
+}
+.gate-btn:hover { background: #6B1414; }
+.gate-error {
+  font-size: 11px;
+  color: #8B1A1A;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  display: none;
+}
+.gate-error.show { display: block; }
+.gate-back {
+  font-size: 10px;
+  color: #342C24;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: .5rem;
+  transition: color .15s;
+}
+.gate-back:hover { color: #70665A; }
+@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-6px)}
+  75%{transform:translateX(6px)}
+}
+</style>
+
+<div class="gate-overlay" id="gate">
+  <img src="logo.png" alt="Dunkelgang MC" class="gate-logo">
+  <div>
+    <div class="gate-title">DUNKELGANG MC</div>
+    <div class="gate-sub">Archives internes — Accès restreint</div>
+  </div>
+  <div class="gate-form">
+    <div class="gate-label">Mot de passe</div>
+    <input type="password" class="gate-input" id="gate-input" maxlength="20" placeholder="· · · · ·" autocomplete="off">
+    <button class="gate-btn" onclick="checkPass()">Entrer</button>
+    <div class="gate-error" id="gate-error">Accès refusé</div>
+    <a href="../index.html" class="gate-back">← Retour</a>
+  </div>
+</div>
+
+<script>
+// Check if already authenticated this session
+if (sessionStorage.getItem('dmc_auth') === '1') {
+  document.getElementById('gate').style.display = 'none';
+}
+
+document.getElementById('gate-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkPass();
+});
+
+function checkPass() {
+  var input = document.getElementById('gate-input');
+  var val = input.value.trim().toUpperCase();
+  var err = document.getElementById('gate-error');
+  
+  if (val === 'DACHS') {
+    sessionStorage.setItem('dmc_auth', '1');
+    var gate = document.getElementById('gate');
+    gate.style.transition = 'opacity .4s ease';
+    gate.style.opacity = '0';
+    setTimeout(function() { gate.style.display = 'none'; }, 400);
+  } else {
+    input.classList.add('error');
+    err.classList.add('show');
+    input.value = '';
+    setTimeout(function() { input.classList.remove('error'); }, 300);
+    setTimeout(function() { err.classList.remove('show'); }, 2000);
+  }
+}
+</script>
+
 </body>
 </html>

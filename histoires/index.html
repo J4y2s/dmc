@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,10 @@
       <div class="h-logo-sub">Les Histoires</div>
     </div>
   </a>
-  <a href="../index.html" class="h-nav-back">← Retour</a>
+  <div style="display:flex;align-items:center;gap:1.5rem">
+    <button class="h-theme-toggle" onclick="toggleTheme()" title="Mode lecture">☾</button>
+    <a href="../index.html" class="h-nav-back">← Retour</a>
+  </div>
 </nav>
 
 <section class="h-hero">
@@ -24,6 +27,14 @@
   <div class="h-hero-rule"></div>
   <p class="h-hero-text">Ce que les archives ne disent pas. Ce qui s'est passé entre les hommes, sur le Rhin, dans les forêts et les bars.</p>
 </section>
+
+<!-- Nav secondaire -->
+<div class="h-subnav">
+  <a href="index.html" class="h-subnav-link active">Récits</a>
+  <a href="personnages.html" class="h-subnav-link">Personnages</a>
+  <a href="chronologie.html" class="h-subnav-link">Chronologie</a>
+  <a href="lieux.html" class="h-subnav-link">Lieux</a>
+</div>
 
 <div class="h-container">
   <div class="h-section-title">Récits disponibles</div>
@@ -40,5 +51,21 @@
   <a href="../index.html">Dunkelgang MC</a> &nbsp;·&nbsp; Les Histoires
 </footer>
 
+<script>
+function toggleTheme() {
+  var html = document.documentElement;
+  var current = html.getAttribute('data-theme');
+  var next = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('h-theme', next);
+  document.querySelector('.h-theme-toggle').textContent = next === 'dark' ? '☀' : '☾';
+}
+// Restore theme
+var saved = localStorage.getItem('h-theme');
+if (saved) {
+  document.documentElement.setAttribute('data-theme', saved);
+  if (saved === 'dark') document.querySelector('.h-theme-toggle').textContent = '☀';
+}
+</script>
 </body>
 </html>
