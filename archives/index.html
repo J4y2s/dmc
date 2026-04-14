@@ -69,6 +69,27 @@
     <div class="ss-footer-ref">DMC-ARCH-V1989.11</div>
     <div class="ss-stamp">[RESTREINT]</div>
   </div>
+<div class="hidden-access"><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">ACCES_RESTREINT</div><a href="journal.html" class="ss-item">Journal_interne</a></div></div>
+
+<style>
+.hidden-access { display:none; }
+.ss-footer-ref { cursor:pointer; user-select:none; }
+</style>
+<script>
+var _clicks = 0;
+document.addEventListener('DOMContentLoaded', function() {
+  var ref = document.querySelector('.ss-footer-ref');
+  if (ref) {
+    ref.addEventListener('click', function() {
+      _clicks++;
+      if (_clicks >= 3) {
+        document.querySelector('.hidden-access').style.display = 'block';
+        _clicks = 0;
+      }
+    });
+  }
+});
+</script>
 </aside>
 
 <div class="page">

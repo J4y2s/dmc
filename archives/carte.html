@@ -6,11 +6,36 @@ if (sessionStorage.getItem('dmc_auth') !== '1') {
   window.location.href = 'index.html';
 }
 </script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dunkelgang MC — Carte</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+#dmc-map { height: 500px; width: 100%; border: .5px solid #1C1714; }
+.map-wrap { margin-bottom: .75rem; }
+.map-header { background: #0F0D0B; border: .5px solid #1C1714; border-bottom: none; padding: .75rem 1rem; }
+.map-title { font-family: 'VT323', monospace; font-size: 18px; letter-spacing: .1em; color: #D8CEBC; }
+.map-sub { font-size: 10px; color: #342C24; letter-spacing: .08em; margin-top: 2px; }
+.map-filters { display: flex; flex-wrap: wrap; gap: 4px; padding: .5rem .85rem; background: #0C0A08; border: .5px solid #1C1714; border-bottom: none; }
+.mf { font-size: 10px; padding: 2px 8px; border: .5px solid #26201A; color: #70665A; background: transparent; cursor: pointer; font-family: 'Share Tech Mono', monospace; transition: all .1s; -webkit-tap-highlight-color: transparent; }
+.mf.on { background: #8B1A1A; border-color: #8B1A1A; color: #D8CEBC; }
+.map-legend { display: flex; flex-wrap: wrap; gap: 10px; padding: .5rem .85rem; background: #0F0D0B; border: .5px solid #1C1714; border-top: none; }
+.leg { display: flex; align-items: center; gap: 5px; font-size: 10px; color: #70665A; }
+.leg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* Leaflet popup override */
+.leaflet-popup-content-wrapper {
+  background: #131110; border: 1px solid #342C24; border-radius: 2px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.8); padding: 0;
+}
+.leaflet-popup-content { margin: 10px 12px; }
+.leaflet-popup-tip { background: #131110; }
+.leaflet-popup-close-button { color: #70665A !important; font-family: monospace; }
+.pop-name { font-family: 'VT323', monospace; font-size: 15px; letter-spacing: .08em; color: #D8CEBC; margin-bottom: 3px; }
+.pop-sub { font-size: 10px; color: #8B1A1A; letter-spacing: .06em; margin-bottom: 5px; }
+.pop-desc { font-size: 11px; color: #70665A; line-height: 1.5; max-width: 180px; }
+</style>
 </head>
 <body>
 <nav class="site-nav">
@@ -31,7 +56,39 @@ if (sessionStorage.getItem('dmc_auth') !== '1') {
 <div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
 <div class="menu-drawer" id="drawer">
   <div class="menu-close"><button onclick="toggleMenu()">&#x2715;</button></div>
-  <div class="menu-section"><div class="menu-label">CLUB</div><a href="synthese.html" class="menu-item">Synthèse</a></div><div class="menu-section"><div class="menu-label">MEMBRES</div><a href="kaspar.html" class="menu-item">Kaiser</a><a href="morel.html" class="menu-item">Pater</a><a href="wolff.html" class="menu-item">Klingen</a><a href="perrin.html" class="menu-item">Grillon</a><a href="stein.html" class="menu-item">Brume</a><a href="aubry.html" class="menu-item">Chacal</a><a href="keller.html" class="menu-item">Rabe</a><a href="brandt.html" class="menu-item">Maulwurf</a><a href="voss.html" class="menu-item">Nichts</a><a href="volkov.html" class="menu-item">Volk</a><a href="membres.html" class="menu-item">Tous les membres</a></div><div class="menu-section"><div class="menu-label">TERRITOIRE</div><a href="territoire.html" class="menu-item">Chapters &amp; axes</a><a href="carte.html" class="menu-item active">Carte interactive</a></div><div class="menu-section"><div class="menu-label">ACTIVITES</div><a href="activites.html" class="menu-item">Activités</a><a href="sentinel.html" class="menu-item">Sentinel_GmbH</a></div><div class="menu-section"><div class="menu-label">HISTOIRE</div><a href="historique.html" class="menu-item">Fil historique</a><a href="crises.html" class="menu-item">Grandes crises</a></div><div class="menu-section"><div class="menu-label">RELATIONS</div><a href="relations.html" class="menu-item">Alliances &amp; ennemis</a></div><div class="menu-section"><div class="menu-label">CODE</div><a href="grades.html" class="menu-item">Grades &amp; fonctions</a><a href="ecussons.html" class="menu-item">Écussons</a><a href="regles.html" class="menu-item">Règles internes</a><a href="integration.html" class="menu-item">Intégration</a></div><div class="menu-section"><div class="menu-label">MACHINES</div><a href="motos.html" class="menu-item">Les motos</a></div>
+  <div class="menu-section"><div class="menu-label">CLUB</div><a href="synthese.html" class="menu-item">Synthèse</a></div>
+  <div class="menu-section"><div class="menu-label">MEMBRES</div>
+    <a href="kaspar.html" class="menu-item">Kaiser</a><a href="morel.html" class="menu-item">Pater</a>
+    <a href="wolff.html" class="menu-item">Klingen</a><a href="perrin.html" class="menu-item">Grillon</a>
+    <a href="stein.html" class="menu-item">Brume</a><a href="aubry.html" class="menu-item">Chacal</a>
+    <a href="keller.html" class="menu-item">Rabe</a><a href="brandt.html" class="menu-item">Maulwurf</a>
+    <a href="voss.html" class="menu-item">Nichts</a><a href="volkov.html" class="menu-item">Volk</a>
+    <a href="membres.html" class="menu-item">Tous les membres</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">TERRITOIRE</div>
+    <a href="territoire.html" class="menu-item">Chapters &amp; axes</a>
+    <a href="carte.html" class="menu-item active">Carte interactive</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">ACTIVITES</div>
+    <a href="activites.html" class="menu-item">Activités</a>
+    <a href="sentinel.html" class="menu-item">Sentinel_GmbH</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">HISTOIRE</div>
+    <a href="historique.html" class="menu-item">Fil historique</a>
+    <a href="crises.html" class="menu-item">Grandes crises</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">RELATIONS</div>
+    <a href="relations.html" class="menu-item">Alliances &amp; ennemis</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">CODE</div>
+    <a href="grades.html" class="menu-item">Grades &amp; fonctions</a>
+    <a href="ecussons.html" class="menu-item">Écussons</a>
+    <a href="regles.html" class="menu-item">Règles internes</a>
+    <a href="integration.html" class="menu-item">Intégration</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">MACHINES</div>
+    <a href="motos.html" class="menu-item">Les motos</a>
+  </div>
 </div>
 <script>
 function toggleMenu(){
@@ -39,149 +96,153 @@ function toggleMenu(){
   document.getElementById('drawer').classList.toggle('open');
 }
 </script>
+
 <div class="site-layout">
 <aside class="site-sidebar">
-  <div class="ss-section"><div class="ss-label">CLUB</div><a href="synthese.html" class="ss-item">Synthèse</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">MEMBRES</div><a href="kaspar.html" class="ss-item">Kaiser</a><a href="morel.html" class="ss-item">Pater</a><a href="wolff.html" class="ss-item">Klingen</a><a href="perrin.html" class="ss-item">Grillon</a><a href="stein.html" class="ss-item">Brume</a><a href="aubry.html" class="ss-item">Chacal</a><a href="keller.html" class="ss-item">Rabe</a><a href="brandt.html" class="ss-item">Maulwurf</a><a href="voss.html" class="ss-item">Nichts</a><a href="volkov.html" class="ss-item">Volk</a><a href="membres.html" class="ss-item">Tous les membres</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">TERRITOIRE</div><a href="territoire.html" class="ss-item">Chapters &amp; axes</a><a href="carte.html" class="ss-item active">Carte interactive</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">ACTIVITES</div><a href="activites.html" class="ss-item">Activités</a><a href="sentinel.html" class="ss-item">Sentinel_GmbH</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">HISTOIRE</div><a href="historique.html" class="ss-item">Fil historique</a><a href="crises.html" class="ss-item">Grandes crises</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">RELATIONS</div><a href="relations.html" class="ss-item">Alliances &amp; ennemis</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">CODE</div><a href="grades.html" class="ss-item">Grades &amp; fonctions</a><a href="ecussons.html" class="ss-item">Écussons</a><a href="regles.html" class="ss-item">Règles internes</a><a href="integration.html" class="ss-item">Intégration</a></div><div class="ss-divider"></div><div class="ss-section"><div class="ss-label">MACHINES</div><a href="motos.html" class="ss-item">Les motos</a></div><div class="ss-divider"></div>
+  <div class="ss-section"><div class="ss-label">CLUB</div><a href="synthese.html" class="ss-item">Synthèse</a></div>
+  <div class="ss-divider"></div>
+  <div class="ss-section"><div class="ss-label">MEMBRES</div>
+    <a href="kaspar.html" class="ss-item">Kaiser</a><a href="morel.html" class="ss-item">Pater</a>
+    <a href="wolff.html" class="ss-item">Klingen</a><a href="perrin.html" class="ss-item">Grillon</a>
+    <a href="stein.html" class="ss-item">Brume</a><a href="aubry.html" class="ss-item">Chacal</a>
+    <a href="keller.html" class="ss-item">Rabe</a><a href="brandt.html" class="ss-item">Maulwurf</a>
+    <a href="voss.html" class="ss-item">Nichts</a><a href="volkov.html" class="ss-item">Volk</a>
+    <a href="membres.html" class="ss-item">Tous les membres</a>
+  </div>
+  <div class="ss-divider"></div>
+  <div class="ss-section"><div class="ss-label">TERRITOIRE</div>
+    <a href="territoire.html" class="ss-item">Chapters &amp; axes</a>
+    <a href="carte.html" class="ss-item active">Carte interactive</a>
+  </div>
+  <div class="ss-divider"></div>
+  <div class="ss-section"><div class="ss-label">ACTIVITES</div>
+    <a href="activites.html" class="ss-item">Activités</a>
+    <a href="sentinel.html" class="ss-item">Sentinel_GmbH</a>
+  </div>
+  <div class="ss-divider"></div>
+  <div class="ss-section"><div class="ss-label">HISTOIRE</div>
+    <a href="historique.html" class="ss-item">Fil historique</a>
+    <a href="crises.html" class="ss-item">Grandes crises</a>
+  </div>
+  <div class="ss-divider"></div>
+  <div class="ss-section"><div class="ss-label">RELATIONS</div>
+    <a href="relations.html" class="ss-item">Alliances &amp; ennemis</a>
+  </div>
+  <div class="ss-divider"></div>
+  <div class="ss-section"><div class="ss-label">CODE</div>
+    <a href="grades.html" class="ss-item">Grades &amp; fonctions</a>
+    <a href="ecussons.html" class="ss-item">Écussons</a>
+    <a href="regles.html" class="ss-item">Règles internes</a>
+    <a href="integration.html" class="ss-item">Intégration</a>
+  </div>
+  <div class="ss-divider"></div>
+  <div class="ss-section"><div class="ss-label">MACHINES</div>
+    <a href="motos.html" class="ss-item">Les motos</a>
+  </div>
   <div class="ss-footer">
     <div class="ss-footer-ref">DMC-ARCH-V1989.11</div>
     <div class="ss-stamp">[RESTREINT]</div>
   </div>
 </aside>
+
 <div class="page">
-<div class="map-wrap">
-  <div class="map-header">
-    <div class="map-title">DUNKELGANG MC — Territoire</div>
-    <div class="map-sub">Rhin Supérieur — État 1989</div>
+<a href="../index.html" class="back-btn-main">ACCUEIL</a>
+  <div class="map-wrap">
+    <div class="map-header">
+      <div class="map-title">DUNKELGANG_MC — TERRITOIRE</div>
+      <div class="map-sub">// RHIN_SUPERIEUR — ETAT_1989</div>
+    </div>
+    <div class="map-filters" id="map-filters">
+      <button class="mf on" data-f="all">TOUT</button>
+      <button class="mf" data-f="mere">CHAPTER-MERE</button>
+      <button class="mf" data-f="chapter">CHAPTERS</button>
+      <button class="mf" data-f="refuge">REFUGE</button>
+      <button class="mf" data-f="axe">AXES</button>
+    </div>
+    <div id="dmc-map"></div>
+    <div class="map-legend">
+      <div class="leg"><div class="leg-dot" style="background:#8B1A1A"></div>Chapter-mère</div>
+      <div class="leg"><div class="leg-dot" style="background:#185FA5"></div>Chapter</div>
+      <div class="leg"><div class="leg-dot" style="background:#70665A"></div>Refuge</div>
+      <div class="leg"><div class="leg-dot" style="background:#854F0B"></div>Axes</div>
+    </div>
   </div>
-  <div class="map-filters" id="filters">
-    <button class="mf active-btn" data-f="all"     style="border-color:#D8CEBC;color:#D8CEBC;background:#342C24">Tout</button>
-    <button class="mf" data-f="mere"    style="border-color:#8B1A1A;color:#8B1A1A">Chapter-mère</button>
-    <button class="mf" data-f="chapter" style="border-color:#185FA5;color:#185FA5">Chapters</button>
-    <button class="mf" data-f="refuge"  style="border-color:#70665A;color:#70665A">Refuge</button>
-    <button class="mf" data-f="axe"     style="border-color:#854F0B;color:#854F0B">Axes</button>
-  </div>
-  <div id="dmc-map"></div>
-  <div class="map-legend">
-    <div class="leg"><div class="leg-dot" style="background:#8B1A1A"></div>Chapter-mère</div>
-    <div class="leg"><div class="leg-dot" style="background:#185FA5"></div>Chapter</div>
-    <div class="leg"><div class="leg-dot" style="background:#70665A"></div>Refuge</div>
-    <div class="leg"><div class="leg-dot" style="background:#854F0B"></div>Axes</div>
-  </div>
+</div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 var PTS = [
-  {id:'mere', t:'mere',    la:48.0348, ln:7.5836, c:'#8B1A1A', n:'Breisach am Rhein', s:'Chapter-mère — 1971',     d:'Clubhouse zone industrielle. Autorité absolue sur tous les chapters. Ancienne planque DACHS.'},
-  {id:'volg', t:'chapter', la:48.0159, ln:7.5559, c:'#185FA5', n:'Volgelsheim',       s:'Chapter Rhein FR — 1973', d:'Premier chapter français. Stellvertreter : Brume. Bottom rocker RHEIN.'},
-  {id:'pont', t:'refuge',  la:48.026,  ln:7.575,  c:'#70665A', n:'Pont du Rhin',      s:'Refuge permanent — 1971', d:'Point de passage contrôlé. Planque urgence. Géré par le Mime et le Hoard.'},
-  {id:'kehl', t:'chapter', la:48.5789, ln:7.8161, c:'#185FA5', n:'Kehl',              s:'Chapter Nord — 1978',     d:'Wotan : Maulwurf. Face à Strasbourg. Transit nord, contacts politiques.'},
-  {id:'str',  t:'chapter', la:48.5734, ln:7.7521, c:'#185FA5', n:'Strasbourg',        s:'Chapter — 1987',          d:'Capitale alsacienne. Institutions européennes. Contacts Heimdall.'},
-  {id:'mul',  t:'chapter', la:47.7508, ln:7.3359, c:'#185FA5', n:'Mulhouse',          s:'Chapter Sud FR — 1981',   d:'Zone portuaire. Porte vers Bâle et la Suisse.'},
-  {id:'fre',  t:'chapter', la:47.999,  ln:7.8421, c:'#185FA5', n:'Freiburg',          s:'Chapter Est — 1985',      d:'Couvertures civiles, contacts universitaires. Porte Forêt Noire.'},
-  {id:'kar',  t:'chapter', la:49.0069, ln:8.4037, c:'#185FA5', n:'Karlsruhe',         s:'Chapter — 1986',          d:'Industrie et contacts militaires. Antenne Sentinel.'},
-  {id:'stu',  t:'chapter', la:48.7758, ln:9.1829, c:'#185FA5', n:'Stuttgart',         s:'Chapter — 1988',          d:'Capitale Bade-Wurtemberg. Bureau Sentinel principal.'},
-  {id:'lyo',  t:'chapter', la:45.764,  ln:4.8357, c:'#185FA5', n:'Lyon',              s:'Chapter France — 1988',   d:'Carrefour français. Jeu illégal. Pression Bandidos dès 1989.'},
-  {id:'fra',  t:'chapter', la:50.1109, ln:8.6821, c:'#185FA5', n:'Frankfurt',         s:'Chapter — 1989',          d:'Centre financier. Blanchiment. Fondé avant la chute du mur.'}
+  {id:'mere',t:'mere',la:48.0348,ln:7.5836,c:'#8B1A1A',n:'BREISACH_AM_RHEIN',s:'Chapter-mère — 1971',d:'Clubhouse zone industrielle. Autorité absolue. Ancienne planque DACHS.'},
+  {id:'volg',t:'chapter',la:48.0159,ln:7.5559,c:'#185FA5',n:'VOLGELSHEIM',s:'Chapter Rhein FR — 1973',d:'Premier chapter français. Stellvertreter : Brume.'},
+  {id:'pont',t:'refuge',la:48.026,ln:7.575,c:'#70665A',n:'PONT_DU_RHIN',s:'Refuge — 1971',d:'Point de passage contrôlé. Planque urgence.'},
+  {id:'kehl',t:'chapter',la:48.5789,ln:7.8161,c:'#185FA5',n:'KEHL',s:'Chapter Nord — 1978',d:'Wotan : Maulwurf. Face à Strasbourg.'},
+  {id:'str',t:'chapter',la:48.5734,ln:7.7521,c:'#185FA5',n:'STRASBOURG',s:'Chapter — 1987',d:'Capitale alsacienne. Contacts Heimdall.'},
+  {id:'mul',t:'chapter',la:47.7508,ln:7.3359,c:'#185FA5',n:'MULHOUSE',s:'Chapter Sud FR — 1981',d:'Zone portuaire. Porte vers Bâle.'},
+  {id:'fre',t:'chapter',la:47.999,ln:7.8421,c:'#185FA5',n:'FREIBURG',s:'Chapter Est — 1985',d:'Couvertures civiles. Porte Forêt Noire.'},
+  {id:'kar',t:'chapter',la:49.0069,ln:8.4037,c:'#185FA5',n:'KARLSRUHE',s:'Chapter — 1986',d:'Industrie et contacts militaires.'},
+  {id:'stu',t:'chapter',la:48.7758,ln:9.1829,c:'#185FA5',n:'STUTTGART',s:'Chapter — 1988',d:'Capitale Bade-Wurtemberg. Bureau Sentinel.'},
+  {id:'lyo',t:'chapter',la:45.764,ln:4.8357,c:'#185FA5',n:'LYON',s:'Chapter France — 1988',d:'Carrefour français. Pression Bandidos.'},
+  {id:'fra',t:'chapter',la:50.1109,ln:8.6821,c:'#185FA5',n:'FRANKFURT',s:'Chapter — 1989',d:'Centre financier. Avant la chute du mur.'}
 ];
 
 var AXES = [
-  {t:'axe', pts:[[48.0348,7.5836],[48.1639,7.544],[48.3188,7.7046],[48.5734,7.7521]]},
-  {t:'axe', pts:[[48.0348,7.5836],[48.1397,7.6173],[48.5789,7.8161]]},
-  {t:'axe', pts:[[48.0348,7.5836],[47.814,7.559],[47.7508,7.3359],[47.56,7.59]]},
-  {t:'axe', pts:[[48.0348,7.5836],[47.999,7.842],[48.3,8.4],[48.7,8.8]]},
-  {t:'axe', pts:[[48.016,7.556],[48.08,7.44],[48.08,7.36]]}
+  {t:'axe',pts:[[48.0348,7.5836],[48.1639,7.544],[48.3188,7.7046],[48.5734,7.7521]]},
+  {t:'axe',pts:[[48.0348,7.5836],[48.1397,7.6173],[48.5789,7.8161]]},
+  {t:'axe',pts:[[48.0348,7.5836],[47.814,7.559],[47.7508,7.3359],[47.56,7.59]]},
+  {t:'axe',pts:[[48.0348,7.5836],[47.999,7.842],[48.3,8.4],[48.7,8.8]]},
+  {t:'axe',pts:[[48.016,7.556],[48.08,7.44],[48.08,7.36]]}
 ];
 
-// Init map — fond CartoDB Dark Matter (sombre, style biker)
-var map = L.map('dmc-map', {
-  center: [48.2, 7.9],
-  zoom: 7,
-  zoomControl: true,
-  attributionControl: false
-});
+var map = L.map('dmc-map', {center:[48.2,7.9], zoom:7, attributionControl:false});
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  maxZoom: 18,
-  subdomains: 'abcd'
+  subdomains: 'abcd',
+  maxZoom: 18
 }).addTo(map);
 
-// Custom marker
-function makeIcon(color, big) {
-  var size = big ? 16 : 12;
+function makeIcon(c, big) {
+  var s = big ? 14 : 10;
   return L.divIcon({
-    html: '<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:'+color+';border:2px solid #0C0A08;box-shadow:0 0 8px '+color+'88;"></div>',
-    className: '',
-    iconSize: [size, size],
-    iconAnchor: [size/2, size/2],
-    popupAnchor: [0, -(size/2+4)]
+    html: '<div style="width:'+s+'px;height:'+s+'px;border-radius:50%;background:'+c+';border:1.5px solid #0C0A08;box-shadow:0 0 6px '+c+'88"></div>',
+    className: '', iconSize:[s,s], iconAnchor:[s/2,s/2], popupAnchor:[0,-s/2-2]
   });
 }
 
 function popHtml(p) {
-  return '<div class="pop-name">'+p.n+'</div>'
-       + '<div class="pop-sub">'+p.s+'</div>'
-       + '<div class="pop-desc">'+p.d+'</div>';
+  return '<div class="pop-name">'+p.n+'</div><div class="pop-sub">'+p.s+'</div><div class="pop-desc">'+p.d+'</div>';
 }
 
-// Draw markers
-var markers = [];
+var markers = [], lines = [], filt = 'all';
+
 PTS.forEach(function(p) {
-  var m = L.marker([p.la, p.ln], {
-    icon: makeIcon(p.c, p.t === 'mere')
-  }).addTo(map);
-  m.bindPopup(popHtml(p), { maxWidth: 220 });
-  m._dmcType = p.t;
+  var m = L.marker([p.la,p.ln], {icon: makeIcon(p.c, p.t==='mere')}).addTo(map);
+  m.bindPopup(popHtml(p), {maxWidth:220});
+  m._t = p.t;
   markers.push(m);
 });
 
-// Draw axes
-var lines = [];
 AXES.forEach(function(a) {
-  var l = L.polyline(a.pts, {
-    color: '#854F0B',
-    weight: 2,
-    opacity: 0.8,
-    dashArray: '8 5'
-  }).addTo(map);
-  l._dmcType = 'axe';
+  var l = L.polyline(a.pts, {color:'#854F0B', weight:1.5, opacity:.75, dashArray:'8 4'}).addTo(map);
+  l._t = 'axe';
   lines.push(l);
 });
 
-// Filter
-var filt = 'all';
-var filterColors = {all:'#342C24', mere:'#8B1A1A', chapter:'#185FA5', refuge:'#70665A', axe:'#854F0B'};
-
-document.getElementById('filters').addEventListener('click', function(e) {
+document.getElementById('map-filters').addEventListener('click', function(e) {
   var btn = e.target.closest('.mf');
   if (!btn) return;
-  document.querySelectorAll('.mf').forEach(function(b) { b.style.background = 'transparent'; });
+  document.querySelectorAll('.mf').forEach(function(b){ b.classList.remove('on'); });
+  btn.classList.add('on');
   filt = btn.dataset.f;
-  btn.style.background = filterColors[filt] || '#342C24';
-
   markers.forEach(function(m) {
-    if (filt === 'all' || m._dmcType === filt) {
-      if (!map.hasLayer(m)) map.addLayer(m);
-    } else {
-      if (map.hasLayer(m)) map.removeLayer(m);
-    }
+    if (filt==='all'||m._t===filt) { if(!map.hasLayer(m)) map.addLayer(m); }
+    else { if(map.hasLayer(m)) map.removeLayer(m); }
   });
-
   lines.forEach(function(l) {
-    if (filt === 'all' || filt === 'axe') {
-      if (!map.hasLayer(l)) map.addLayer(l);
-    } else {
-      if (map.hasLayer(l)) map.removeLayer(l);
-    }
+    if (filt==='all'||filt==='axe') { if(!map.hasLayer(l)) map.addLayer(l); }
+    else { if(map.hasLayer(l)) map.removeLayer(l); }
   });
 });
-
-// Expose for index.html load()
-window.dmcInitMap = function() {
-  setTimeout(function() { map.invalidateSize(); }, 100);
-};
 </script>
-</div>
-</div>
 </body>
 </html>

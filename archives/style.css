@@ -92,6 +92,7 @@ body {
   display: flex;
   min-height: calc(100vh - 48px);
   width: 100%;
+  justify-content: center;
 }
 
 /* Desktop sidebar */
@@ -136,9 +137,10 @@ body {
 /* ── Page content ── */
 .page {
   flex: 1;
-  padding: 1.1rem;
+  padding: 1.25rem 1.5rem;
   min-width: 0;
   overflow-x: hidden;
+  max-width: 1100px;
 }
 
 /* ── Card ── */
@@ -435,3 +437,15 @@ body {
   .stats-row { grid-template-columns:1fr 1fr; }
   .hero-title { font-size:32px; }
 }
+
+/* ── Back button ── */
+.back-btn-main {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: 10px; color: var(--s5); letter-spacing: .12em;
+  text-decoration: none; padding: .3rem .6rem;
+  border: .5px solid var(--s3); transition: all .1s;
+  -webkit-tap-highlight-color: transparent;
+  margin-bottom: .75rem;
+}
+.back-btn-main::before { content: '< '; color: var(--s5); }
+.back-btn-main:hover { color: var(--cream3); border-color: var(--s4); }
