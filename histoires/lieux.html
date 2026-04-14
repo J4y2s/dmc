@@ -1,82 +1,68 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lieux — Dunkelgang MC</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+#lieux-map{height:380px;width:100%;border:.5px solid #1C1714}
+.leaflet-container{background:#0C0A08}
+</style>
 </head>
 <body>
-
 <nav class="h-nav">
   <a href="index.html" class="h-logo">
     <div>
-      <div class="h-logo-title">Dunkelgang MC</div>
-      <div class="h-logo-sub">Les Histoires</div>
+      <div class="h-logo-title">DUNKELGANG_MC</div>
+      <div class="h-logo-sub">// LES_HISTOIRES</div>
     </div>
   </a>
-  <div style="display:flex;align-items:center;gap:1.5rem">
-    <button class="h-theme-toggle" onclick="toggleTheme()" title="Mode lecture">☾</button>
-    <a href="../index.html" class="h-nav-back">← Retour</a>
+  <div class="h-nav-right">
+    <a href="../index.html" class="h-nav-back">// RETOUR</a>
   </div>
 </nav>
-
-<section class="h-hero">
-  <div class="h-hero-eyebrow">Rhin Supérieur</div>
-  <h1 class="h-hero-title">Les Lieux</h1>
-  <div class="h-hero-rule"></div>
-  <p class="h-hero-text">Les endroits où les histoires se passent. Cliquez sur un marqueur pour en savoir plus.</p>
-</section>
-
 <div class="h-subnav">
-  <a href="index.html" class="h-subnav-link">Récits</a>
-  <a href="personnages.html" class="h-subnav-link">Personnages</a>
-  <a href="chronologie.html" class="h-subnav-link">Chronologie</a>
-  <a href="lieux.html" class="h-subnav-link active">Lieux</a>
+  <a href="index.html" class="h-subnav-link">RECITS</a>
+  <a href="personnages.html" class="h-subnav-link">PERSONNAGES</a>
+  <a href="chronologie.html" class="h-subnav-link">CHRONOLOGIE</a>
+  <a href="lieux.html" class="h-subnav-link active">LIEUX</a>
 </div>
-
-<div id="lieux-map" style="height:420px;width:100%"></div>
-
+<section class="h-hero">
+  <div class="h-hero-eyebrow">RHIN_SUPERIEUR</div>
+  <h1 class="h-hero-title">LES_LIEUX</h1>
+  <div class="h-hero-rule"></div>
+  <p class="h-hero-text">Les endroits où les histoires se passent.</p>
+</section>
+<div id="lieux-map"></div>
 <div class="h-container">
-  <div class="h-section-title">Lieux des récits</div>
-  <div class="h-empty" style="padding:2rem 0">
-    <div class="h-empty-icon" style="font-size:32px">📍</div>
-    <div class="h-empty-text" style="font-size:16px">Les lieux des récits apparaîtront ici</div>
+  <div class="h-section-title">LIEUX_DES_RECITS</div>
+  <div class="h-empty" style="padding:1.5rem 0">
+    <div class="h-empty-icon" style="font-size:28px">📍</div>
+    <div class="h-empty-text" style="font-size:16px">EN_ATTENTE_DES_RECITS</div>
   </div>
 </div>
-
-<footer class="h-footer">
-  <a href="../index.html">Dunkelgang MC</a> &nbsp;·&nbsp; Les Histoires
-</footer>
-
+<footer class="h-footer"><a href="../index.html">DUNKELGANG_MC</a> &nbsp;//&nbsp; LES_HISTOIRES</footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var map = L.map('lieux-map', {center:[48.1,7.8],zoom:8,attributionControl:false});
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18}).addTo(map);
-
-var lieux = [
-  {la:48.0348,ln:7.5836,n:'Breisach am Rhein',d:'Le clubhouse. Der Durchgang. Le cœur du club.'},
-  {la:48.0159,ln:7.5559,n:'Volgelsheim',d:'Le Passage. Chapter français. Territoire de Brume.'},
-  {la:48.026,ln:7.575,n:'Pont du Rhin',d:'Le refuge. Entre deux mondes, entre deux pays.'},
-  {la:48.5789,ln:7.8161,n:'Kehl',d:'Zum Rheintor. Face à Strasbourg. Territoire de Maulwurf.'},
-  {la:47.999,ln:7.842,n:'Forêt Noire',d:'Les caches. Les planques. L'endroit où on disparaît.'},
-  {la:47.7508,ln:7.3359,n:'Mulhouse',d:'Le Fond de Cale. Axe sud vers la Suisse.'},
-  {la:48.5734,ln:7.7521,n:'Strasbourg',d:'Le Consulat. Institutions, contacts, discrétion.'},
-];
-
-var icon = L.divIcon({
-  html:'<div style="width:10px;height:10px;border-radius:50%;background:#8B1A1A;border:2px solid #1C1710;box-shadow:0 0 8px rgba(139,26,26,.5)"></div>',
-  className:'',iconSize:[10,10],iconAnchor:[5,5]
+var map=L.map('lieux-map',{center:[48.1,7.8],zoom:8,attributionControl:false});
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:18,subdomains:'abcd'}).addTo(map);
+var icon=L.divIcon({html:'<div style="width:8px;height:8px;border-radius:50%;background:#8B1A1A;border:1.5px solid #D8CEBC;box-shadow:0 0 6px rgba(139,26,26,.6)"></div>',className:'',iconSize:[8,8],iconAnchor:[4,4]});
+[
+  [48.0348,7.5836,'BREISACH_AM_RHEIN','Le clubhouse. Der Durchgang. Le cœur du club.'],
+  [48.0159,7.5559,'VOLGELSHEIM','Le Passage. Chapter français. Territoire de Brume.'],
+  [48.026,7.575,'PONT_DU_RHIN','Le refuge. Entre deux mondes, entre deux pays.'],
+  [48.5789,7.8161,'KEHL','Zum Rheintor. Face à Strasbourg. Territoire de Maulwurf.'],
+  [47.999,7.842,'FORET_NOIRE','Les caches. Les planques. L'endroit où on disparaît.'],
+  [47.7508,7.3359,'MULHOUSE','Le Fond de Cale. Axe sud vers la Suisse.'],
+  [48.5734,7.7521,'STRASBOURG','Le Consulat. Institutions, contacts, discrétion.'],
+].forEach(function(l){
+  L.marker([l[0],l[1]],{icon:icon}).addTo(map).bindPopup(
+    '<span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#D8CEBC">'+l[2]+'</span><br><span style="font-size:10px;color:#70665A">'+l[3]+'</span>',
+    {maxWidth:200}
+  );
 });
-
-lieux.forEach(function(l){
-  L.marker([l.la,l.ln],{icon:icon}).addTo(map)
-   .bindPopup('<strong style="font-family:serif;font-size:14px">'+l.n+'</strong><br><span style="font-size:12px;color:#666;font-style:italic">'+l.d+'</span>',{maxWidth:200});
-});
-
-function toggleTheme(){var h=document.documentElement,c=h.getAttribute('data-theme'),n=c==='light'?'dark':'light';h.setAttribute('data-theme',n);localStorage.setItem('h-theme',n);document.querySelector('.h-theme-toggle').textContent=n==='dark'?'☀':'☾';}
-var s=localStorage.getItem('h-theme');if(s){document.documentElement.setAttribute('data-theme',s);if(s==='dark')document.querySelector('.h-theme-toggle').textContent='☀';}
 </script>
 </body>
 </html>
