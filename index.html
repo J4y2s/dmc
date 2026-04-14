@@ -45,6 +45,33 @@ body{background:#0C0A08;color:#D8CEBC;font-family:'Share Tech Mono',monospace;mi
   .portails{grid-template-columns:1fr}
   .hero-title{font-size:36px}
 }
+
+.portail-journal {
+  display: none;
+  width: 100%;
+  max-width: 780px;
+  margin-top: .5rem;
+}
+.portail-journal.visible { display: block; }
+.journal-portail {
+  background: #0F0D0B;
+  border: .5px solid #1C1714;
+  border-left: 2px solid #8B1A1A;
+  padding: .75rem 1.1rem;
+  text-decoration: none;
+  color: #D8CEBC;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.journal-portail:hover { background: #131110; border-color: #342C24; border-left-color: #8B1A1A; }
+.journal-portail-ref   { font-size: 8px; color: #342C24; letter-spacing: .15em; flex-shrink: 0; }
+.journal-portail-title { font-family: 'VT323', monospace; font-size: 16px; letter-spacing: .1em; color: #8B1A1A; }
+.journal-portail-arrow { font-size: 11px; color: #342C24; margin-left: auto; }
+.journal-portail:hover .journal-portail-arrow { color: #8B1A1A; }
+.footer { cursor: default; }
 </style>
 </head>
 <body>
@@ -83,7 +110,29 @@ body{background:#0C0A08;color:#D8CEBC;font-family:'Share Tech Mono',monospace;mi
   </a>
 </div>
 
-<div class="footer">DUNKELGANG_MC &nbsp;// &nbsp;TOUS_DROITS_RESERVES &nbsp;//&nbsp; 1989</div>
+<div class="portail-journal" id="journal-access">
+  <a href="journal.html" class="journal-portail">
+    <span class="journal-portail-ref">SYS://DMC-JOUR-001</span>
+    <span class="journal-portail-title">JOURNAL_INTERNE</span>
+    <span class="journal-portail-arrow">→</span>
+  </a>
+</div>
+
+<div class="footer" id="footer-trigger">DUNKELGANG_MC &nbsp;// &nbsp;TOUS_DROITS_RESERVES &nbsp;//&nbsp; 1989</div>
+
+
+<script>
+var _fc = 0, _ft = null;
+document.getElementById('footer-trigger').addEventListener('click', function() {
+  _fc++;
+  clearTimeout(_ft);
+  _ft = setTimeout(function() { _fc = 0; }, 1500);
+  if (_fc >= 3) {
+    document.getElementById('journal-access').classList.add('visible');
+    _fc = 0;
+  }
+});
+</script>
 
 </body>
 </html>

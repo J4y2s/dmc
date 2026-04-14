@@ -35,8 +35,8 @@ body {
 
 /* ─── Topbar ─────────────────────────────────────────────── */
 .site-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: sticky;
+  top: 0;
   height: var(--nav-h);
   background: var(--s1);
   border-bottom: 2px solid var(--red);
@@ -47,17 +47,37 @@ body {
   z-index: 200;
 }
 
-.nav-logo {
+.nav-left {
   display: flex;
   align-items: center;
   gap: .6rem;
-  text-decoration: none;
+  min-width: 0;
 }
-.nav-logo img { width: 28px; height: 28px; object-fit: contain; }
-.nav-club-title { font-family: var(--vt); font-size: 19px; letter-spacing: .15em; color: var(--cream); line-height: 1; }
-.nav-club-sub   { font-size: 9px; color: var(--s5); letter-spacing: .1em; margin-top: 1px; }
+.nav-title-link {
+  font-family: var(--vt);
+  font-size: 19px;
+  letter-spacing: .15em;
+  color: var(--cream);
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+.nav-title-link:hover { color: var(--c2); }
+.nav-sep     { font-size: 11px; color: var(--red); }
+.nav-section { font-size: 10px; color: var(--s5); letter-spacing: .1em; white-space: nowrap; }
 
-.nav-right { display: flex; align-items: center; gap: .6rem; }
+.nav-right { display: flex; align-items: center; gap: .75rem; }
+
+.nav-back {
+  font-size: 9px;
+  color: var(--s5);
+  letter-spacing: .12em;
+  text-decoration: none;
+  transition: color .15s;
+  white-space: nowrap;
+}
+.nav-back:hover { color: var(--cream); }
+
 .nav-badge {
   font-size: 9px; padding: 2px 7px;
   border: 1px solid var(--red); color: var(--red);
@@ -76,7 +96,6 @@ body {
 /* ─── Main layout ────────────────────────────────────────── */
 .site-body {
   display: flex;
-  margin-top: var(--nav-h);
   min-height: calc(100vh - var(--nav-h));
 }
 
@@ -87,13 +106,13 @@ body {
   background: var(--s1);
   border-right: 1px solid var(--s3);
   position: sticky;
-  top: var(--nav-h);
-  height: calc(100vh - var(--nav-h));
+  top: 0;
+  height: 100vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  /* hide scrollbar */
   scrollbar-width: none;
+  align-self: flex-start;
 }
 .sidebar::-webkit-scrollbar { display: none; }
 

@@ -36,6 +36,20 @@
 .gate-back { font-size: 9px; color: var(--s4); letter-spacing: .12em; text-decoration: none; transition: color .15s; }
 .gate-back:hover { color: var(--c3); }
 @keyframes shake { 0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)} }
+
+/* Journal hidden access */
+.journal-link {
+  display: none;
+  font-size: 9px; color: var(--red); letter-spacing: .1em;
+  text-decoration: none; padding: .28rem .85rem;
+  border-left: 2px solid var(--red);
+  background: rgba(139,26,26,.08);
+  margin-top: .25rem;
+}
+.journal-link::before { content: '> '; }
+.journal-link.visible { display: block; }
+.sb-stamp { cursor: pointer; user-select: none; }
+.sb-stamp:hover { color: var(--s5); border-color: var(--s5); }
 </style>
 </head>
 <body>
@@ -51,20 +65,17 @@
     <input type="password" class="gate-input" id="gi" maxlength="20" placeholder="·····" autocomplete="off">
     <button class="gate-btn" onclick="gcheck()">[ENTRER]</button>
     <div class="gate-err" id="ge">// ACCES_REFUSE</div>
-    <a href="../index.html" class="gate-back">// RETOUR_ACCUEIL</a>
-  </div>
+</div>
 </div>
 
 <nav class="site-nav">
-  <a href="index.html" class="nav-logo">
-    <img src="logo.png" alt="DMC">
-    <div>
-      <div class="nav-club-title">DUNKELGANG_MC</div>
-      <div class="nav-club-sub">REF://DMC-71-ARCH-001</div>
-    </div>
-  </a>
+  <div class="nav-left">
+    <a href="index.html" class="nav-title-link">DUNKELGANG_MC</a>
+    <span class="nav-sep">//</span>
+    <span class="nav-section">ARCHIVES</span>
+  </div>
   <div class="nav-right">
-    <div class="nav-badge">[DACHS]</div>
+<div class="nav-badge">[DACHS]</div>
     <button class="nav-menu-btn" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -81,19 +92,12 @@
   <aside class="sidebar">
     <div class="sb-section"><div class="sb-label">CLUB</div><a href="synthese.html" class="sb-item">Synthèse</a></div><div class="sb-divider"></div><div class="sb-section"><div class="sb-label">MEMBRES</div><a href="kaspar.html" class="sb-item">Kaiser</a><a href="morel.html" class="sb-item">Pater</a><a href="wolff.html" class="sb-item">Klingen</a><a href="perrin.html" class="sb-item">Grillon</a><a href="stein.html" class="sb-item">Brume</a><a href="aubry.html" class="sb-item">Chacal</a><a href="keller.html" class="sb-item">Rabe</a><a href="brandt.html" class="sb-item">Maulwurf</a><a href="voss.html" class="sb-item">Nichts</a><a href="volkov.html" class="sb-item">Volk</a><a href="membres.html" class="sb-item">Tous les membres</a></div><div class="sb-divider"></div><div class="sb-section"><div class="sb-label">TERRITOIRE</div><a href="territoire.html" class="sb-item">Chapters &amp; axes</a><a href="carte.html" class="sb-item">Carte interactive</a></div><div class="sb-divider"></div><div class="sb-section"><div class="sb-label">ACTIVITES</div><a href="activites.html" class="sb-item">Activités</a><a href="sentinel.html" class="sb-item">Sentinel_GmbH</a></div><div class="sb-divider"></div><div class="sb-section"><div class="sb-label">HISTOIRE</div><a href="historique.html" class="sb-item">Fil historique</a><a href="crises.html" class="sb-item">Grandes crises</a></div><div class="sb-divider"></div><div class="sb-section"><div class="sb-label">RELATIONS</div><a href="relations.html" class="sb-item">Alliances &amp; ennemis</a></div><div class="sb-divider"></div><div class="sb-section"><div class="sb-label">CODE</div><a href="grades.html" class="sb-item">Grades &amp; fonctions</a><a href="ecussons.html" class="sb-item">Écussons</a><a href="regles.html" class="sb-item">Règles internes</a><a href="integration.html" class="sb-item">Intégration</a></div><div class="sb-divider"></div><div class="sb-section"><div class="sb-label">MACHINES</div><a href="motos.html" class="sb-item">Les motos</a></div><div class="sb-divider"></div>
     <div class="sb-footer">
-      <div class="sb-footer-ref" id="sb-ver">DMC-ARCH-V1989.11</div>
-      <div class="sb-stamp">[RESTREINT]</div>
-    </div>
-    <div class="hidden-access" id="journal-access">
-      <div class="sb-divider"></div>
-      <div class="sb-section">
-        <div class="sb-label">RESTREINT</div>
-        <a href="journal.html" class="sb-item">Journal_interne</a>
-      </div>
+      <div class="sb-footer-ref">DMC-ARCH-V1989.11</div>
+      <div class="sb-stamp" id="sb-stamp" title="[RESTREINT]">[RESTREINT]</div>
+      <a href="journal.html" class="journal-link" id="journal-link">Journal_interne</a>
     </div>
   </aside>
   <main class="page">
-    <a href="../index.html" class="back-link">ACCUEIL_PRINCIPAL</a>
     <div class="home-hero">
       <img src="logo.png" alt="Dunkelgang MC">
       <div class="hero-title">DUNKELGANG_MC</div>
@@ -140,12 +144,15 @@ function gcheck(){
     setTimeout(function(){ e.classList.remove('show'); }, 2000);
   }
 }
-// Triple-click on version number reveals journal link
-var _vc = 0;
-document.getElementById('sb-ver').addEventListener('click', function(){
+
+// Triple-click on [RESTREINT] stamp reveals journal link
+var _vc = 0, _vt = null;
+document.getElementById('sb-stamp').addEventListener('click', function(){
   _vc++;
+  clearTimeout(_vt);
+  _vt = setTimeout(function(){ _vc = 0; }, 1500);
   if (_vc >= 3){
-    document.getElementById('journal-access').style.display = 'block';
+    document.getElementById('journal-link').classList.add('visible');
     _vc = 0;
   }
 });
