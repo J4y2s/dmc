@@ -4,122 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dunkelgang MC</title>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0C0A08;color:#D8CEBC;font-family:'Share Tech Mono',monospace;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem}
-
-.hero{text-align:center;margin-bottom:2.5rem}
-.hero img{width:90px;height:90px;object-fit:contain;margin-bottom:1.25rem;filter:drop-shadow(0 0 16px rgba(139,26,26,.35))}
-.hero-eyebrow{font-size:9px;color:#342C24;letter-spacing:.22em;margin-bottom:.5rem}
-.hero-eyebrow::before{content:'// ';color:#8B1A1A}
-.hero-title{font-family:'VT323',monospace;font-size:48px;letter-spacing:.18em;color:#D8CEBC;line-height:1}
-.hero-rule{width:44px;height:1px;background:#8B1A1A;margin:.85rem auto}
-.hero-sub{font-size:10px;color:#342C24;letter-spacing:.2em}
-.hero-sub::before{content:'> ';color:#8B1A1A}
-
-.portails{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;width:100%;max-width:780px}
-
-.portail{
-  background:#0F0D0B;border:.5px solid #1C1714;
-  padding:1.5rem 1.1rem;text-decoration:none;color:#D8CEBC;
-  transition:all .15s;display:flex;flex-direction:column;gap:.6rem;
-  position:relative;overflow:hidden;
-  -webkit-tap-highlight-color:transparent;
-}
-.portail::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#1C1714;transition:background .15s}
-.portail:hover{border-color:#26201A;background:#131110}
-.portail:hover::before{background:#8B1A1A}
-
-.portail-ref{font-size:8px;color:#342C24;letter-spacing:.15em}
-.portail-title{font-family:'VT323',monospace;font-size:20px;letter-spacing:.1em;color:#D8CEBC;line-height:1}
-.portail-sub{font-size:9px;color:#8B1A1A;letter-spacing:.1em}
-.portail-sub::before{content:'// ';color:#342C24}
-.portail-desc{font-size:10px;color:#70665A;line-height:1.65;margin-top:.25rem;flex:1}
-.portail-arrow{font-size:13px;color:#342C24;margin-top:.5rem;transition:color .15s;letter-spacing:.05em}
-.portail:hover .portail-arrow{color:#8B1A1A}
-
-.footer{margin-top:2.5rem;font-size:9px;color:#1C1714;letter-spacing:.15em}
-
-@media(max-width:580px){
-  .portails{grid-template-columns:1fr}
-  .hero-title{font-size:36px}
-}
-
-.portail-journal {
-  display: none;
-  width: 100%;
-  max-width: 780px;
-  margin-top: .5rem;
-}
-.portail-journal.visible { display: block; }
-.journal-portail {
-  background: #0F0D0B;
-  border: .5px solid #1C1714;
-  border-left: 2px solid #8B1A1A;
-  padding: .75rem 1.1rem;
-  text-decoration: none;
-  color: #D8CEBC;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  transition: all .15s;
-  -webkit-tap-highlight-color: transparent;
-}
-.journal-portail:hover { background: #131110; border-color: #342C24; border-left-color: #8B1A1A; }
-.journal-portail-ref   { font-size: 8px; color: #342C24; letter-spacing: .15em; flex-shrink: 0; }
-.journal-portail-title { font-family: 'VT323', monospace; font-size: 16px; letter-spacing: .1em; color: #8B1A1A; }
-.journal-portail-arrow { font-size: 11px; color: #342C24; margin-left: auto; }
-.journal-portail:hover .journal-portail-arrow { color: #8B1A1A; }
-.footer { cursor: default; }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="hero">
-  <img src="archives/logo.png" alt="Dunkelgang MC">
-  <div class="hero-eyebrow">SYSTEME_DUNKELGANG — ACCES_PRINCIPAL</div>
-  <div class="hero-title">DUNKELGANG_MC</div>
-  <div class="hero-rule"></div>
-  <div class="hero-sub">RHIN_SUPERIEUR — FONDE_1971</div>
-</div>
+<header class="site-header">
+  <div class="header-inner">
+    <img src="archives/logo.png" class="header-logo" alt="DMC">
+    <span class="header-title">DUNKELGANG_MC</span>
+    <span class="header-sep">//</span>
+    <span class="header-sub">ACCES_PRINCIPAL</span>
+  </div>
+</header>
 
-<div class="portails">
-  <a href="histoires/index.html" class="portail">
-    <div class="portail-ref">SYS://DMC-HIST-001</div>
-    <div class="portail-title">LES_HISTOIRES</div>
-    <div class="portail-sub">RECITS — CHAPITRES</div>
-    <div class="portail-desc">Ce que les archives ne disent pas. Ce qui s'est passé entre les hommes, sur le Rhin, dans les forêts et les bars.</div>
-    <div class="portail-arrow">[ENTRER] →</div>
-  </a>
+<main class="main-content">
+  <div class="hero">
+    <img src="archives/logo.png" alt="Dunkelgang MC">
+    <div class="hero-eyebrow">SYSTEME_DUNKELGANG — ACCES_PRINCIPAL</div>
+    <div class="hero-title">DUNKELGANG_MC</div>
+    <div class="hero-rule"></div>
+    <div class="hero-sub">RHIN_SUPERIEUR — FONDE_1971</div>
+  </div>
 
-  <a href="archives/index.html" class="portail">
-    <div class="portail-ref">SYS://DMC-ARCH-001</div>
-    <div class="portail-title">ARCHIVES</div>
-    <div class="portail-sub">DOCUMENTS_INTERNES</div>
-    <div class="portail-desc">Fiches membres, territoire, activités, chronologie. La mémoire interne depuis 1971. Accès restreint.</div>
-    <div class="portail-arrow">[ENTRER] →</div>
-  </a>
+  <div class="portails">
+    <a href="histoires/index.html" class="portail">
+      <div class="portail-ref">SYS://DMC-HIST-001</div>
+      <div class="portail-title">LES_HISTOIRES</div>
+      <div class="portail-sub">RECITS — CHAPITRES</div>
+      <div class="portail-desc">Ce que les archives ne disent pas. Ce qui s'est passé entre les hommes, sur le Rhin, dans les forêts et les bars.</div>
+      <div class="portail-arrow">[ENTRER] →</div>
+    </a>
 
-  <a href="sentinel/index.html" class="portail">
-    <div class="portail-ref">SYS://SGmbH-001</div>
-    <div class="portail-title">SENTINEL_GMBH</div>
-    <div class="portail-sub">SECURITE — PROTECTION</div>
-    <div class="portail-desc">Services de sécurité professionnels. Breisach am Rhein — depuis 1972. Opérations transfrontalières FR/DE.</div>
-    <div class="portail-arrow">[ENTRER] →</div>
-  </a>
-</div>
+    <a href="archives/index.html" class="portail">
+      <div class="portail-ref">SYS://DMC-ARCH-001</div>
+      <div class="portail-title">ARCHIVES</div>
+      <div class="portail-sub">DOCUMENTS_INTERNES</div>
+      <div class="portail-desc">Fiches membres, territoire, activités, chronologie. La mémoire interne depuis 1971. Accès restreint.</div>
+      <div class="portail-arrow">[ENTRER] →</div>
+    </a>
 
-<div class="portail-journal" id="journal-access">
-  <a href="journal.html" class="journal-portail">
-    <span class="journal-portail-ref">SYS://DMC-JOUR-001</span>
-    <span class="journal-portail-title">JOURNAL_INTERNE</span>
-    <span class="journal-portail-arrow">→</span>
-  </a>
-</div>
+    <a href="sentinel/index.html" class="portail">
+      <div class="portail-ref">SYS://SGmbH-001</div>
+      <div class="portail-title">SENTINEL_GMBH</div>
+      <div class="portail-sub">SECURITE — PROTECTION</div>
+      <div class="portail-desc">Services de sécurité professionnels. Breisach am Rhein — depuis 1972. Opérations transfrontalières FR/DE.</div>
+      <div class="portail-arrow">[ENTRER] →</div>
+    </a>
+  </div>
 
-<div class="footer" id="footer-trigger">DUNKELGANG_MC &nbsp;// &nbsp;TOUS_DROITS_RESERVES &nbsp;//&nbsp; 1989</div>
+  <div class="portail-journal" id="journal-access">
+    <a href="journal.html" class="journal-portail">
+      <span class="journal-portail-ref">SYS://DMC-JOUR-001</span>
+      <span class="journal-portail-title">JOURNAL_INTERNE</span>
+      <span class="journal-portail-arrow">→</span>
+    </a>
+  </div>
+</main>
 
+<footer class="site-footer" id="footer-trigger">
+  DUNKELGANG_MC &nbsp;// &nbsp;TOUS_DROITS_RESERVES &nbsp;//&nbsp; 1989
+</footer>
 
 <script>
 var _fc = 0, _ft = null;

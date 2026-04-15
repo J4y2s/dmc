@@ -5,52 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dunkelgang MC — Archives</title>
 <link rel="stylesheet" href="style.css">
-<style>
-.gate {
-  position: fixed; inset: 0; background: var(--bg); z-index: 1000;
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; gap: 1.5rem; padding: 2rem;
-}
-.gate img { width: 64px; height: 64px; object-fit: contain; }
-.gate-title { font-family: var(--vt); font-size: 26px; letter-spacing: .15em; color: var(--cream); text-align: center; }
-.gate-sub { font-size: 9px; color: var(--s5); letter-spacing: .18em; text-align: center; }
-.gate-form { display: flex; flex-direction: column; align-items: center; gap: .75rem; width: 100%; max-width: 240px; }
-.gate-label { font-size: 9px; color: var(--s5); letter-spacing: .18em; align-self: flex-start; }
-.gate-input {
-  width: 100%; background: var(--s1); border: 1px solid var(--s3);
-  padding: .55rem 1rem; font-family: var(--vt); font-size: 22px;
-  letter-spacing: .3em; color: var(--cream); text-align: center;
-  text-transform: uppercase; outline: none; transition: border-color .15s;
-}
-.gate-input:focus { border-color: var(--red); }
-.gate-input.err { border-color: var(--red); animation: shake .25s; }
-.gate-btn {
-  width: 100%; background: var(--red); border: none;
-  padding: .55rem; font-family: var(--vt); font-size: 17px;
-  letter-spacing: .12em; color: var(--cream); cursor: pointer;
-  transition: background .15s;
-}
-.gate-btn:hover { background: #6b1414; }
-.gate-err { font-size: 9px; color: var(--red); letter-spacing: .1em; display: none; }
-.gate-err.show { display: block; }
-.gate-back { font-size: 9px; color: var(--s4); letter-spacing: .12em; text-decoration: none; transition: color .15s; }
-.gate-back:hover { color: var(--c3); }
-@keyframes shake { 0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)} }
-
-/* Journal hidden access */
-.journal-link {
-  display: none;
-  font-size: 9px; color: var(--red); letter-spacing: .1em;
-  text-decoration: none; padding: .28rem .85rem;
-  border-left: 2px solid var(--red);
-  background: rgba(139,26,26,.08);
-  margin-top: .25rem;
-}
-.journal-link::before { content: '> '; }
-.journal-link.visible { display: block; }
-.sb-stamp { cursor: pointer; user-select: none; }
-.sb-stamp:hover { color: var(--s5); border-color: var(--s5); }
-</style>
 </head>
 <body>
 
@@ -114,6 +68,10 @@
     <div class="section-block"><div class="section-label">CLUB</div><div class="section-links"><a href="synthese.html" class="section-link">Synthèse<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">MEMBRES</div><div class="section-links"><a href="kaspar.html" class="section-link">Kaiser<span class="sl-arrow">→</span></a><a href="morel.html" class="section-link">Pater<span class="sl-arrow">→</span></a><a href="wolff.html" class="section-link">Klingen<span class="sl-arrow">→</span></a><a href="perrin.html" class="section-link">Grillon<span class="sl-arrow">→</span></a><a href="stein.html" class="section-link">Brume<span class="sl-arrow">→</span></a><a href="aubry.html" class="section-link">Chacal<span class="sl-arrow">→</span></a><a href="keller.html" class="section-link">Rabe<span class="sl-arrow">→</span></a><a href="brandt.html" class="section-link">Maulwurf<span class="sl-arrow">→</span></a><a href="voss.html" class="section-link">Nichts<span class="sl-arrow">→</span></a><a href="volkov.html" class="section-link">Volk<span class="sl-arrow">→</span></a><a href="membres.html" class="section-link">Tous les membres<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">TERRITOIRE</div><div class="section-links"><a href="territoire.html" class="section-link">Chapters &amp; axes<span class="sl-arrow">→</span></a><a href="carte.html" class="section-link">Carte interactive<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">ACTIVITES</div><div class="section-links"><a href="activites.html" class="section-link">Activités<span class="sl-arrow">→</span></a><a href="sentinel.html" class="section-link">Sentinel_GmbH<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">HISTOIRE</div><div class="section-links"><a href="historique.html" class="section-link">Fil historique<span class="sl-arrow">→</span></a><a href="crises.html" class="section-link">Grandes crises<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">RELATIONS</div><div class="section-links"><a href="relations.html" class="section-link">Alliances &amp; ennemis<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">CODE</div><div class="section-links"><a href="grades.html" class="section-link">Grades &amp; fonctions<span class="sl-arrow">→</span></a><a href="ecussons.html" class="section-link">Écussons<span class="sl-arrow">→</span></a><a href="regles.html" class="section-link">Règles internes<span class="sl-arrow">→</span></a><a href="integration.html" class="section-link">Intégration<span class="sl-arrow">→</span></a></div></div><div class="section-block"><div class="section-label">MACHINES</div><div class="section-links"><a href="motos.html" class="section-link">Les motos<span class="sl-arrow">→</span></a></div></div>
   </main>
 </div>
+
+<footer class="site-footer">
+  DUNKELGANG_MC &nbsp;// &nbsp;ARCHIVES — ACCES_RESTREINT &nbsp;//&nbsp; 1989
+</footer>
 
 <script>
 if (sessionStorage.getItem('dmc_auth') === '1') {

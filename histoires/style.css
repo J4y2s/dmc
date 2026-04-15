@@ -18,7 +18,7 @@
   --vt:    'VT323', monospace;
 }
 
-body { background:var(--bg); color:var(--cream); font-family:var(--mono); min-height:100vh; }
+body { background:var(--bg); color:var(--cream); font-family:var(--mono); min-height:100vh; display:flex; flex-direction:column; }
 
 /* ── Nav ── */
 .h-nav {
@@ -186,7 +186,7 @@ body { background:var(--bg); color:var(--cream); font-family:var(--mono); min-he
 [data-theme="dark"] { --bg:#0C0A08; }
 
 /* ── Footer ── */
-.h-footer { background:var(--s1); border-top:1px solid var(--s3); padding:1rem 1.25rem; text-align:center; font-size:10px; color:var(--s5); letter-spacing:.1em; }
+.h-footer { background:var(--s1); border-top:1px solid var(--s3); padding:1rem 1.25rem; text-align:center; font-size:10px; color:var(--s5); letter-spacing:.1em; margin-top:auto; flex-shrink:0; }
 .h-footer a { color:var(--s5); text-decoration:none; }
 .h-footer a:hover { color:var(--c3); }
 
