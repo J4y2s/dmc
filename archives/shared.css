@@ -180,5 +180,3 @@ body {
 .tag-red{background:#FCEBEB;color:#A32D2D}
 .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .tag-teal{background:#E1F5EE;color:#0F6E56}
-margin:0;padding:0;box-sizing:border-box}
-body{background:transparent;font-family:var(--font-sans,sans-serif);padding:1rem 0}

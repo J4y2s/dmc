@@ -175,7 +175,7 @@ body {
 
 /* ─── Card ───────────────────────────────────────────────── */
 .card { background: var(--s1); border: .5px solid var(--s3); margin-bottom: .75rem; overflow: hidden; }
-.card-header { background: var(--s2); border-bottom: .5px solid var(--s3); padding: 1rem 1.1rem; }
+.card-header { background: var(--s2); border-bottom: .5px solid var(--s3); padding: 1rem 1.1rem; text-align: center; }
 .card-body   { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .85rem; }
 .card-title  { font-family: var(--vt); font-size: 18px; letter-spacing: .1em; color: var(--cream); line-height: 1; }
 .card-sub    { font-size: 9px; color: var(--s5); letter-spacing: .08em; margin-top: 2px; }
