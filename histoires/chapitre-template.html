@@ -38,5 +38,21 @@
   <a href="../index.html">Dunkelgang MC</a> &nbsp;·&nbsp; Les Histoires
 </footer>
 
+<script>
+(function(){
+  var el = document.querySelector('.h-logo-title');
+  if (!el) return;
+  var text = el.textContent;
+  el.textContent = '';
+  var i = 0;
+  function type() {
+    if (i < text.length) {
+      el.textContent += text[i++];
+      setTimeout(type, 55 + Math.random() * 30);
+    }
+  }
+  setTimeout(type, 120);
+})();
+</script>
 </body>
 </html>

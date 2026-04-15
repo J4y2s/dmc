@@ -1366,5 +1366,22 @@ function filterM(btn) {
   </main>
 </div>
 
+<script>
+(function(){
+  var el = document.querySelector('.nav-title-link');
+  if (!el) return;
+  var text = el.textContent;
+  el.textContent = '';
+  el.style.visibility = 'visible';
+  var i = 0;
+  function type() {
+    if (i < text.length) {
+      el.textContent += text[i++];
+      setTimeout(type, 55 + Math.random() * 30);
+    }
+  }
+  setTimeout(type, 120);
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script>
+if (sessionStorage.getItem('dmc_auth') !== '1') window.location.href = 'index.html';
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunkelgang MC — Réseau</title>
+<link rel="stylesheet" href="style.css">
+<style>
+#network-canvas { display:block; width:100%; background:var(--bg); cursor:grab; border:.5px solid var(--s3); }
+#network-canvas:active { cursor:grabbing; }
+.network-wrap { position:relative; }
+.net-tooltip {
+  position:absolute; pointer-events:none; display:none;
+  background:var(--s2); border:.5px solid var(--s4);
+  padding:8px 10px; z-index:10; max-width:180px;
+}
+.net-tt-name  { font-family:var(--vt); font-size:15px; color:var(--cream); letter-spacing:.06em; }
+.net-tt-sub   { font-size:10px; color:var(--red); margin-bottom:3px; }
+.net-tt-grade { font-size:10px; color:var(--c3); }
+.net-tt-ch    { font-size:10px; color:var(--s5); }
+.net-legend   { display:flex; flex-wrap:wrap; gap:10px; padding:.65rem 0; margin-top:.5rem; }
+.net-leg      { display:flex; align-items:center; gap:5px; font-size:9px; color:var(--c3); }
+.net-leg-dot  { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.net-leg-line { width:20px; height:1px; flex-shrink:0; }
+.net-controls { display:flex; gap:5px; margin-bottom:.5rem; }
+.net-btn {
+  font-size:9px; padding:3px 9px; border:.5px solid var(--s4);
+  color:var(--c3); background:transparent; cursor:pointer;
+  font-family:var(--mono); transition:all .1s;
+}
+.net-btn.on { background:var(--red); border-color:var(--red); color:var(--cream); }
+.net-btn:hover { color:var(--cream); border-color:var(--s5); }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-left">
+    <a href="index.html" class="nav-title-link">DUNKELGANG_MC</a>
+    <span class="nav-sep">//</span>
+    <span class="nav-section">RESEAU</span>
+  </div>
+  <div class="nav-right">
+    <a href="../index.html" class="nav-back">// RETOUR</a>
+    <div class="nav-badge">[DACHS]</div>
+    <button class="nav-menu-btn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="menu-drawer" id="drawer">
+  <div class="menu-close"><button onclick="toggleMenu()">&#x2715;</button></div>
+  <div class="menu-section"><div class="menu-label">CLUB</div><a href="synthese.html" class="menu-item">Synthèse</a></div>
+  <div class="menu-section"><div class="menu-label">MEMBRES</div>
+    <a href="kaspar.html" class="menu-item">Kaiser</a><a href="morel.html" class="menu-item">Pater</a>
+    <a href="wolff.html" class="menu-item">Klingen</a><a href="perrin.html" class="menu-item">Grillon</a>
+    <a href="stein.html" class="menu-item">Brume</a><a href="aubry.html" class="menu-item">Chacal</a>
+    <a href="keller.html" class="menu-item">Rabe</a><a href="brandt.html" class="menu-item">Maulwurf</a>
+    <a href="voss.html" class="menu-item">Nichts</a><a href="volkov.html" class="menu-item">Volk</a>
+    <a href="membres.html" class="menu-item">Tous les membres</a>
+  </div>
+  <div class="menu-section"><div class="menu-label">RESEAU</div>
+    <a href="reseau.html" class="menu-item active">Vue réseau</a>
+  </div>
+</div>
+<script>function toggleMenu(){document.getElementById('overlay').classList.toggle('open');document.getElementById('drawer').classList.toggle('open');}</script>
+
+<div class="site-body">
+  <aside class="sidebar">
+    <div class="sb-section"><div class="sb-label">CLUB</div><a href="synthese.html" class="sb-item">Synthèse</a></div>
+    <div class="sb-divider"></div>
+    <div class="sb-section"><div class="sb-label">MEMBRES</div>
+      <a href="kaspar.html" class="sb-item">Kaiser</a><a href="morel.html" class="sb-item">Pater</a>
+      <a href="wolff.html" class="sb-item">Klingen</a><a href="perrin.html" class="sb-item">Grillon</a>
+      <a href="stein.html" class="sb-item">Brume</a><a href="aubry.html" class="sb-item">Chacal</a>
+      <a href="keller.html" class="sb-item">Rabe</a><a href="brandt.html" class="sb-item">Maulwurf</a>
+      <a href="voss.html" class="sb-item">Nichts</a><a href="volkov.html" class="sb-item">Volk</a>
+      <a href="membres.html" class="sb-item">Tous les membres</a>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="sb-section"><div class="sb-label">RESEAU</div>
+      <a href="reseau.html" class="sb-item active">Vue réseau</a>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="sb-section"><div class="sb-label">TERRITOIRE</div>
+      <a href="territoire.html" class="sb-item">Chapters &amp; axes</a>
+      <a href="carte.html" class="sb-item">Carte interactive</a>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="sb-section"><div class="sb-label">HISTOIRE</div>
+      <a href="historique.html" class="sb-item">Fil historique</a>
+      <a href="crises.html" class="sb-item">Grandes crises</a>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="sb-section"><div class="sb-label">CODE</div>
+      <a href="grades.html" class="sb-item">Grades &amp; fonctions</a>
+      <a href="ecussons.html" class="sb-item">Écussons</a>
+      <a href="regles.html" class="sb-item">Règles internes</a>
+      <a href="integration.html" class="sb-item">Intégration</a>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="sb-section"><div class="sb-label">MACHINES</div>
+      <a href="motos.html" class="sb-item">Les motos</a>
+    </div>
+    <div class="sb-footer">
+      <div class="sb-footer-ref">DMC-ARCH-V1989.11</div>
+      <div class="sb-stamp">[RESTREINT]</div>
+    </div>
+  </aside>
+
+  <main class="page">
+    <div class="card" style="margin-bottom:.75rem">
+      <div class="card-header">
+        <div class="card-title">RESEAU_RELATIONS</div>
+        <div class="card-sub">// DACHS — Recrutement — Chapters — 1971→1989</div>
+      </div>
+    </div>
+
+    <div class="net-controls">
+      <button class="net-btn on" data-f="all" onclick="netFilter(this)">TOUT</button>
+      <button class="net-btn" data-f="dachs"   onclick="netFilter(this)">DACHS</button>
+      <button class="net-btn" data-f="recrute" onclick="netFilter(this)">RECRUTEMENT</button>
+      <button class="net-btn" data-f="remplace" onclick="netFilter(this)">TRANSITIONS</button>
+      <button class="net-btn" data-f="chapter" onclick="netFilter(this)">CHAPTERS</button>
+    </div>
+
+    <div class="network-wrap">
+      <canvas id="network-canvas" height="520"></canvas>
+      <div class="net-tooltip" id="net-tt">
+        <div class="net-tt-name" id="tt-name"></div>
+        <div class="net-tt-sub"  id="tt-sub"></div>
+        <div class="net-tt-grade" id="tt-grade"></div>
+        <div class="net-tt-ch"   id="tt-ch"></div>
+      </div>
+    </div>
+
+    <div class="net-legend">
+      <div class="net-leg"><div class="net-leg-dot" style="background:#8B1A1A"></div>Fondateur</div>
+      <div class="net-leg"><div class="net-leg-dot" style="background:#185FA5"></div>Nouvelle génération FR</div>
+      <div class="net-leg"><div class="net-leg-dot" style="background:#534AB7"></div>Nouvelle génération DE</div>
+      <div class="net-leg"><div class="net-leg-line" style="background:#342C24"></div>Cellule DACHS</div>
+      <div class="net-leg"><div class="net-leg-line" style="background:#8B1A1A"></div>Recrutement</div>
+      <div class="net-leg"><div class="net-leg-line" style="background:#534AB7"></div>Transition grade</div>
+      <div class="net-leg"><div class="net-leg-line" style="background:#185FA5"></div>Chapter</div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+var NODES = [
+  {id:'kaspar',label:'«Kaiser»',sublabel:'Pierre Kaspar',grade:'Wotan',chapter:'Rhein',color:'#8B1A1A',size:18,href:'kaspar.html',fond:true},
+  {id:'morel',label:'«Pater»',sublabel:'André Morel',grade:'Ancien',chapter:'Rhein',color:'#342C24',size:18,href:'morel.html',fond:true},
+  {id:'wolff',label:'«Klingen»',sublabel:'Karl Wolff',grade:'Sleipnir',chapter:'Rhein',color:'#8B1A1A',size:18,href:'wolff.html',fond:true},
+  {id:'perrin',label:'«Grillon»',sublabel:'Luc Perrin',grade:'Mime',chapter:'Rhein',color:'#8B1A1A',size:18,href:'perrin.html',fond:true},
+  {id:'stein',label:'«Brume»',sublabel:'Raymond Stein',grade:'Heimdall',chapter:'Rhein',color:'#8B1A1A',size:18,href:'stein.html',fond:true},
+  {id:'aubry',label:'«Chacal»',sublabel:'Michel Aubry',grade:'Prüfer',chapter:'Rhein',color:'#8B1A1A',size:18,href:'aubry.html',fond:true},
+  {id:'keller',label:'«Rabe»',sublabel:'Ernst Keller',grade:'Eir',chapter:'Rhein',color:'#8B1A1A',size:18,href:'keller.html',fond:true},
+  {id:'brandt',label:'«Maulwurf»',sublabel:'Hans Brandt',grade:'Wotan',chapter:'Kehl',color:'#8B1A1A',size:18,href:'brandt.html',fond:true},
+  {id:'voss',label:'«Nichts»',sublabel:'Otto Voss',grade:'Hoard',chapter:'Rhein',color:'#8B1A1A',size:18,href:'voss.html',fond:true},
+  {id:'volkov',label:'«Volk»',sublabel:'Alexandre Volkov',grade:'Ancien',chapter:'Rhein',color:'#342C24',size:18,href:'volkov.html',fond:true},
+  {id:'braise',label:'«Braise»',sublabel:'Henri Fischer',grade:'Gunnar',chapter:'Rhein',color:'#185FA5',size:12,href:'#',fond:false},
+  {id:'raste',label:'«Raste»',sublabel:'Uwe Schröder',grade:'Heimdall',chapter:'Rhein',color:'#534AB7',size:12,href:'#',fond:false},
+  {id:'barsch',label:'«Barsch»',sublabel:'Dieter Ziegler',grade:'Tyr',chapter:'Rhein',color:'#534AB7',size:12,href:'#',fond:false},
+  {id:'eisen',label:'«Eisen»',sublabel:'Laurent Mayer',grade:'Wotan',chapter:'Mulhouse',color:'#185FA5',size:12,href:'#',fond:false},
+  {id:'belier',label:'«Bélier»',sublabel:'Paul Schneider',grade:'Wotan',chapter:'Strasbourg',color:'#185FA5',size:12,href:'#',fond:false},
+  {id:'faucon',label:'«Faucon»',sublabel:'Reinhard Hartmann',grade:'Wotan',chapter:'Freiburg',color:'#534AB7',size:12,href:'#',fond:false},
+  {id:'vautour',label:'«Vautour»',sublabel:'Uwe Ziegler',grade:'Wotan',chapter:'Karlsruhe',color:'#534AB7',size:12,href:'#',fond:false},
+  {id:'soupape',label:'«Soupape»',sublabel:'Axel Becker',grade:'Wotan',chapter:'Stuttgart',color:'#534AB7',size:12,href:'#',fond:false},
+  {id:'sanglier',label:'«Sanglier»',sublabel:'Bruno Wagner',grade:'Wotan',chapter:'Lyon',color:'#185FA5',size:12,href:'#',fond:false},
+  {id:'zapfen',label:'«Zapfen»',sublabel:'Lothar Baum',grade:'Gunnar',chapter:'Kehl',color:'#534AB7',size:12,href:'#',fond:false},
+];
+var EDGES = [
+  {from:'kaspar',to:'morel',type:'dachs',label:'Cellule DACHS',color:'#342C24'},
+  {from:'kaspar',to:'wolff',type:'dachs',label:'Cellule DACHS',color:'#342C24'},
+  {from:'kaspar',to:'perrin',type:'dachs',label:'Cellule DACHS',color:'#342C24'},
+  {from:'kaspar',to:'stein',type:'dachs',label:'Cellule DACHS',color:'#342C24'},
+  {from:'kaspar',to:'aubry',type:'dachs',label:'Cellule DACHS',color:'#342C24'},
+  {from:'kaspar',to:'keller',type:'dachs',label:'Cellule DACHS',color:'#342C24'},
+  {from:'kaspar',to:'brandt',type:'dachs',label:'Cellule DACHS',color:'#342C24'},
+  {from:'kaspar',to:'voss',type:'dachs',label:'Cellule DACHS',color:'#342C24'},
+  {from:'kaspar',to:'volkov',type:'dachs',label:'Cellule DACHS',color:'#342C24'},
+  {from:'aubry',to:'braise',type:'recrute',label:'Recruté par Chacal',color:'#8B1A1A'},
+  {from:'brume',to:'raste',type:'recrute',label:'Recruté par Brume',color:'#8B1A1A'},
+  {from:'stein',to:'raste',type:'recrute',label:'Recruté par Brume',color:'#8B1A1A'},
+  {from:'kaspar',to:'barsch',type:'recrute',label:'Validé par Kaiser',color:'#8B1A1A'},
+  {from:'aubry',to:'eisen',type:'recrute',label:'Recruté via Sentinel',color:'#8B1A1A'},
+  {from:'kaspar',to:'belier',type:'recrute',label:'Validé par Kaiser',color:'#8B1A1A'},
+  {from:'brandt',to:'zapfen',type:'recrute',label:'Recruté par Maulwurf',color:'#8B1A1A'},
+  {from:'brandt',to:'faucon',type:'recrute',label:'Envoyé par Brandt',color:'#8B1A1A'},
+  {from:'stein',to:'soupape',type:'recrute',label:'Supervisé par Brume',color:'#8B1A1A'},
+  {from:'kaspar',to:'vautour',type:'recrute',label:'Validé par Kaiser',color:'#8B1A1A'},
+  {from:'kaspar',to:'sanglier',type:'recrute',label:'Validé par Kaiser',color:'#8B1A1A'},
+  {from:'volkov',to:'barsch',type:'remplace',label:'Barsch remplace Volk au Tyr',color:'#534AB7'},
+  {from:'morel',to:'braise',type:'remplace',label:'Braise remplace Pater au Gunnar',color:'#534AB7'},
+  {from:'brandt',to:'zapfen',type:'chapter',label:'Chapter Kehl',color:'#185FA5'},
+  {from:'eisen',to:'belier',type:'chapter',label:'Axe FR',color:'#185FA5'},
+];
+
+var canvas = document.getElementById('network-canvas');
+var ctx = canvas.getContext('2d');
+var W, H;
+var positions = {};
+var vel = {};
+var drag = null, hov = null;
+var mx = 0, my = 0;
+var filt = 'all';
+var panX = 0, panY = 0, panDrag = false, panSX = 0, panSY = 0;
+
+function resize() {
+  W = canvas.clientWidth;
+  H = 520;
+  canvas.width = W;
+  canvas.height = H;
+}
+
+// Initial positions — force-directed init
+function initPositions() {
+  NODES.forEach(function(n, i) {
+    var angle = (i / NODES.length) * Math.PI * 2;
+    var r = n.fond ? 120 : 220;
+    positions[n.id] = {
+      x: W/2 + Math.cos(angle) * r + (Math.random()-0.5)*40,
+      y: H/2 + Math.sin(angle) * r + (Math.random()-0.5)*40
+    };
+    vel[n.id] = {x:0, y:0};
+  });
+}
+
+// Force simulation
+function simulate() {
+  var k = 0.015;
+  // Repulsion
+  NODES.forEach(function(a) {
+    NODES.forEach(function(b) {
+      if (a.id === b.id) return;
+      var pa = positions[a.id], pb = positions[b.id];
+      var dx = pa.x - pb.x, dy = pa.y - pb.y;
+      var d = Math.sqrt(dx*dx+dy*dy) || 1;
+      var f = 3000 / (d*d);
+      vel[a.id].x += dx/d*f;
+      vel[a.id].y += dy/d*f;
+    });
+  });
+  // Attraction along edges
+  activeEdges().forEach(function(e) {
+    var pa = positions[e.from], pb = positions[e.to];
+    if (!pa || !pb) return;
+    var dx = pb.x - pa.x, dy = pb.y - pa.y;
+    var d = Math.sqrt(dx*dx+dy*dy) || 1;
+    var target = 160;
+    var f = (d - target) * 0.04;
+    vel[e.from].x += dx/d*f;
+    vel[e.from].y += dy/d*f;
+    vel[e.to].x   -= dx/d*f;
+    vel[e.to].y   -= dy/d*f;
+  });
+  // Center gravity
+  NODES.forEach(function(n) {
+    var p = positions[n.id];
+    vel[n.id].x += (W/2 - p.x) * 0.004;
+    vel[n.id].y += (H/2 - p.y) * 0.004;
+    vel[n.id].x *= 0.85;
+    vel[n.id].y *= 0.85;
+    if (drag && drag.id === n.id) return;
+    p.x += vel[n.id].x;
+    p.y += vel[n.id].y;
+    p.x = Math.max(30, Math.min(W-30, p.x));
+    p.y = Math.max(30, Math.min(H-30, p.y));
+  });
+}
+
+function activeEdges() {
+  if (filt === 'all') return EDGES;
+  return EDGES.filter(function(e){ return e.type === filt; });
+}
+
+function draw() {
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle = '#0C0A08';
+  ctx.fillRect(0,0,W,H);
+
+  // Edges
+  activeEdges().forEach(function(e) {
+    var pa = positions[e.from], pb = positions[e.to];
+    if (!pa||!pb) return;
+    ctx.beginPath();
+    ctx.moveTo(pa.x, pa.y);
+    ctx.lineTo(pb.x, pb.y);
+    ctx.strokeStyle = e.color;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4,3]);
+    ctx.globalAlpha = 0.5;
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.globalAlpha = 1;
+    // Arrow
+    var angle = Math.atan2(pb.y-pa.y, pb.x-pa.x);
+    var nx = pb.x - Math.cos(angle)*16;
+    var ny = pb.y - Math.sin(angle)*16;
+    ctx.beginPath();
+    ctx.moveTo(nx, ny);
+    ctx.lineTo(nx - Math.cos(angle-0.4)*8, ny - Math.sin(angle-0.4)*8);
+    ctx.lineTo(nx - Math.cos(angle+0.4)*8, ny - Math.sin(angle+0.4)*8);
+    ctx.closePath();
+    ctx.fillStyle = e.color;
+    ctx.globalAlpha = 0.5;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  });
+
+  // Nodes
+  NODES.forEach(function(n) {
+    var p = positions[n.id];
+    var isHov = hov && hov.id === n.id;
+    var r = n.size + (isHov ? 3 : 0);
+    // Glow
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r+8, 0, Math.PI*2);
+    ctx.fillStyle = n.color;
+    ctx.globalAlpha = isHov ? 0.2 : 0.08;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    // Circle
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, r, 0, Math.PI*2);
+    ctx.fillStyle = n.color;
+    ctx.fill();
+    ctx.strokeStyle = '#0C0A08';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    // Label
+    ctx.font = (n.fond ? '500 ' : '') + '10px \'Share Tech Mono\', monospace';
+    ctx.fillStyle = isHov ? '#FFFFFF' : '#D8CEBC';
+    ctx.textAlign = 'center';
+    ctx.fillText(n.label, p.x, p.y - r - 5);
+  });
+}
+
+function hitTest(x, y) {
+  for (var i=0; i<NODES.length; i++) {
+    var n = NODES[i];
+    var p = positions[n.id];
+    var dx = x-p.x, dy = y-p.y;
+    if (Math.sqrt(dx*dx+dy*dy) <= n.size+6) return n;
+  }
+  return null;
+}
+
+canvas.addEventListener('mousemove', function(e) {
+  var r = canvas.getBoundingClientRect();
+  var sx = canvas.width/canvas.clientWidth;
+  var sy = canvas.height/canvas.clientHeight;
+  mx = (e.clientX-r.left)*sx;
+  my = (e.clientY-r.top)*sy;
+  if (drag) {
+    positions[drag.id].x = mx;
+    positions[drag.id].y = my;
+    return;
+  }
+  var h = hitTest(mx,my);
+  if (h !== hov) {
+    hov = h;
+    canvas.style.cursor = h ? 'pointer' : 'default';
+    if (h) {
+      var tt = document.getElementById('net-tt');
+      var wr = canvas.getBoundingClientRect();
+      var lx = e.clientX - wr.left + 14;
+      var ly = e.clientY - wr.top - 10;
+      if (lx+190>canvas.clientWidth) lx -= 200;
+      if (ly+80>canvas.clientHeight) ly -= 90;
+      if (lx<5) lx=5; if (ly<5) ly=5;
+      document.getElementById('tt-name').textContent  = '«' + h.surnom + '»';
+      document.getElementById('tt-sub').textContent   = h.nom || '';
+      document.getElementById('tt-grade').textContent = h.grade;
+      document.getElementById('tt-ch').textContent    = 'Chapter_' + h.chapter;
+      tt.style.left = lx+'px'; tt.style.top = ly+'px'; tt.style.display='block';
+    } else {
+      document.getElementById('net-tt').style.display='none';
+    }
+  }
+});
+
+canvas.addEventListener('mousedown', function(e) {
+  var r = canvas.getBoundingClientRect();
+  var sx = canvas.width/canvas.clientWidth;
+  var sy = canvas.height/canvas.clientHeight;
+  var x = (e.clientX-r.left)*sx, y=(e.clientY-r.top)*sy;
+  drag = hitTest(x,y);
+});
+
+canvas.addEventListener('mouseup', function(e) {
+  if (drag) {
+    // Click = navigate if founder
+    var r = canvas.getBoundingClientRect();
+    var sx = canvas.width/canvas.clientWidth;
+    var sy = canvas.height/canvas.clientHeight;
+    var x=(e.clientX-r.left)*sx, y=(e.clientY-r.top)*sy;
+    var dx=x-positions[drag.id].x, dy=y-positions[drag.id].y;
+    if (Math.sqrt(dx*dx+dy*dy)<3 && drag.fond && drag.href!='#') {
+      window.location.href = drag.href;
+    }
+  }
+  drag = null;
+});
+
+// Touch
+canvas.addEventListener('touchstart', function(e) {
+  e.preventDefault();
+  var r=canvas.getBoundingClientRect();
+  var sx=canvas.width/canvas.clientWidth, sy=canvas.height/canvas.clientHeight;
+  var x=(e.touches[0].clientX-r.left)*sx, y=(e.touches[0].clientY-r.top)*sy;
+  drag=hitTest(x,y);
+},{passive:false});
+canvas.addEventListener('touchmove', function(e) {
+  e.preventDefault();
+  if(!drag) return;
+  var r=canvas.getBoundingClientRect();
+  var sx=canvas.width/canvas.clientWidth, sy=canvas.height/canvas.clientHeight;
+  positions[drag.id].x=(e.touches[0].clientX-r.left)*sx;
+  positions[drag.id].y=(e.touches[0].clientY-r.top)*sy;
+},{passive:false});
+canvas.addEventListener('touchend', function(){ drag=null; });
+
+function netFilter(btn) {
+  document.querySelectorAll('.net-btn').forEach(function(b){ b.classList.remove('on'); });
+  btn.classList.add('on');
+  filt = btn.dataset.f;
+}
+
+function loop() {
+  simulate();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+window.addEventListener('resize', function(){ resize(); });
+resize();
+initPositions();
+loop();
+</script>
+
+<script>
+(function(){
+  var el = document.querySelector('.nav-title-link');
+  if (!el) return;
+  var text = el.textContent;
+  el.textContent = '';
+  var i = 0;
+  function type() {
+    if (i < text.length) { el.textContent += text[i++]; setTimeout(type, 55 + Math.random()*30); }
+  }
+  setTimeout(type, 120);
+})();
+</script>
+</body>
+</html>
