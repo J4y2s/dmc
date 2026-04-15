@@ -15,7 +15,7 @@
   --red:#8B1A1A;
 }
 
-body{background:var(--bg);color:var(--dark);font-family:'Inter',sans-serif;line-height:1.6}
+body{background:var(--bg);color:var(--dark);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
 
 /* Nav */
 .s-nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
@@ -83,7 +83,7 @@ body{background:var(--bg);color:var(--dark);font-family:'Inter',sans-serif;line-
 .s-contact-val{font-size:15px;font-weight:500}
 
 /* Footer */
-.s-footer{background:#111;color:rgba(255,255,255,.3);padding:2rem;text-align:center;font-size:12px;letter-spacing:.05em}
+.s-footer{background:#111;color:rgba(255,255,255,.3);padding:2rem;text-align:center;font-size:12px;letter-spacing:.05em;margin-top:auto;flex-shrink:0}
 .s-footer a{color:rgba(255,255,255,.3);text-decoration:none}
 
 /* Responsive */

@@ -3,7 +3,7 @@
 /* ─── Reset ──────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body { height: 100%; }
+html { height: 100%; }
 
 :root {
   --bg:    #0C0A08;
@@ -31,6 +31,9 @@ body {
   font-family: var(--mono);
   font-size: 13px;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ─── Topbar ─────────────────────────────────────────────── */
@@ -96,7 +99,7 @@ body {
 /* ─── Main layout ────────────────────────────────────────── */
 .site-body {
   display: flex;
-  min-height: calc(100vh - var(--nav-h));
+  flex: 1;
 }
 
 /* ─── Sidebar ────────────────────────────────────────────── */
@@ -106,8 +109,8 @@ body {
   background: var(--s1);
   border-right: 1px solid var(--s3);
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -172,7 +175,7 @@ body {
 
 /* ─── Card ───────────────────────────────────────────────── */
 .card { background: var(--s1); border: .5px solid var(--s3); margin-bottom: .75rem; overflow: hidden; }
-.card-header { background: var(--s2); border-bottom: .5px solid var(--s3); padding: 1rem 1.1rem; }
+.card-header { background: var(--s2); border-bottom: .5px solid var(--s3); padding: 1rem 1.1rem; text-align: center; }
 .card-body   { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .85rem; }
 .card-title  { font-family: var(--vt); font-size: 18px; letter-spacing: .1em; color: var(--cream); line-height: 1; }
 .card-sub    { font-size: 9px; color: var(--s5); letter-spacing: .08em; margin-top: 2px; }
@@ -483,6 +486,64 @@ body {
 .axis-desc  { font-size: 11px; color: var(--c3); line-height: 1.6; margin-bottom: 7px; }
 .flags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 3px; }
 .flag-pill { font-size: 9px; padding: 1px 7px; background: var(--s2); color: var(--c3); border: .5px solid var(--s4); }
+
+/* ─── Gate (accès restreint) ─────────────────────────────── */
+.gate {
+  position: fixed; inset: 0; background: var(--bg); z-index: 1000;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 1.5rem; padding: 2rem;
+}
+.gate img { width: 64px; height: 64px; object-fit: contain; }
+.gate-title { font-family: var(--vt); font-size: 26px; letter-spacing: .15em; color: var(--cream); text-align: center; }
+.gate-sub { font-size: 9px; color: var(--s5); letter-spacing: .18em; text-align: center; }
+.gate-form { display: flex; flex-direction: column; align-items: center; gap: .75rem; width: 100%; max-width: 240px; }
+.gate-label { font-size: 9px; color: var(--s5); letter-spacing: .18em; align-self: flex-start; }
+.gate-input {
+  width: 100%; background: var(--s1); border: 1px solid var(--s3);
+  padding: .55rem 1rem; font-family: var(--vt); font-size: 22px;
+  letter-spacing: .3em; color: var(--cream); text-align: center;
+  text-transform: uppercase; outline: none; transition: border-color .15s;
+}
+.gate-input:focus { border-color: var(--red); }
+.gate-input.err { border-color: var(--red); animation: shake .25s; }
+.gate-btn {
+  width: 100%; background: var(--red); border: none;
+  padding: .55rem; font-family: var(--vt); font-size: 17px;
+  letter-spacing: .12em; color: var(--cream); cursor: pointer;
+  transition: background .15s;
+}
+.gate-btn:hover { background: #6b1414; }
+.gate-err { font-size: 9px; color: var(--red); letter-spacing: .1em; display: none; }
+.gate-err.show { display: block; }
+.gate-back { font-size: 9px; color: var(--s4); letter-spacing: .12em; text-decoration: none; transition: color .15s; }
+.gate-back:hover { color: var(--c3); }
+@keyframes shake { 0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)} }
+
+/* ─── Journal hidden access ─────────────────────────────── */
+.journal-link {
+  display: none;
+  font-size: 9px; color: var(--red); letter-spacing: .1em;
+  text-decoration: none; padding: .28rem .85rem;
+  border-left: 2px solid var(--red);
+  background: rgba(139,26,26,.08);
+  margin-top: .25rem;
+}
+.journal-link::before { content: '> '; }
+.journal-link.visible { display: block; }
+.sb-stamp { cursor: pointer; user-select: none; }
+.sb-stamp:hover { color: var(--s5); border-color: var(--s5); }
+
+/* ─── Footer ─────────────────────────────────────────────── */
+.site-footer {
+  flex-shrink: 0;
+  padding: .6rem 1rem;
+  text-align: center;
+  font-size: 9px;
+  color: var(--s3);
+  letter-spacing: .15em;
+  border-top: 1px solid var(--s3);
+  background: var(--s1);
+}
 
 /* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 768px) {

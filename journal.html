@@ -4,50 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Journal Interne — Dunkelgang MC</title>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0C0A08;color:#C8C0A8;font-family:'Courier Prime',monospace;min-height:100vh;padding:0 0 4rem}
-
-.j-nav{background:#0C0A08;border-bottom:1px solid #1C1810;padding:.75rem 1.25rem;display:flex;align-items:center;justify-content:space-between}
-.j-nav-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#70665A}
-.j-nav-back{font-size:12px;color:#342C24;text-decoration:none;letter-spacing:.1em;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;transition:color .15s}
-.j-nav-back:hover{color:#70665A}
-
-.j-header{border-bottom:2px solid #342C24;padding:2rem 1.25rem 1.5rem;text-align:center}
-.j-header-title{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#70665A;margin-bottom:.5rem}
-.j-header-name{font-size:22px;font-weight:700;letter-spacing:.1em;color:#D8CEBC}
-.j-header-sub{font-size:12px;color:#342C24;margin-top:.35rem;letter-spacing:.1em}
-
-.j-container{max-width:680px;margin:0 auto;padding:2rem 1.25rem}
-
-.j-entry{border-bottom:1px solid #1C1810;padding:1.5rem 0;position:relative}
-.j-entry:last-child{border-bottom:none}
-
-.j-entry-meta{display:flex;gap:1.5rem;margin-bottom:.75rem;flex-wrap:wrap}
-.j-entry-date{font-size:11px;color:#8B1A1A;letter-spacing:.1em;text-transform:uppercase}
-.j-entry-from{font-size:11px;color:#70665A;letter-spacing:.08em;text-transform:uppercase}
-.j-entry-to{font-size:11px;color:#70665A;letter-spacing:.08em;text-transform:uppercase}
-.j-entry-ref{font-size:11px;color:#342C24;letter-spacing:.08em;text-transform:uppercase;margin-left:auto}
-
-.j-entry-subject{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#A89E8E;margin-bottom:.75rem;border-bottom:1px dashed #1C1810;padding-bottom:.5rem}
-
-.j-entry-body{font-size:13px;color:#8A8070;line-height:1.8;white-space:pre-wrap}
-.j-entry-body strong{color:#C8C0A8;font-weight:700}
-
-.j-entry-sig{font-size:11px;color:#342C24;letter-spacing:.1em;text-transform:uppercase;margin-top:1rem;text-align:right}
-
-.j-separator{text-align:center;color:#342C24;font-size:11px;letter-spacing:.3em;padding:.75rem 0}
-
-.j-empty{text-align:center;padding:3rem 0;color:#342C24;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
-</style>
+<link rel="stylesheet" href="journal.css">
 </head>
 <body>
 
-<div class="j-nav">
+<nav class="j-nav">
   <div class="j-nav-title">Dunkelgang MC — Journal Interne</div>
-  <a href="../index.html" class="j-nav-back">← Retour</a>
-</div>
+  <a href="index.html" class="j-nav-back">← Retour</a>
+</nav>
 
 <div class="j-header">
   <div class="j-header-title">Document interne — Accès restreint</div>
@@ -154,5 +118,10 @@ Tous les Wotan font le déplacement. Sans exception.</div>
   </div>
 
 </div>
+
+<footer class="j-footer">
+  Dunkelgang MC &nbsp;·&nbsp; Journal Interne &nbsp;·&nbsp; Document Confidentiel
+</footer>
+
 </body>
 </html>
