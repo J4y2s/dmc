@@ -9,7 +9,7 @@
 <body>
 
 <div class="gate" id="gate">
-  <img src="logo.png" alt="DMC">
+  <img src="logo.png" alt="DMC" width="72" height="72">
   <div>
     <div class="gate-title">DUNKELGANG_MC</div>
     <div class="gate-sub">// ARCHIVES — ACCES_RESTREINT</div>
@@ -74,9 +74,16 @@
 </footer>
 
 <script>
-if (sessionStorage.getItem('dmc_auth') === '1') {
-  document.getElementById('gate').style.display = 'none';
-}
+(function() {
+  var gate = document.getElementById('gate');
+  if (sessionStorage.getItem('dmc_auth') === '1') {
+    gate.style.display = 'none';
+  } else {
+    // Empêche le scroll du contenu derrière le gate sur mobile
+    document.body.style.overflow = 'hidden';
+  }
+})();
+
 function toggleMenu(){
   document.getElementById('overlay').classList.toggle('open');
   document.getElementById('drawer').classList.toggle('open');
@@ -88,18 +95,19 @@ function gcheck(){
   var v = document.getElementById('gi').value.trim().toUpperCase();
   if (v === 'DACHS'){
     sessionStorage.setItem('dmc_auth','1');
+    document.body.style.overflow = '';
     var g = document.getElementById('gate');
     g.style.transition = 'opacity .3s';
     g.style.opacity = '0';
-    setTimeout(function(){ g.style.display='none'; }, 300);
+    setTimeout(function(){ g.style.display = 'none'; }, 300);
   } else {
-    var i = document.getElementById('gi');
-    var e = document.getElementById('ge');
-    i.classList.add('err');
-    e.classList.add('show');
-    i.value = '';
-    setTimeout(function(){ i.classList.remove('err'); }, 300);
-    setTimeout(function(){ e.classList.remove('show'); }, 2000);
+    var inp = document.getElementById('gi');
+    var err = document.getElementById('ge');
+    inp.classList.add('err');
+    err.classList.add('show');
+    inp.value = '';
+    setTimeout(function(){ inp.classList.remove('err'); }, 300);
+    setTimeout(function(){ err.classList.remove('show'); }, 2000);
   }
 }
 

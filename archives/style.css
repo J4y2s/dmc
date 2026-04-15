@@ -489,11 +489,26 @@ body {
 
 /* ─── Gate (accès restreint) ─────────────────────────────── */
 .gate {
-  position: fixed; inset: 0; background: var(--bg); z-index: 1000;
-  display: flex; flex-direction: column; align-items: center;
-  justify-content: center; gap: 1.5rem; padding: 2rem;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: var(--bg);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
-.gate img { width: 64px; height: 64px; object-fit: contain; }
+.gate img {
+  width: 72px; height: 72px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
 .gate-title { font-family: var(--vt); font-size: 26px; letter-spacing: .15em; color: var(--cream); text-align: center; }
 .gate-sub { font-size: 9px; color: var(--s5); letter-spacing: .18em; text-align: center; }
 .gate-form { display: flex; flex-direction: column; align-items: center; gap: .75rem; width: 100%; max-width: 240px; }
@@ -511,6 +526,8 @@ body {
   padding: .55rem; font-family: var(--vt); font-size: 17px;
   letter-spacing: .12em; color: var(--cream); cursor: pointer;
   transition: background .15s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .gate-btn:hover { background: #6b1414; }
 .gate-err { font-size: 9px; color: var(--red); letter-spacing: .1em; display: none; }
